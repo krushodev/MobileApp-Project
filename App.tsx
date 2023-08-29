@@ -1,4 +1,3 @@
-import { registerRootComponent } from 'expo';
 import { View } from "react-native";
 
 import Title from "./src/components/Title";
@@ -11,4 +10,4 @@ function App() {
   )
 }
 
-export default registerRootComponent(App);
+export default App;
