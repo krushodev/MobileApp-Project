@@ -1,9 +1,10 @@
-import { Text } from "react-native"
+import { Text } from "react-native";
+import { StyleSheet } from "react-native";
 
 const Title = () => {
   return (
-    <Text>Hello world!</Text>
+    <Text>VoxChat - App</Text>
   )
 }
 
-export default Title
+export default Title;
