@@ -10,12 +10,12 @@ const MessageListContainer = () => {
   const [messagesList, setMessagesList] = useState<IMessage[]>([]);
 
   return (
-    <View style={{ flex: 1 }}>
-      <View style={{ backgroundColor: "#e0e0e0", flex: 12 }}>
+    <View style={styles.container}>
+      <View style={styles.listContainer}>
         {messagesList.length > 0 ? (
           <FlatList data={messagesList} renderItem={({ item }) => <Message data={item} />} keyExtractor={(item) => item.id} />
         ) : (
-          <Text variant="headlineMedium" style={{ padding: 20, textAlign: "center" }}>
+          <Text variant="headlineMedium" style={styles.textAlert}>
             No hay mensajes
           </Text>
         )}
@@ -24,5 +24,19 @@ const MessageListContainer = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  listContainer: {
+    backgroundColor: "#e0e0e0",
+    flex: 12
+  },
+  textAlert: {
+    padding: 20, 
+    textAlign: "center",
+  }
+});
 
 export default MessageListContainer;

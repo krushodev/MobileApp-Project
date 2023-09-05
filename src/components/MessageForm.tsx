@@ -12,7 +12,7 @@ const MessageForm = ({ setMessagesList }: { setMessagesList: React.Dispatch<Reac
       id: randomUUID(),
       user: {
         name: "Nacho",
-        image: "https://picsum.photos/200",
+        image: `https://picsum.photos/2${Math.round(Math.random() * 100)}`,
       },
       text: inputValue,
       date: new Date(),
