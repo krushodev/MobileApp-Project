@@ -13,7 +13,7 @@ const MessageListContainer = () => {
     <View style={styles.container}>
       <View style={styles.listContainer}>
         {messagesList.length > 0 ? (
-          <FlatList data={messagesList} renderItem={({ item }) => <Message data={item} />} keyExtractor={(item) => item.id} />
+          <FlatList data={messagesList} renderItem={({ item }) => <Message data={item} setMessagesList={setMessagesList} />} keyExtractor={(item) => item.id} />
         ) : (
           <Text variant="headlineMedium" style={styles.textAlert}>
             No hay mensajes
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   listContainer: {
-    backgroundColor: "#e0e0e0",
+    backgroundColor: "#8780b0",
     flex: 12
   },
   textAlert: {

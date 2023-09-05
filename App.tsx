@@ -1,15 +1,11 @@
-import { View } from "react-native";
-
-import Title from "./src/components/Title";
-import MessageListContainer from "./src/components/MessageListContainer";
+import Home from "./src/screens/Home";
 
 function App() {
   return (
-    <View style={{flex:1}}>
-      <Title/>
-      <MessageListContainer/>
-    </View>
-  )
+    <>
+      <Home />
+    </>
+  );
 }
 
 export default App;

@@ -24,23 +24,28 @@ const MessageForm = ({ setMessagesList }: { setMessagesList: React.Dispatch<Reac
 
   return (
     <View style={styles.container}>
-      <TextInput onChangeText={setInputValue} value={inputValue} style={styles.input} />
-      <ToggleButton onPress={handleClick} disabled={inputValue ? false : true} size={30} icon="send" />
+      <TextInput onChangeText={setInputValue} mode="outlined" outlineStyle={styles.input} cursorColor={styles.input.color} value={inputValue} style={styles.input}/>
+      <ToggleButton onPress={handleClick} disabled={inputValue ? false : true} size={35} icon="send" iconColor="#8780b0" />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1.5,
     gap: 10,
     flexDirection: "row",
     alignItems: "center",
     padding: 10,
+    backgroundColor: "#e5e5e5",
   },
   input: {
     flex: 1,
-  },
+    color: "#8780b0",
+    borderRadius: 15,
+    paddingVertical: 5, 
+    borderColor: "#8780b0",
+  }
 });
 
 export default MessageForm;
