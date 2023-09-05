@@ -1,13 +1,13 @@
 import { View } from "react-native";
 
 import Title from "./src/components/Title";
-import MessageContainer from "./src/components/MessageContainer";
+import MessageListContainer from "./src/components/MessageListContainer";
 
 function App() {
   return (
-    <View>
+    <View style={{flex:1}}>
       <Title/>
-      <MessageContainer/>
+      <MessageListContainer/>
     </View>
   )
 }
