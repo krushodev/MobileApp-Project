@@ -1,6 +1,9 @@
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { Text, Avatar, ToggleButton } from "react-native-paper";
-import { IMessage } from "../types";
+
+import { IMessage } from "../../types";
+
+import styles from "./Message.styles";
 
 const Message = ({ data, setMessagesList }: { data: IMessage, setMessagesList: React.Dispatch<React.SetStateAction<IMessage[]>> }) => {
 
@@ -13,10 +16,10 @@ const Message = ({ data, setMessagesList }: { data: IMessage, setMessagesList: R
   }
 
   return (
-    <View style={sytles.container}>
-      <View style={sytles.infoContainer}>
+    <View style={styles.container}>
+      <View style={styles.infoContainer}>
         <Avatar.Image size={40} source={{ uri: data.user.image }} />
-        <View style={sytles.textContainer}>
+        <View style={styles.textContainer}>
           <Text variant="titleLarge">{data.user.name}</Text>
           <Text variant="titleMedium">{data.text}</Text>
         </View>
@@ -25,27 +28,5 @@ const Message = ({ data, setMessagesList }: { data: IMessage, setMessagesList: R
     </View>
   );
 };
-
-const sytles = StyleSheet.create({
-  container: {
-    marginBottom: 30, 
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: 15, 
-    backgroundColor: "#ed9f9a",
-    borderRadius: 20,
-    margin: 10,
-    gap: 8,
-  },
-  infoContainer: {
-    flexDirection: "row",
-    gap: 12,
-    flex: 1,
-  },
-  textContainer: {
-    flex: 1
-  }
-});
 
 export default Message;

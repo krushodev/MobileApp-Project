@@ -1,5 +1,6 @@
-import { StyleSheet } from "react-native";
 import { Text } from "react-native-paper";
+
+import styles from "./Title.styles";
 
 const Title = () => {
   return (
@@ -9,13 +10,5 @@ const Title = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  title: {
-    textAlign: "center",
-    marginTop: 40,
-    marginBottom: 30,
-    padding: 15,
-  },
-});
 
 export default Title;

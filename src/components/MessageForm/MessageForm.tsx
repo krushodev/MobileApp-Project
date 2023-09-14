@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { View, GestureResponderEvent, StyleSheet } from "react-native";
-import { TextInput, Button, ToggleButton } from "react-native-paper";
-import { IMessage } from "../types";
 import { randomUUID } from "expo-crypto";
+import { View, GestureResponderEvent } from "react-native";
+import { TextInput, ToggleButton } from "react-native-paper";
+
+import { IMessage } from "../../types";
+
+import styles from "./MessageForm.styles";
 
 const MessageForm = ({ setMessagesList }: { setMessagesList: React.Dispatch<React.SetStateAction<IMessage[]>> }) => {
   const [inputValue, setInputValue] = useState("");
@@ -29,23 +32,5 @@ const MessageForm = ({ setMessagesList }: { setMessagesList: React.Dispatch<Reac
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1.5,
-    gap: 10,
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 10,
-    backgroundColor: "#e5e5e5",
-  },
-  input: {
-    flex: 1,
-    color: "#8780b0",
-    borderRadius: 15,
-    paddingVertical: 5, 
-    borderColor: "#8780b0",
-  }
-});
 
 export default MessageForm;

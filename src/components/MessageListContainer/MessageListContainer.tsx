@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { FlatList, View } from "react-native";
 import { Text } from "react-native-paper";
-import MessageForm from "./MessageForm";
-import Message from "./Message";
-import { StyleSheet } from "react-native";
-import { IMessage } from "../types";
+
+import MessageForm from "../MessageForm/MessageForm";
+import Message from "../Message/Message";
+
+import { IMessage } from "../../types";
+
+import styles from "./MessageListContainer.styles";
 
 const MessageListContainer = () => {
   const [messagesList, setMessagesList] = useState<IMessage[]>([]);
@@ -24,19 +27,5 @@ const MessageListContainer = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  listContainer: {
-    backgroundColor: "#8780b0",
-    flex: 12
-  },
-  textAlert: {
-    padding: 20, 
-    textAlign: "center",
-  }
-});
 
 export default MessageListContainer;
