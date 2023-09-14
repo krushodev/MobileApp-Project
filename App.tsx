@@ -1,6 +1,7 @@
 import { useFonts } from "expo-font";
-import { Chat, Home } from "./src/screens";
 import fonts from "./src/global/fonts";
+
+import StackNavigator from "./src/navigation/StackNavigator";
 
 function App() {
   const [loaded] = useFonts(fonts);
@@ -9,11 +10,7 @@ function App() {
     return null;
   }
 
-  return (
-    <>
-      <Home />
-    </>
-  );
+  return <StackNavigator />;
 }
 
 export default App;

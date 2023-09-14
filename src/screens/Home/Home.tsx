@@ -5,11 +5,11 @@ import { Title } from "../../components";
 
 import styles from "./Home.styles";
 
-const Home = () => {
+const Home = ({ navigation } : { navigation: any }) => {
   return (
     <View style={styles.container}>
       <Title />
-      <Button mode="contained" style={styles.button}>
+      <Button mode="contained" style={styles.button} onPress={() => navigation.navigate("Chat")}>
         Ingresar
       </Button>
     </View>
