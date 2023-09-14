@@ -1,10 +1,9 @@
-import Home from "./src/screens/Home";
-import Chat from "./src/screens/Chat";
+import { Chat, Home } from "./src/screens";
 
 function App() {
   return (
     <>
-      <Chat />
+      <Home />
     </>
   );
 }
