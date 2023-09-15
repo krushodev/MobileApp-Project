@@ -1,11 +1,16 @@
 import { useState } from 'react';
+import { StyleSheet } from 'react-native';
 import { Button, FAB, Modal, Portal, Text, PaperProvider } from 'react-native-paper';
 
 import { IRoom } from '../../types';
-import { StyleSheet } from 'react-native';
+
 import RoomModal from '../RoomModal/RoomModal';
 
-const RoomButton = ({ setRoomsList}: { setRoomsList: React.Dispatch<React.SetStateAction<IRoom[]>>}) => {
+interface RoomButtonProps {
+  setRoomsList: React.Dispatch<React.SetStateAction<IRoom[]>>;
+}
+
+const RoomButton = ({ setRoomsList}: RoomButtonProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => setIsModalVisible(true);

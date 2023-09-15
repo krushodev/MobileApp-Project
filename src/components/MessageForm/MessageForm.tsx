@@ -7,7 +7,11 @@ import { IMessage } from "../../types";
 
 import styles from "./MessageForm.styles";
 
-const MessageForm = ({ setMessagesList }: { setMessagesList: React.Dispatch<React.SetStateAction<IMessage[]>> }) => {
+interface MessageFormProps {
+  setMessagesList: React.Dispatch<React.SetStateAction<IMessage[]>>;
+}
+
+const MessageForm = ({ setMessagesList }: MessageFormProps) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleClick: ((event: GestureResponderEvent | string | undefined) => void) | undefined = (e) => {

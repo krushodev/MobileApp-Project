@@ -5,7 +5,12 @@ import { IMessage } from "../../types";
 
 import styles from "./Message.styles";
 
-const Message = ({ data, setMessagesList }: { data: IMessage, setMessagesList: React.Dispatch<React.SetStateAction<IMessage[]>> }) => {
+interface MessageProps {
+  data: IMessage;
+  setMessagesList: React.Dispatch<React.SetStateAction<IMessage[]>>;
+}
+
+const Message = ({ data, setMessagesList }: MessageProps) => {
 
   const handleClick = () => {
     setMessagesList((prev) => {
