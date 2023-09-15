@@ -5,7 +5,7 @@ import { Title } from "../../components";
 
 import styles from "./Home.styles";
 
-const Home = ({ navigation } : { navigation: any }) => {
+const Home = ({ navigation }: { navigation: any }) => {
   return (
     <View style={styles.container}>
       <Title />

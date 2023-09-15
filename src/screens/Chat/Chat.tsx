@@ -1,9 +1,7 @@
 import { MessageListContainer } from "../../components";
 
 const Chat = () => {
-  return (
-    <MessageListContainer/>
-  )
-}
+  return <MessageListContainer />;
+};
 
 export default Chat;

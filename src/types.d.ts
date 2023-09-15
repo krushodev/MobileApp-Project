@@ -9,8 +9,8 @@ export interface IMessage {
 }
 
 export interface IRoom {
-  id: string,
-  name: string,
-  tags: string[],
-  participants: string[]
+  id: string;
+  name: string;
+  tags: string[];
+  participants: string[];
 }

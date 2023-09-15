@@ -31,7 +31,7 @@ const MessageForm = ({ setMessagesList }: MessageFormProps) => {
 
   return (
     <View style={styles.container}>
-      <TextInput onChangeText={setInputValue} mode="outlined" outlineStyle={styles.input} cursorColor={styles.input.color} value={inputValue} style={styles.input}/>
+      <TextInput onChangeText={setInputValue} mode="outlined" outlineStyle={styles.input} cursorColor={styles.input.color} value={inputValue} style={styles.input} />
       <ToggleButton onPress={handleClick} disabled={inputValue ? false : true} size={35} icon="send" iconColor="#8780b0" />
     </View>
   );

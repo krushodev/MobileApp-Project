@@ -11,14 +11,13 @@ interface MessageProps {
 }
 
 const Message = ({ data, setMessagesList }: MessageProps) => {
-
   const handleClick = () => {
     setMessagesList((prev) => {
       const filter = prev.filter((item) => item.id !== data.id);
 
-      return filter
+      return filter;
     });
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -29,7 +28,7 @@ const Message = ({ data, setMessagesList }: MessageProps) => {
           <Text variant="titleMedium">{data.text}</Text>
         </View>
       </View>
-      <ToggleButton size={35} onPress={handleClick} icon="delete" iconColor="#8780b0"/>
+      <ToggleButton size={35} onPress={handleClick} icon="delete" iconColor="#8780b0" />
     </View>
   );
 };
