@@ -7,3 +7,10 @@ export interface IMessage {
   text: string;
   date: Date;
 }
+
+export interface IRoom {
+  id: string,
+  name: string,
+  tags: string[],
+  participants: string[]
+}

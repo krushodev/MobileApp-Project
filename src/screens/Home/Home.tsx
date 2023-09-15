@@ -9,7 +9,7 @@ const Home = ({ navigation } : { navigation: any }) => {
   return (
     <View style={styles.container}>
       <Title />
-      <Button mode="contained" style={styles.button} onPress={() => navigation.navigate("Chat")}>
+      <Button mode="contained" style={styles.button} onPress={() => navigation.navigate("Rooms")}>
         Ingresar
       </Button>
     </View>
