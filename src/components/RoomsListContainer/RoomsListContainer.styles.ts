@@ -6,7 +6,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#c9c9aa",
   },
   list: {
-    backgroundColor: "purple",
     zIndex: -30,
   },
   text: {

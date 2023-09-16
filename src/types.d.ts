@@ -12,5 +12,5 @@ export interface IRoom {
   id: string;
   name: string;
   tags: string[];
-  participants: string[];
+  members: string[];
 }

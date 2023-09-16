@@ -1,13 +1,20 @@
-import { View, Text, StyleSheet } from "react-native";
-import { IRoom } from "../../types";
+import { TouchableOpacity, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import styles from "./RoomCard.styles";
 
-const RoomCard = ({ item }: { item: IRoom }) => {
+import { IRoom } from "../../types";
+import { StackNavigation } from "../../navigation/types/types";
+
+const RoomCard = ({ item }: { item: IRoom } ) => {
+
+  const { navigate } = useNavigation<StackNavigation>();
+
   return (
-    <View style={styles.container}>
-      <Text>{item.name}</Text>
-    </View>
+    <TouchableOpacity style={styles.container} onPress={() => navigate("Chat")}>
+      <Text style={styles.text}>{item.name}</Text>
+      <Text>Members: {item.members?.length} </Text>
+    </TouchableOpacity>
   );
 };
 

@@ -7,6 +7,7 @@ import { IRoom } from "../../types";
 import RoomModal from "../RoomModal/RoomModal";
 
 import styles from "./RoomButton.styles";
+import { randomUUID } from "expo-crypto";
 
 interface RoomButtonProps {
   setRoomsList: React.Dispatch<React.SetStateAction<IRoom[]>>;
@@ -20,10 +21,10 @@ const RoomButton = ({ setRoomsList }: RoomButtonProps) => {
 
   const handleCreateRoom = () => {
     const newRoom: IRoom = {
-      id: "kdjfkdjfkd",
+      id: randomUUID(),
       name: "Nueva room",
       tags: ["nose"],
-      participants: ["jdkfjdjf"],
+      members: ["jdkfjdjf"],
     };
 
     setRoomsList((prev) => [...prev, newRoom]);
