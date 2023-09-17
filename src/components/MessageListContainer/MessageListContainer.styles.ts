@@ -1,11 +1,12 @@
 import { StyleSheet } from "react-native";
+import colors from "../../constants/colors";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
   listContainer: {
-    backgroundColor: "#8780b0",
+    backgroundColor: colors.primary,
     flex: 12,
   },
   textAlert: {

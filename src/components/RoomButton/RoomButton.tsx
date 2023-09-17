@@ -7,6 +7,7 @@ import RoomModal from "../RoomModal/RoomModal";
 
 import styles from "./RoomButton.styles";
 import { randomUUID } from "expo-crypto";
+import colors from "../../constants/colors";
 
 interface RoomButtonProps {
   setRoomsList: React.Dispatch<React.SetStateAction<IRoom[]>>;
@@ -35,7 +36,7 @@ const RoomButton = ({ setRoomsList }: RoomButtonProps) => {
   return (
     <>
       <RoomModal handleCreateRoom={handleCreateRoom} hideModal={hideModal} setInputValue={setInputValue} isModalVisible={isModalVisible} />
-      <FAB icon="plus" style={styles.button} onPress={showModal} />
+      <FAB icon="plus" color={colors.secondary} style={styles.button} onPress={showModal} />
     </>
   );
 };

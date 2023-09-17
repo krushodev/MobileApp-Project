@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import colors from "../../constants/colors";
 
 const styles = StyleSheet.create({
   container: {
@@ -7,14 +8,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     padding: 10,
-    backgroundColor: "#e5e5e5",
+    backgroundColor: colors.secondary,
   },
   input: {
     flex: 1,
-    color: "#8780b0",
+    color: colors.primary,
     borderRadius: 15,
     paddingVertical: 5,
-    borderColor: "#8780b0",
+    borderColor: colors.primary,
   },
 });
 

@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import colors from "../../constants/colors";
 
 const styles = StyleSheet.create({
   container: {
@@ -7,7 +8,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     padding: 15,
-    backgroundColor: "#ed9f9a",
+    backgroundColor: colors.tertiary,
     borderRadius: 20,
     margin: 10,
     gap: 8,

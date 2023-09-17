@@ -6,6 +6,7 @@ import { TextInput, ToggleButton } from "react-native-paper";
 import { IMessage } from "../../types";
 
 import styles from "./MessageForm.styles";
+import colors from "../../constants/colors";
 
 interface MessageFormProps {
   setMessagesList: React.Dispatch<React.SetStateAction<IMessage[]>>;
@@ -32,7 +33,7 @@ const MessageForm = ({ setMessagesList }: MessageFormProps) => {
   return (
     <View style={styles.container}>
       <TextInput onChangeText={setInputValue} mode="outlined" outlineStyle={styles.input} cursorColor={styles.input.color} value={inputValue} style={styles.input} />
-      <ToggleButton onPress={handleClick} disabled={inputValue ? false : true} size={35} icon="send" iconColor="#8780b0" />
+      <ToggleButton onPress={handleClick} disabled={inputValue ? false : true} size={35} icon="send" iconColor={colors.primary} />
     </View>
   );
 };

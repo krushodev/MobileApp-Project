@@ -4,6 +4,7 @@ import { Text, Avatar, ToggleButton } from "react-native-paper";
 import { IMessage } from "../../types";
 
 import styles from "./Message.styles";
+import colors from "../../constants/colors";
 
 interface MessageProps {
   data: IMessage;
@@ -28,7 +29,7 @@ const Message = ({ data, setMessagesList }: MessageProps) => {
           <Text variant="titleMedium">{data.text}</Text>
         </View>
       </View>
-      <ToggleButton size={35} onPress={handleClick} icon="delete" iconColor="#8780b0" />
+      <ToggleButton size={35} onPress={handleClick} icon="delete" iconColor={colors.primary} />
     </View>
   );
 };
