@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { StyleSheet } from "react-native";
-import { Button, FAB, Modal, Portal, Text, PaperProvider } from "react-native-paper";
+import { FAB } from "react-native-paper";
 
 import { IRoom } from "../../types";
 
@@ -15,6 +14,7 @@ interface RoomButtonProps {
 
 const RoomButton = ({ setRoomsList }: RoomButtonProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   const showModal = () => setIsModalVisible(true);
   const hideModal = () => setIsModalVisible(false);
@@ -22,7 +22,7 @@ const RoomButton = ({ setRoomsList }: RoomButtonProps) => {
   const handleCreateRoom = () => {
     const newRoom: IRoom = {
       id: randomUUID(),
-      name: "Nueva room",
+      name: inputValue,
       tags: ["nose"],
       members: ["jdkfjdjf"],
     };
@@ -34,7 +34,7 @@ const RoomButton = ({ setRoomsList }: RoomButtonProps) => {
 
   return (
     <>
-      <RoomModal handleCreateRoom={handleCreateRoom} hideModal={hideModal} isModalVisible={isModalVisible} />
+      <RoomModal handleCreateRoom={handleCreateRoom} hideModal={hideModal} setInputValue={setInputValue} isModalVisible={isModalVisible} />
       <FAB icon="plus" style={styles.button} onPress={showModal} />
     </>
   );
