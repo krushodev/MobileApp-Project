@@ -9,8 +9,10 @@ const styles = StyleSheet.create({
   list: {
     zIndex: -30,
   },
-  text: {
-    fontSize: 30,
+  textAlert: {
+    fontSize: 25,
+    textAlign: "center",
+    padding: 20,
   },
 });
 

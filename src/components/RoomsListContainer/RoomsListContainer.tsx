@@ -16,7 +16,7 @@ const RoomsListContainer = () => {
       {roomsList.length > 0 ? (
         <FlatList style={styles.list} data={roomsList} renderItem={({ item }) => <RoomCard item={item} />} keyExtractor={(item) => item.id} />
       ) : (
-        <Text style={styles.text}>No hay rooms</Text>
+        <Text style={styles.textAlert}>No hay rooms</Text>
       )}
       <RoomButton setRoomsList={setRoomsList} />
     </View>

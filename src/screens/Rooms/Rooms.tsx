@@ -1,10 +1,11 @@
 import { View } from "react-native";
 import { RoomsListContainer } from "../../components";
 
-const Rooms = () => {
+import styles from "./Rooms.styles";
 
+const Rooms = () => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <RoomsListContainer />
     </View>
   );

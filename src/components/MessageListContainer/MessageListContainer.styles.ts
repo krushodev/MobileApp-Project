@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     flex: 12,
   },
   textAlert: {
+    color: colors.secondary,
     padding: 20,
     textAlign: "center",
   },
