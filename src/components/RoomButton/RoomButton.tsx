@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { randomUUID } from "expo-crypto";
-import { FAB } from "react-native-paper";
+import { useState } from 'react';
+import { randomUUID } from 'expo-crypto';
+import { FAB } from 'react-native-paper';
 
-import RoomModal from "../RoomModal/RoomModal";
+import RoomModal from '../RoomModal/RoomModal';
 
-import { IRoom } from "../../types";
+import type { IRoom } from '../../types';
 
-import styles from "./RoomButton.styles";
-import colors from "../../constants/colors";
+import styles from './RoomButton.styles';
+import colors from '../../constants/colors';
 
 interface RoomButtonProps {
   setRoomsList: React.Dispatch<React.SetStateAction<IRoom[]>>;
@@ -15,29 +15,40 @@ interface RoomButtonProps {
 
 const RoomButton = ({ setRoomsList }: RoomButtonProps) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
-  const showModal = () => setIsModalVisible(true);
-  const hideModal = () => setIsModalVisible(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const hideModal = () => {
+    setIsModalVisible(false);
+  };
 
   const handleCreateRoom = () => {
     const newRoom: IRoom = {
       id: randomUUID(),
       name: inputValue,
-      topics: ["topic1"],
-      members: ["user"],
+      topics: ['topic1'],
+      members: ['user']
     };
 
-    setRoomsList((prev) => [...prev, newRoom]);
+    setRoomsList(prev => [...prev, newRoom]);
 
-    setInputValue("");
+    setInputValue('');
 
     hideModal();
   };
 
   return (
     <>
-      <RoomModal handleCreateRoom={handleCreateRoom} hideModal={hideModal} inputValue={inputValue} setInputValue={setInputValue} isModalVisible={isModalVisible} />
+      <RoomModal
+        handleCreateRoom={handleCreateRoom}
+        hideModal={hideModal}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        isModalVisible={isModalVisible}
+      />
       <FAB icon="plus" color={colors.secondary} style={styles.button} onPress={showModal} />
     </>
   );

@@ -1,4 +1,4 @@
-import { MessageListContainer } from "../../components";
+import { MessageListContainer } from '../../components';
 
 const Chat = () => {
   return <MessageListContainer />;

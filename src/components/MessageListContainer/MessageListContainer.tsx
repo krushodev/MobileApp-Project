@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { FlatList, View } from "react-native";
-import { Text } from "react-native-paper";
+import { useState } from 'react';
+import { FlatList, View } from 'react-native';
+import { Text } from 'react-native-paper';
 
-import MessageForm from "../MessageForm/MessageForm";
-import Message from "../Message/Message";
+import MessageForm from '../MessageForm/MessageForm';
+import Message from '../Message/Message';
 
-import { IMessage } from "../../types";
+import type { IMessage } from '../../types';
 
-import styles from "./MessageListContainer.styles";
+import styles from './MessageListContainer.styles';
 
 const MessageListContainer = () => {
   const [messagesList, setMessagesList] = useState<IMessage[]>([]);
@@ -16,7 +16,11 @@ const MessageListContainer = () => {
     <View style={styles.container}>
       <View style={styles.listContainer}>
         {messagesList.length > 0 ? (
-          <FlatList data={messagesList} renderItem={({ item }) => <Message data={item} setMessagesList={setMessagesList} />} keyExtractor={(item) => item.id} />
+          <FlatList
+            data={messagesList}
+            renderItem={({ item }) => <Message data={item} setMessagesList={setMessagesList} />}
+            keyExtractor={item => item.id}
+          />
         ) : (
           <Text variant="headlineMedium" style={styles.textAlert}>
             No hay mensajes

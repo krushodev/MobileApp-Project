@@ -1,9 +1,9 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { Chat, Home, Rooms } from "../screens";
+import { Chat, Home, Rooms } from '../screens';
 
-import { RootStackParamList } from "./types/types";
+import type { RootStackParamList } from './types/types';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 

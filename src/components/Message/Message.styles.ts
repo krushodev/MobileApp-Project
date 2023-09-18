@@ -1,27 +1,27 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-import colors from "../../constants/colors";
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
     marginBottom: 30,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 15,
     backgroundColor: colors.tertiary,
     borderRadius: 20,
     margin: 10,
-    gap: 8,
+    gap: 8
   },
   infoContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 12,
-    flex: 1,
+    flex: 1
   },
   textContainer: {
-    flex: 1,
-  },
+    flex: 1
+  }
 });
 
 export default styles;

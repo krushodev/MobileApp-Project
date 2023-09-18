@@ -1,10 +1,10 @@
-import { View } from "react-native";
-import { Text, Avatar, ToggleButton } from "react-native-paper";
+import { View } from 'react-native';
+import { Text, Avatar, ToggleButton } from 'react-native-paper';
 
-import { IMessage } from "../../types";
+import type { IMessage } from '../../types';
 
-import styles from "./Message.styles";
-import colors from "../../constants/colors";
+import styles from './Message.styles';
+import colors from '../../constants/colors';
 
 interface MessageProps {
   data: IMessage;
@@ -13,8 +13,8 @@ interface MessageProps {
 
 const Message = ({ data, setMessagesList }: MessageProps) => {
   const handleClick = () => {
-    setMessagesList((prev) => {
-      const filter = prev.filter((item) => item.id !== data.id);
+    setMessagesList(prev => {
+      const filter = prev.filter(item => item.id !== data.id);
 
       return filter;
     });

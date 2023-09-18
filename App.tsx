@@ -1,7 +1,7 @@
-import { useFonts } from "expo-font";
-import fonts from "./src/global/fonts";
+import { useFonts } from 'expo-font';
+import fonts from './src/global/fonts';
 
-import StackNavigator from "./src/navigation/StackNavigator";
+import StackNavigator from './src/navigation/StackNavigator';
 
 function App() {
   const [loaded] = useFonts(fonts);

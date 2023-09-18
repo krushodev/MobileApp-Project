@@ -1,8 +1,8 @@
-import { View } from "react-native";
+import { View } from 'react-native';
 
-import { RoomsListContainer } from "../../components";
+import { RoomsListContainer } from '../../components';
 
-import styles from "./Rooms.styles";
+import styles from './Rooms.styles';
 
 const Rooms = () => {
   return (

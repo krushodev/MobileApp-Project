@@ -1,6 +1,6 @@
-import { Text } from "react-native-paper";
+import { Text } from 'react-native-paper';
 
-import styles from "./Title.styles";
+import styles from './Title.styles';
 
 const Title = () => {
   return (
