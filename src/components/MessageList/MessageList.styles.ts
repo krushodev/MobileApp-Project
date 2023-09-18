@@ -4,11 +4,11 @@ import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 2
   },
   listContainer: {
     backgroundColor: colors.primary,
-    flex: 12
+    flex: 1
   },
   textAlert: {
     color: colors.secondary,

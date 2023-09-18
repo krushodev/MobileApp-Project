@@ -1,5 +1,6 @@
-import { TouchableOpacity, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+
+import { TouchableOpacity, Text } from 'react-native';
 
 import type { StackNavigation } from '../../navigation/types/types';
 import type { IRoom } from '../../types';
