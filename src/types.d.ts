@@ -11,6 +11,6 @@ export interface IMessage {
 export interface IRoom {
   id: string;
   name: string;
-  tags: string[];
+  topics: string[];
   members: string[];
 }

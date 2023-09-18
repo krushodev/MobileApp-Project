@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+
 import colors from "../../constants/colors";
 
 const styles = StyleSheet.create({
@@ -6,7 +7,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: colors.secondary
+    backgroundColor: colors.secondary,
   },
   button: {
     backgroundColor: colors.primary,

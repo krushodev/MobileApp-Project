@@ -1,10 +1,10 @@
-import { View, Text, FlatList } from "react-native";
 import { useState } from "react";
-
-import { IRoom } from "../../types";
+import { View, Text, FlatList } from "react-native";
 
 import RoomButton from "../RoomButton/RoomButton";
 import RoomCard from "../RoomCard/RoomCard";
+
+import { IRoom } from "../../types";
 
 import styles from "./RoomsListContainer.styles";
 

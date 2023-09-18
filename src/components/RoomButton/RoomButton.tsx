@@ -1,12 +1,12 @@
 import { useState } from "react";
+import { randomUUID } from "expo-crypto";
 import { FAB } from "react-native-paper";
-
-import { IRoom } from "../../types";
 
 import RoomModal from "../RoomModal/RoomModal";
 
+import { IRoom } from "../../types";
+
 import styles from "./RoomButton.styles";
-import { randomUUID } from "expo-crypto";
 import colors from "../../constants/colors";
 
 interface RoomButtonProps {
@@ -24,18 +24,20 @@ const RoomButton = ({ setRoomsList }: RoomButtonProps) => {
     const newRoom: IRoom = {
       id: randomUUID(),
       name: inputValue,
-      tags: ["nose"],
-      members: ["jdkfjdjf"],
+      topics: ["topic1"],
+      members: ["user"],
     };
 
     setRoomsList((prev) => [...prev, newRoom]);
+
+    setInputValue("");
 
     hideModal();
   };
 
   return (
     <>
-      <RoomModal handleCreateRoom={handleCreateRoom} hideModal={hideModal} setInputValue={setInputValue} isModalVisible={isModalVisible} />
+      <RoomModal handleCreateRoom={handleCreateRoom} hideModal={hideModal} inputValue={inputValue} setInputValue={setInputValue} isModalVisible={isModalVisible} />
       <FAB icon="plus" color={colors.secondary} style={styles.button} onPress={showModal} />
     </>
   );

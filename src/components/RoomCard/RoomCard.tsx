@@ -1,10 +1,10 @@
 import { TouchableOpacity, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-import styles from "./RoomCard.styles";
-
-import { IRoom } from "../../types";
 import { StackNavigation } from "../../navigation/types/types";
+import { IRoom } from "../../types";
+
+import styles from "./RoomCard.styles";
 
 const RoomCard = ({ item }: { item: IRoom } ) => {
 

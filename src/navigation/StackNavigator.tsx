@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { Chat, Home, Rooms } from "../screens";
+
 import { RootStackParamList } from "./types/types";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

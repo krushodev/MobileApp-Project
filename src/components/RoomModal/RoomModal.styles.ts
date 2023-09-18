@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   modalForm: {
-    // backgroundColor: "red",
     padding: 20,
     gap: 20,
     flex: 1
