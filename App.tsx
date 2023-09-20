@@ -1,7 +1,10 @@
 import { useFonts } from 'expo-font';
-import fonts from './src/global/fonts';
+import { NavigationContainer } from '@react-navigation/native';
 
-import StackNavigator from './src/navigation/StackNavigator';
+import HomeNavigator from './src/navigation/HomeNavigator';
+
+import fonts from './src/global/fonts';
+import BottomTabNavigator from './src/navigation/BottomTabNavigator';
 
 function App() {
   const [loaded] = useFonts(fonts);
@@ -10,7 +13,11 @@ function App() {
     return null;
   }
 
-  return <StackNavigator />;
+  return (
+    <NavigationContainer>
+      <HomeNavigator />
+    </NavigationContainer>
+  );
 }
 
 export default App;
