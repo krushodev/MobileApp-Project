@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     right: 25,
     bottom: 30,
     padding: 8,
-    zIndex: -10,
+    zIndex: -5,
     backgroundColor: colors.primary
   }
 });

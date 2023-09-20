@@ -1,13 +1,13 @@
 import { View } from 'react-native';
 
-import { RoomsListContainer } from '../../components';
+import { RoomsContainer } from '../../components';
 
 import styles from './Rooms.styles';
 
 const Rooms = () => {
   return (
     <View style={styles.container}>
-      <RoomsListContainer />
+      <RoomsContainer />
     </View>
   );
 };
