@@ -10,7 +10,7 @@ import BottomTabNavigator from './BottomTabNavigator';
 const HomeNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={BottomTabNavigator} />
+      <Stack.Screen name="HomeScreen" component={BottomTabNavigator} />
       <Stack.Screen name="Chat" component={Chat} />
       <Stack.Screen name="Rooms" component={Rooms} />
     </Stack.Navigator>
