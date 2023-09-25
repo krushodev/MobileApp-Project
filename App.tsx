@@ -1,8 +1,12 @@
 import { useFonts } from 'expo-font';
+import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { StackNavigator } from './src/navigation';
+import { View } from 'react-native';
 
+import AuthHandler from './src/utils/AuthHandler';
+
+import { store } from './src/store';
 import fonts from './src/global/fonts';
 
 function App() {
@@ -13,9 +17,13 @@ function App() {
   }
 
   return (
-    <NavigationContainer>
-      <StackNavigator />
-    </NavigationContainer>
+    <Provider store={store}>
+      <View style={{ flex: 1, marginTop: 30 }}>
+        <NavigationContainer>
+          <AuthHandler />
+        </NavigationContainer>
+      </View>
+    </Provider>
   );
 }
 
