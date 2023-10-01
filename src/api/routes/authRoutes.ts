@@ -1,30 +1,47 @@
-// @ts-nocheck
-
 import axios from '../index';
 
-export const login = async data => {
+import type { IUser } from '../../types';
+
+interface LoginBody {
+  email: string;
+  password: string;
+}
+
+interface LoginResponse {
+  accessToken: string;
+  refreshToken: string;
+}
+
+interface RefreshTokenResponse {
+  accessToken: string;
+}
+
+export const login = async (data: LoginBody): Promise<LoginResponse | undefined> => {
   try {
-    const response = await axios.post('/sessions/login', data);
-    return response.data;
+    const response = await axios.post<SuccessResponse>('/sessions/login', data);
+    const { payload } = response.data;
+    return payload as LoginResponse;
   } catch (err) {
-    throw new Error(err as string);
+    console.log(err as string);
   }
 };
 
-export const signup = async data => {
+export const signup = async (data: IUser): Promise<string | undefined> => {
   try {
-    const response = await axios.post('/sessions/signup', data);
-    return response.data;
+    const response = await axios.post<SuccessResponse>('/sessions/signup', data);
+    const { message } = response.data;
+    return message;
   } catch (err) {
-    throw new Error(err as string);
+    console.log(err as string);
   }
 };
 
-export const provideRefreshToken = async data => {
+export const provideRefreshToken = async (data: string): Promise<RefreshTokenResponse | undefined> => {
   try {
-    const response = await axios.post('/sessions/refresh-token', data);
-    return response.data;
+    const response = await axios.post<SuccessResponse>('/sessions/refresh-token', data);
+    const { payload } = response.data;
+    return payload as RefreshTokenResponse;
   } catch (err) {
-    throw new Error(err as string);
+    console.log(err as string);
   }
 };

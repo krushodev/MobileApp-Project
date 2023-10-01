@@ -7,13 +7,13 @@ import type { IRoom } from '../../types';
 import styles from './RoomsList.styles';
 
 interface RoomListProps {
-  roomsList: IRoom[];
+  roomsList: IRoom[] | undefined;
 }
 
-const RoomsListContainer = ({ roomsList }: RoomListProps) => {
+const RoomsList = ({ roomsList }: RoomListProps) => {
   return (
     <View style={styles.container}>
-      {roomsList.length > 0 ? (
+      {roomsList && roomsList.length > 0 ? (
         <FlatList data={roomsList} renderItem={({ item }) => <RoomCard item={item} />} keyExtractor={item => item.id} />
       ) : (
         <Text style={styles.textAlert}>No hay rooms</Text>
@@ -22,4 +22,4 @@ const RoomsListContainer = ({ roomsList }: RoomListProps) => {
   );
 };
 
-export default RoomsListContainer;
+export default RoomsList;

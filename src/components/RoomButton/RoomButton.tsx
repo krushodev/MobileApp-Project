@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { randomUUID } from 'expo-crypto';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { createRoom } from '../../api/routes/roomsRoutes';
 
 import { FAB } from 'react-native-paper';
 
@@ -10,13 +13,18 @@ import type { IRoom } from '../../types';
 import styles from './RoomButton.styles';
 import colors from '../../constants/colors';
 
-interface RoomButtonProps {
-  setRoomsList: React.Dispatch<React.SetStateAction<IRoom[]>>;
-}
-
-const RoomButton = ({ setRoomsList }: RoomButtonProps) => {
+const RoomButton = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
+
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: createRoom,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['roomsList'] });
+    }
+  });
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -31,10 +39,10 @@ const RoomButton = ({ setRoomsList }: RoomButtonProps) => {
       id: randomUUID(),
       name: inputValue,
       topics: ['topic1'],
-      members: ['user']
+      members: [{ user: randomUUID() }]
     };
 
-    setRoomsList(prev => [...prev, newRoom]);
+    mutation.mutateAsync(newRoom);
 
     setInputValue('');
 

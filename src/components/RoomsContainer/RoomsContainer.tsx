@@ -1,20 +1,21 @@
-import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+
+import { listRooms } from '../../api/routes/roomsRoutes';
 
 import { View } from 'react-native';
 
 import RoomButton from '../RoomButton/RoomButton';
 import RoomsList from '../RoomsList/RoomsList';
 
-import type { IRoom } from '../../types';
-
 import styles from './RoomsContainer.styles';
 
 const RoomsContainer = () => {
-  const [roomsList, setRoomsList] = useState<IRoom[]>([]);
+  const query = useQuery({ queryKey: ['roomsList'], queryFn: listRooms });
+
   return (
     <View style={styles.container}>
-      <RoomsList roomsList={roomsList} />
-      <RoomButton setRoomsList={setRoomsList} />
+      <RoomsList roomsList={query.data} />
+      <RoomButton />
     </View>
   );
 };
