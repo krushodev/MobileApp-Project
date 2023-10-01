@@ -8,20 +8,15 @@ import { IMessage } from '../../types';
 import styles from './MessageList.styles';
 
 interface MessageListProps {
-  messagesList: IMessage[];
-  setMessagesList: React.Dispatch<React.SetStateAction<IMessage[]>>;
+  messagesList: IMessage[] | undefined;
 }
 
-const MessageList = ({ messagesList, setMessagesList }: MessageListProps) => {
+const MessageList = ({ messagesList }: MessageListProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.listContainer}>
-        {messagesList.length > 0 ? (
-          <FlatList
-            data={messagesList}
-            renderItem={({ item }) => <Message data={item} setMessagesList={setMessagesList} />}
-            keyExtractor={item => item.id}
-          />
+        {messagesList && messagesList.length > 0 ? (
+          <FlatList data={messagesList} renderItem={({ item }) => <Message data={item} />} keyExtractor={item => item.id} />
         ) : (
           <Text variant="headlineMedium" style={styles.textAlert}>
             No hay mensajes

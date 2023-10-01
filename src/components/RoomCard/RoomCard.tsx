@@ -11,7 +11,7 @@ const RoomCard = ({ item }: { item: IRoom }) => {
   const { navigate } = useNavigation<StackNavigation>();
 
   return (
-    <TouchableOpacity style={styles.container} onPress={() => navigate('ChatScreen')}>
+    <TouchableOpacity style={styles.container} onPress={() => navigate('ChatScreen', { roomId: item.id })}>
       <Text style={styles.text}>{item.name}</Text>
       <Text>Members: {item.members?.length} </Text>
     </TouchableOpacity>

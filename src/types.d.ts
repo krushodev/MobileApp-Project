@@ -1,21 +1,38 @@
 export interface IMessage {
   id: string;
+  user: IUser;
+  text: string;
+  date: Date;
+}
+
+interface MessageBody {
+  id: string;
   user: string;
   text: string;
   date: Date;
 }
 
-export interface IRoom {
+interface RoomBody {
   id: string;
   name: string;
   topics: string[];
   members: { user: string }[];
-  messages?: IMessage[];
+  messages?: MessageBody[];
   isPrivate?: boolean;
   password?: string | null;
 }
 
-export interface IUser {
+interface IRoom {
+  id: string;
+  name: string;
+  topics: string[];
+  members: { user: IUser }[];
+  messages: IMessage[];
+  isPrivate: boolean;
+  password: string | null;
+}
+
+interface IUser {
   id: string;
   username: string;
   email: string;

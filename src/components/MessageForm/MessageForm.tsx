@@ -1,34 +1,39 @@
 import { useState } from 'react';
 import { randomUUID } from 'expo-crypto';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+
+import { sendMessage } from '../../api/routes/roomsRoutes';
 
 import { View } from 'react-native';
 import { TextInput, ToggleButton } from 'react-native-paper';
 
-import type { IMessage } from '../../types';
-import type { GestureResponderEvent } from 'react-native';
+import type { MessageBody } from '../../types';
 
 import styles from './MessageForm.styles';
 import colors from '../../constants/colors';
 
-interface MessageFormProps {
-  setMessagesList: React.Dispatch<React.SetStateAction<IMessage[]>>;
-}
-
-const MessageForm = ({ setMessagesList }: MessageFormProps) => {
+const MessageForm = ({ roomId }: { roomId: string }) => {
   const [inputValue, setInputValue] = useState('');
 
-  const handleClick: ((event: GestureResponderEvent | string | undefined) => void) | undefined = e => {
-    const newMessage = {
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: sendMessage,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['messagesList'] });
+    }
+  });
+
+  const handleClick = () => {
+    const newMessage: MessageBody = {
       id: randomUUID(),
-      user: {
-        name: 'User',
-        image: `https://picsum.photos/2${Math.round(Math.random() * 100)}`
-      },
+      user: randomUUID(),
       text: inputValue,
       date: new Date()
     };
 
-    setMessagesList(prev => [...prev, newMessage]);
+    mutation.mutateAsync({ id: roomId!, message: newMessage });
+
     setInputValue('');
   };
 

@@ -1,6 +1,6 @@
 import axios from '../index';
 
-import type { IMessage, IRoom } from '../../types';
+import type { IMessage, IRoom, MessageBody, RoomBody } from '../../types';
 
 export const listRooms = async (): Promise<IRoom[] | undefined> => {
   try {
@@ -22,7 +22,7 @@ export const getRoom = async (id: string): Promise<IRoom | undefined> => {
   }
 };
 
-export const createRoom = async (data: IRoom) => {
+export const createRoom = async (data: RoomBody) => {
   try {
     const response = await axios.post<SuccessResponse>('/rooms', data);
     const { payload } = response.data;
@@ -43,9 +43,19 @@ export const removeRoom = async (id: string): Promise<string | undefined> => {
   }
 };
 
-export const sendMessage = async (data: IMessage): Promise<IMessage | undefined> => {
+export const listMessages = async (id: string): Promise<IMessage[] | undefined> => {
   try {
-    const response = await axios.post<SuccessResponse>(`/rooms/${data.id}/sendMessage`, data);
+    const response = await axios.get<SuccessResponse>(`/rooms/${id}/messages`);
+    const { payload } = response.data;
+    return payload as IMessage[];
+  } catch (err) {
+    console.log('Error', err);
+  }
+};
+
+export const sendMessage = async (data: { id: string; message: MessageBody }): Promise<IMessage | undefined> => {
+  try {
+    const response = await axios.post<SuccessResponse>(`/rooms/${data.id}/messages`, data.message);
     const { payload } = response.data;
     return payload as IMessage;
   } catch (err) {
