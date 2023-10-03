@@ -18,7 +18,7 @@ const Message = ({ data }: MessageProps) => {
       <View style={styles.infoContainer}>
         {/* <Avatar.Image size={40} source={{ uri: data.user.image }} /> */}
         <View style={styles.textContainer}>
-          <Text variant="titleLarge">{data.user}</Text>
+          <Text variant="titleLarge">{data.user.username}</Text>
           <Text variant="titleMedium">{data.text}</Text>
         </View>
       </View>

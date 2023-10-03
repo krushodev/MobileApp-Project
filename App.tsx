@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { View } from 'react-native';
 
-import AuthHandler from './src/utils/AuthHandler';
+import { MainNavigator } from './src/navigation';
 
 import { store } from './src/store';
 
@@ -25,7 +25,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <View style={{ flex: 1, marginTop: 30 }}>
           <NavigationContainer>
-            <AuthHandler />
+            <MainNavigator />
           </NavigationContainer>
         </View>
       </QueryClientProvider>
