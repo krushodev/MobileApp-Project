@@ -62,3 +62,13 @@ export const sendMessage = async (data: { id: string; message: MessageBody }): P
     console.log('Error', err);
   }
 };
+
+export const addMember = async (data: { rid: string; uid: string }) => {
+  try {
+    const response = await axios.post<SuccessResponse>(`/rooms/${data.rid}/addMember/${data.uid}`);
+    const { message } = response.data;
+    return message;
+  } catch (err) {
+    console.log('Error', err);
+  }
+};

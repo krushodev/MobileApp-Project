@@ -18,6 +18,7 @@ interface RoomBody {
   topics: string[];
   members: { user: string }[];
   messages?: MessageBody[];
+  owner: string;
   isPrivate?: boolean;
   password?: string | null;
 }
@@ -28,6 +29,7 @@ interface IRoom {
   topics: string[];
   members: { user: IUser }[];
   messages: IMessage[];
+  owner: IUser | null;
   isPrivate: boolean;
   password: string | null;
 }

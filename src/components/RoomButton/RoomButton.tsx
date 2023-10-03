@@ -43,8 +43,11 @@ const RoomButton = () => {
       id: randomUUID(),
       name: inputValue,
       topics: ['topic1'],
+      owner: (user as IUser).id,
       members: [{ user: (user as IUser).id }]
     };
+
+    console.log(newRoom);
 
     mutation.mutateAsync(newRoom);
 
