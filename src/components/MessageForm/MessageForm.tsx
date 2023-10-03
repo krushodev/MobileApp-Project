@@ -7,10 +7,12 @@ import { sendMessage } from '../../api/routes/roomsRoutes';
 import { View } from 'react-native';
 import { TextInput, ToggleButton } from 'react-native-paper';
 
-import type { MessageBody } from '../../types';
+import type { IUser, MessageBody } from '../../types';
+import type { IRootState } from '../../store';
 
 import styles from './MessageForm.styles';
 import colors from '../../constants/colors';
+import { useSelector } from 'react-redux';
 
 interface MessageFormProps {
   roomId: string;
@@ -20,6 +22,8 @@ const MessageForm = ({ roomId }: MessageFormProps) => {
   const [inputValue, setInputValue] = useState('');
 
   const queryClient = useQueryClient();
+
+  const user = useSelector<IRootState>(state => state.auth.user);
 
   const mutation = useMutation({
     mutationFn: sendMessage,
@@ -31,7 +35,7 @@ const MessageForm = ({ roomId }: MessageFormProps) => {
   const handleClick = () => {
     const newMessage: MessageBody = {
       id: randomUUID(),
-      user: randomUUID(),
+      user: (user as IUser).id,
       text: inputValue,
       date: new Date()
     };

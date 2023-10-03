@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 
-import SettingsContainer from '../../components/SettingsContainer/SettingsContainer';
+import { SettingsContainer } from '../../components';
 
 import styles from './Settings.styles';
 

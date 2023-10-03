@@ -10,6 +10,8 @@ import ChatContainer from './ChatContainer/ChatContainer';
 import Drawer from './Drawer/Drawer';
 import DrawerChatContent from './DrawerChatContent/DrawerChatContent';
 import RoomsContainer from './RoomsContainer/RoomsContainer';
+import UserCard from './UserCard/UserCard';
+import SettingsContainer from './SettingsContainer/SettingsContainer';
 
 export {
   Message,
@@ -23,5 +25,7 @@ export {
   ChatContainer,
   Drawer,
   DrawerChatContent,
-  RoomsContainer
+  RoomsContainer,
+  UserCard,
+  SettingsContainer
 };

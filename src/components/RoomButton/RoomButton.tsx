@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { randomUUID } from 'expo-crypto';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
@@ -8,7 +9,8 @@ import { FAB } from 'react-native-paper';
 
 import RoomModal from '../RoomModal/RoomModal';
 
-import type { IRoom } from '../../types';
+import type { IUser, RoomBody } from '../../types';
+import type { IRootState } from '../../store';
 
 import styles from './RoomButton.styles';
 import colors from '../../constants/colors';
@@ -16,6 +18,8 @@ import colors from '../../constants/colors';
 const RoomButton = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [inputValue, setInputValue] = useState('');
+
+  const user = useSelector<IRootState>(state => state.auth.user);
 
   const queryClient = useQueryClient();
 
@@ -35,11 +39,11 @@ const RoomButton = () => {
   };
 
   const handleCreateRoom = () => {
-    const newRoom: IRoom = {
+    const newRoom: RoomBody = {
       id: randomUUID(),
       name: inputValue,
       topics: ['topic1'],
-      members: [{ user: randomUUID() }]
+      members: [{ user: (user as IUser).id }]
     };
 
     mutation.mutateAsync(newRoom);
