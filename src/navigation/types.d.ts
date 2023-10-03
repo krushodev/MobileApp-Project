@@ -1,3 +1,3 @@
-export type ScreenNames = ['HomeScreen', 'ChatScreen', 'RoomsScreen'];
-export type RootStackParamList = Record<ScreenNames[number], undefined>;
+export type RootStackParamList<S extends string[]> = Record<S[number], undefined>;
 export type StackNavigation = NavigationProp<RootStackParamList>;
+export type BottomNavition = BottomNavigationProps<RootStackParamList>;

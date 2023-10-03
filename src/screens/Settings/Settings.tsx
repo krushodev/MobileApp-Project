@@ -1,6 +1,7 @@
-import { View, Text } from 'react-native';
-import React from 'react';
+import { View } from 'react-native';
+
 import SettingsContainer from '../../components/SettingsContainer/SettingsContainer';
+
 import styles from './Settings.styles';
 
 const Settings = () => {

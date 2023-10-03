@@ -12,7 +12,11 @@ import type { MessageBody } from '../../types';
 import styles from './MessageForm.styles';
 import colors from '../../constants/colors';
 
-const MessageForm = ({ roomId }: { roomId: string }) => {
+interface MessageFormProps {
+  roomId: string;
+}
+
+const MessageForm = ({ roomId }: MessageFormProps) => {
   const [inputValue, setInputValue] = useState('');
 
   const queryClient = useQueryClient();
@@ -20,7 +24,7 @@ const MessageForm = ({ roomId }: { roomId: string }) => {
   const mutation = useMutation({
     mutationFn: sendMessage,
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['messagesList'] });
+      await queryClient.invalidateQueries({ queryKey: ['roomsList', { room: roomId }] });
     }
   });
 

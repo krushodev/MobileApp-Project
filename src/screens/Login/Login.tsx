@@ -1,38 +1,54 @@
+import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { randomUUID } from 'expo-crypto';
-
-import { setUser } from '../../store/slices/userSlice';
+import { decodeToken } from 'react-jwt';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { View } from 'react-native';
-import { Button, Text } from 'react-native-paper';
+import { Button, TextInput } from 'react-native-paper';
 
-import { IUser } from '../../types';
+import { setUser } from '../../store/slices/authSlice';
+import { login } from '../../api/routes/authRoutes';
 
-import { AntDesign } from '@expo/vector-icons';
+import type { IUser } from '../../types';
+
 import styles from './Login.styles';
+
+interface FormLoginValuesProps {
+  email: string;
+  password: string;
+}
 
 const Login = () => {
   const dispatch = useDispatch();
 
-  const handleClick = () => {
-    const newUser: IUser = {
-      id: randomUUID(),
-      firstName: 'User',
-      lastName: 'User',
-      email: 'user@email.com',
-      image: `https://picsum.photos/2${Math.round(Math.random() * 100)}`
-    };
+  const handleSubmit = async (values: FormLoginValuesProps) => {
+    const result = await login(values);
 
-    dispatch(setUser(newUser));
+    if (!result) return;
+
+    const { accessToken, refreshToken } = result;
+
+    const decodedAccessToken: { user: IUser } | null = decodeToken(accessToken);
+    const decodedRefreshToken: { user: { id: string } } | null = decodeToken(refreshToken);
+
+    if (decodedAccessToken?.user && decodedRefreshToken?.user.id) {
+      dispatch(setUser({ accessToken, user: decodedAccessToken.user }));
+      await AsyncStorage.setItem('token', JSON.stringify(refreshToken));
+    }
   };
 
   return (
-    <View style={styles.container}>
-      <Button textColor="white" contentStyle={styles.button} onPress={handleClick}>
-        Iniciar sesión
-        <AntDesign name="google" />
-      </Button>
-    </View>
+    <Formik initialValues={{ email: '', password: '' }} onSubmit={values => handleSubmit(values)}>
+      {({ handleBlur, handleChange, handleSubmit: submit, values }) => (
+        <View style={styles.container}>
+          <TextInput onChangeText={handleChange('email')} onBlur={handleBlur('email')} value={values.email}></TextInput>
+          <TextInput onChangeText={handleChange('password')} onBlur={handleBlur('password')} value={values.password}></TextInput>
+          <Button textColor="white" contentStyle={styles.button} onPress={() => submit()}>
+            Enviar
+          </Button>
+        </View>
+      )}
+    </Formik>
   );
 };
 

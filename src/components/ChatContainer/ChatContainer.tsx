@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useRoute } from '@react-navigation/native';
+import { useQuery } from '@tanstack/react-query';
 
-import { listMessages } from '../../api/routes/roomsRoutes';
+import { getRoom } from '../../api/routes/roomsRoutes';
 
 import { View } from 'react-native';
 
@@ -14,26 +13,14 @@ import DrawerChatContent from '../DrawerChatContent/DrawerChatContent';
 import styles from './ChatContainer.styles';
 
 const ChatContainer = () => {
-  const query = useQuery({ queryKey: ['messagesList'], queryFn: () => listMessages(params.roomId) });
-
   const params = useRoute().params as { roomId: string };
-  const queryClient = useQueryClient();
-  const navigation = useNavigation();
 
-  const handleRemoveQueries = async () => {
-    queryClient.removeQueries({ queryKey: ['messagesList'] });
-  };
-
-  useEffect(() => {
-    if (!navigation.isFocused()) {
-      handleRemoveQueries();
-    }
-  });
+  const query = useQuery({ queryKey: ['roomsList', { room: params.roomId }], queryFn: () => getRoom(params.roomId) });
 
   return (
     <View style={styles.container}>
       <Drawer position="right" content={DrawerChatContent}>
-        <MessageList messagesList={query.data} />
+        <MessageList messagesList={query.data?.messages} />
         <MessageForm roomId={params.roomId} />
       </Drawer>
     </View>

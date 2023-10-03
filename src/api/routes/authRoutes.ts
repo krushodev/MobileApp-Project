@@ -12,6 +12,10 @@ interface LoginResponse {
   refreshToken: string;
 }
 
+interface RefreshTokenBody {
+  refreshToken: string;
+}
+
 interface RefreshTokenResponse {
   accessToken: string;
 }
@@ -36,7 +40,7 @@ export const signup = async (data: IUser): Promise<string | undefined> => {
   }
 };
 
-export const provideRefreshToken = async (data: string): Promise<RefreshTokenResponse | undefined> => {
+export const provideRefreshToken = async (data: RefreshTokenBody): Promise<RefreshTokenResponse | undefined> => {
   try {
     const response = await axios.post<SuccessResponse>('/sessions/refresh-token', data);
     const { payload } = response.data;
