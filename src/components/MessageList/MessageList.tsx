@@ -1,11 +1,10 @@
 import { FlatList, View } from 'react-native';
 import { Text } from 'react-native-paper';
-
 import Message from '../Message/Message';
 
-import { IMessage } from '../../types';
-
 import styles from './MessageList.styles';
+
+import { IMessage } from '../../types';
 
 interface MessageListProps {
   messagesList: IMessage[] | undefined;

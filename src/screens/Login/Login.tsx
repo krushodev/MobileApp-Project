@@ -1,17 +1,17 @@
-import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { decodeToken } from 'react-jwt';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { View } from 'react-native';
 import { Button, TextInput } from 'react-native-paper';
+import { Formik } from 'formik';
 
 import { setUser } from '../../store/slices/authSlice';
 import { login } from '../../api/routes/authRoutes';
 
-import type { IUser } from '../../types';
-
 import styles from './Login.styles';
+
+import type { IUser } from '../../types';
 
 interface FormLoginValuesProps {
   email: string;

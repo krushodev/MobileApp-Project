@@ -2,9 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { AuthNavigator, StackNavigator } from '../navigation';
-import { Text } from 'react-native-paper';
-
 import { setUser } from '../store/slices/authSlice';
 import { getDataWithRefreshToken } from '../helper';
 

@@ -1,14 +1,15 @@
+import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import { TouchableOpacity, Text } from 'react-native';
 
-import type { IRoom, IUser } from '../../types';
+import { addMember } from '../../api/routes/roomsRoutes';
 
 import styles from './RoomCard.styles';
-import { StackNavigation } from '../../navigation/types';
-import { addMember } from '../../api/routes/roomsRoutes';
-import { useSelector } from 'react-redux';
-import { IRootState } from '../../store';
+
+import type { IRootState } from '../../store';
+import type { StackNavigation } from '../../navigation/types';
+import type { IRoom, IUser } from '../../types';
 
 const RoomCard = ({ item }: { item: IRoom }) => {
   const { navigate } = useNavigation<StackNavigation>();

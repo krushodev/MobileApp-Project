@@ -2,10 +2,10 @@ import { useSelector } from 'react-redux';
 
 import { Text } from 'react-native-paper';
 
+import styles from './Title.styles';
+
 import type { IRootState } from '../../store';
 import type { IUser } from '../../types';
-
-import styles from './Title.styles';
 
 const Title = () => {
   const user = useSelector<IRootState>(state => state.auth.user);

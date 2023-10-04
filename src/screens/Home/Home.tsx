@@ -1,11 +1,12 @@
+import { useNavigation } from '@react-navigation/native';
+
+import { StackNavigation } from '../../navigation/types';
+
 import { View } from 'react-native';
 import { Button } from 'react-native-paper';
-
 import { Title } from '../../components';
 
 import styles from './Home.styles';
-import { useNavigation } from '@react-navigation/native';
-import { StackNavigation } from '../../navigation/types';
 
 const Home = () => {
   const { navigate } = useNavigation<StackNavigation>();

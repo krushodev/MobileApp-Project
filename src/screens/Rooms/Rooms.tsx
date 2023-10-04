@@ -1,5 +1,4 @@
 import { View } from 'react-native';
-
 import { RoomsContainer } from '../../components';
 
 import styles from './Rooms.styles';

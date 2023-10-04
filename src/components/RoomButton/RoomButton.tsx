@@ -2,19 +2,18 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { randomUUID } from 'expo-crypto';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import socket from '../../api/socket';
+
+import { FAB } from 'react-native-paper';
+import RoomModal from '../RoomModal/RoomModal';
 
 import { createRoom } from '../../api/routes/roomsRoutes';
 
-import { FAB } from 'react-native-paper';
-
-import RoomModal from '../RoomModal/RoomModal';
+import styles from './RoomButton.styles';
+import colors from '../../constants/colors';
 
 import type { IUser, RoomBody } from '../../types';
 import type { IRootState } from '../../store';
-
-import styles from './RoomButton.styles';
-import colors from '../../constants/colors';
-import socket from '../../api/socket';
 
 const RoomButton = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);

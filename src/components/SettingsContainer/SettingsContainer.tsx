@@ -1,14 +1,13 @@
 import { useDispatch } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { View } from 'react-native';
 import { Button } from 'react-native-paper';
-
 import UserCard from '../UserCard/UserCard';
 
 import { removeUser } from '../../store/slices/authSlice';
 
 import styles from './SettingsContainer.styles';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SettingsContainer = () => {
   const dispatch = useDispatch();

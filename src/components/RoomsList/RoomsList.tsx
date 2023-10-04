@@ -1,10 +1,9 @@
 import { View, Text, FlatList } from 'react-native';
-
 import RoomCard from '../RoomCard/RoomCard';
 
-import type { IRoom } from '../../types';
-
 import styles from './RoomsList.styles';
+
+import type { IRoom } from '../../types';
 
 interface RoomListProps {
   roomsList: IRoom[] | undefined;

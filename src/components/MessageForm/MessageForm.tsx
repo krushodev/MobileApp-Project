@@ -1,19 +1,19 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { randomUUID } from 'expo-crypto';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-
-import { sendMessage } from '../../api/routes/roomsRoutes';
+import socket from '../../api/socket';
 
 import { View } from 'react-native';
 import { TextInput, ToggleButton } from 'react-native-paper';
 
-import type { IUser, MessageBody } from '../../types';
-import type { IRootState } from '../../store';
+import { sendMessage } from '../../api/routes/roomsRoutes';
 
 import styles from './MessageForm.styles';
 import colors from '../../constants/colors';
-import { useSelector } from 'react-redux';
-import socket from '../../api/socket';
+
+import type { IUser, MessageBody } from '../../types';
+import type { IRootState } from '../../store';
 
 interface MessageFormProps {
   roomId: string;

@@ -1,17 +1,16 @@
 import { useRoute } from '@react-navigation/native';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-
-import { getRoom } from '../../api/routes/roomsRoutes';
+import socket from '../../api/socket';
 
 import { View } from 'react-native';
-
 import MessageList from '../MessageList/MessageList';
 import MessageForm from '../MessageForm/MessageForm';
 import Drawer from '../Drawer/Drawer';
 import DrawerChatContent from '../DrawerChatContent/DrawerChatContent';
 
+import { getRoom } from '../../api/routes/roomsRoutes';
+
 import styles from './ChatContainer.styles';
-import socket from '../../api/socket';
 
 const ChatContainer = () => {
   const params = useRoute().params as { roomId: string };
