@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { getRoom } from '../../api/routes/roomsRoutes';
 
@@ -11,11 +11,18 @@ import Drawer from '../Drawer/Drawer';
 import DrawerChatContent from '../DrawerChatContent/DrawerChatContent';
 
 import styles from './ChatContainer.styles';
+import socket from '../../api/socket';
 
 const ChatContainer = () => {
   const params = useRoute().params as { roomId: string };
 
+  const queryClient = useQueryClient();
+
   const query = useQuery({ queryKey: ['roomsList', { room: params.roomId }], queryFn: () => getRoom(params.roomId) });
+
+  socket.on('receiveMessages', async data => {
+    await queryClient.refetchQueries({ queryKey: ['roomsList', { room: data.id }] });
+  });
 
   return (
     <View style={styles.container}>

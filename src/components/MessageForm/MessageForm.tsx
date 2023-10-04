@@ -13,6 +13,7 @@ import type { IRootState } from '../../store';
 import styles from './MessageForm.styles';
 import colors from '../../constants/colors';
 import { useSelector } from 'react-redux';
+import socket from '../../api/socket';
 
 interface MessageFormProps {
   roomId: string;
@@ -27,6 +28,9 @@ const MessageForm = ({ roomId }: MessageFormProps) => {
 
   const mutation = useMutation({
     mutationFn: sendMessage,
+    onMutate: variables => {
+      socket.emit('sendMessage', variables);
+    },
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['roomsList', { room: roomId }] });
     }

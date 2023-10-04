@@ -14,6 +14,7 @@ import type { IRootState } from '../../store';
 
 import styles from './RoomButton.styles';
 import colors from '../../constants/colors';
+import socket from '../../api/socket';
 
 const RoomButton = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -25,6 +26,9 @@ const RoomButton = () => {
 
   const mutation = useMutation({
     mutationFn: createRoom,
+    onMutate: variables => {
+      socket.emit('createRoom', variables);
+    },
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ['roomsList'] });
     }
