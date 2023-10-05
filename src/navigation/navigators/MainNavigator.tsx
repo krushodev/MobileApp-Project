@@ -1,9 +1,9 @@
 import { Text } from 'react-native-paper';
 
-import { AuthNavigator, StackNavigator } from '..';
+import AuthNavigator from './AuthNavigator/AuthNavigator';
+import StackNavigator from './StackNavigator/StackNavigator';
 
 import { useAuth } from '../../hooks/useAuth';
-import socket from '../../api/socket';
 
 const MainNavigator = () => {
   const { loading, isAuthenticated } = useAuth();

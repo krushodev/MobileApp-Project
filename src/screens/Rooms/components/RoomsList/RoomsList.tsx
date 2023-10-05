@@ -3,7 +3,7 @@ import RoomCard from '../RoomCard/RoomCard';
 
 import styles from './RoomsList.styles';
 
-import type { IRoom } from '../../types';
+import type { IRoom } from '../../../../types';
 
 interface RoomListProps {
   roomsList: IRoom[] | undefined;

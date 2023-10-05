@@ -4,7 +4,7 @@ import Message from '../Message/Message';
 
 import styles from './MessageList.styles';
 
-import { IMessage } from '../../types';
+import { IMessage } from '../../../../types';
 
 interface MessageListProps {
   messagesList: IMessage[] | undefined;

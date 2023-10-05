@@ -3,7 +3,12 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'whitesmoke'
+    justifyContent: 'space-between'
+  },
+  button: {
+    backgroundColor: 'red',
+    padding: 8,
+    margin: 15
   }
 });
 

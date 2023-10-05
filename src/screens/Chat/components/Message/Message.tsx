@@ -2,9 +2,8 @@ import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 
 import styles from './Message.styles';
-import colors from '../../constants/colors';
 
-import type { IMessage } from '../../types';
+import type { IMessage } from '../../../../types';
 
 interface MessageProps {
   data: IMessage;

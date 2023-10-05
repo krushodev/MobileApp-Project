@@ -3,13 +3,13 @@ import { useNavigation } from '@react-navigation/native';
 
 import { TouchableOpacity, Text } from 'react-native';
 
-import { addMember } from '../../api/routes/roomsRoutes';
+import { addMember } from '../../../../api/routes/roomsRoutes';
 
 import styles from './RoomCard.styles';
 
-import type { IRootState } from '../../store';
-import type { StackNavigation } from '../../navigation/types';
-import type { IRoom, IUser } from '../../types';
+import type { IRootState } from '../../../../store';
+import type { StackNavigation } from '../../../../navigation/types';
+import type { IRoom, IUser } from '../../../../types';
 
 const RoomCard = ({ item }: { item: IRoom }) => {
   const { navigate } = useNavigation<StackNavigation>();
@@ -18,11 +18,8 @@ const RoomCard = ({ item }: { item: IRoom }) => {
 
   const handleClick = async () => {
     const userIsInRoom = item.members.some(member => {
-      console.log(member);
       return member.user.id === (user as IUser).id;
     });
-
-    console.log(userIsInRoom);
 
     if (!userIsInRoom) {
       const result = await addMember({ rid: item.id, uid: (user as IUser).id });

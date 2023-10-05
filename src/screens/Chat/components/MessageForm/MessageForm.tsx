@@ -2,18 +2,18 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { randomUUID } from 'expo-crypto';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import socket from '../../api/socket';
+import socket from '../../../../api/socket';
 
 import { View } from 'react-native';
 import { TextInput, ToggleButton } from 'react-native-paper';
 
-import { sendMessage } from '../../api/routes/roomsRoutes';
+import { sendMessage } from '../../../../api/routes/roomsRoutes';
 
 import styles from './MessageForm.styles';
-import colors from '../../constants/colors';
+import colors from '../../../../constants/colors';
 
-import type { IUser, MessageBody } from '../../types';
-import type { IRootState } from '../../store';
+import type { IUser, MessageBody } from '../../../../types';
+import type { IRootState } from '../../../../store';
 
 interface MessageFormProps {
   roomId: string;
@@ -32,7 +32,7 @@ const MessageForm = ({ roomId }: MessageFormProps) => {
       socket.emit('sendMessage', variables);
     },
     onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ['roomsList', { room: roomId }] });
+      await queryClient.refetchQueries({ queryKey: ['roomsList', { room: roomId }] });
     }
   });
 
