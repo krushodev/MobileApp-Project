@@ -5,24 +5,26 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import socket from '../../../../api/socket';
 
 import { FAB } from 'react-native-paper';
-import RoomModal from '../RoomModal/RoomModal';
+import { Modal } from '../../../../components';
+import CreateRoomModalContent from '../CreateRoomModalContent/CreateRoomModalContent';
 
 import { createRoom } from '../../../../api/routes/roomsRoutes';
+import { useModal } from '../../../../hooks/useModal';
 
-import styles from './RoomButton.styles';
+import styles from './CreateRoomContainer.styles';
 import colors from '../../../../constants/colors';
 
 import type { IUser, RoomBody } from '../../../../types';
 import type { IRootState } from '../../../../store';
 
-const RoomButton = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+const CreateRoomContainer = () => {
   const [inputValues, setInputValues] = useState({ name: '', password: '' });
   const [isSwitchOn, setIsSwitchOn] = useState(false);
-
-  const user = useSelector<IRootState>(state => state.auth.user);
+  const { isVisible, showModal, hideModal } = useModal();
 
   const queryClient = useQueryClient();
+
+  const user = useSelector<IRootState>(state => state.auth.user);
 
   const mutation = useMutation({
     mutationFn: createRoom,
@@ -33,14 +35,6 @@ const RoomButton = () => {
       await queryClient.refetchQueries({ queryKey: ['roomsList'] });
     }
   });
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const hideModal = () => {
-    setIsModalVisible(false);
-  };
 
   const handleCreateRoom = () => {
     const newRoom: RoomBody = {
@@ -53,8 +47,6 @@ const RoomButton = () => {
       password: isSwitchOn && inputValues.password ? inputValues.password : null
     };
 
-    console.log(newRoom);
-
     mutation.mutateAsync(newRoom);
 
     setInputValues({ name: '', password: '' });
@@ -64,18 +56,18 @@ const RoomButton = () => {
 
   return (
     <>
-      <RoomModal
-        handleCreateRoom={handleCreateRoom}
-        hideModal={hideModal}
-        inputValues={inputValues}
-        setInputValues={setInputValues}
-        isModalVisible={isModalVisible}
-        setIsSwitchOn={setIsSwitchOn}
-        isSwitchOn={isSwitchOn}
-      />
+      <Modal isVisible={isVisible} onClose={hideModal}>
+        <CreateRoomModalContent
+          handleCreateRoom={handleCreateRoom}
+          inputValues={inputValues}
+          setIsSwitchOn={setIsSwitchOn}
+          isSwitchOn={isSwitchOn}
+          setInputValues={setInputValues}
+        />
+      </Modal>
       <FAB icon="plus" color={colors.secondary} style={styles.button} onPress={showModal} />
     </>
   );
 };
 
-export default RoomButton;
+export default CreateRoomContainer;

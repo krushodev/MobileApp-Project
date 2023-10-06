@@ -1,11 +1,9 @@
-import { View } from 'react-native';
-import { Button, Modal, Switch, Text, TextInput } from 'react-native-paper';
+import { View, Text } from 'react-native';
+import { Button, Switch, TextInput } from 'react-native-paper';
 
-import styles from './RoomModal.styles';
+import styles from './CreateRoomModalContent.styles';
 
-interface RoomModalProps {
-  isModalVisible: boolean;
-  hideModal: () => void;
+interface CreateRoomModalContentProps {
   handleCreateRoom: () => void;
   setInputValues: React.Dispatch<React.SetStateAction<{ name: string; password: string }>>;
   setIsSwitchOn: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,25 +11,17 @@ interface RoomModalProps {
   inputValues: { name: string; password: string };
 }
 
-const RoomModal = ({
-  isModalVisible,
-  hideModal,
+const CreateRoomModalContent = ({
   handleCreateRoom,
-  inputValues,
   setInputValues,
   setIsSwitchOn,
-  isSwitchOn
-}: RoomModalProps) => {
+  isSwitchOn,
+  inputValues
+}: CreateRoomModalContentProps) => {
   return (
-    <Modal
-      visible={isModalVisible}
-      onDismiss={hideModal}
-      overlayAccessibilityLabel="Close"
-      style={styles.modal}
-      contentContainerStyle={styles.contentContainerStyle}
-    >
-      <Text style={styles.modalTitle}>Crea tu Room</Text>
-      <View style={styles.modalForm}>
+    <>
+      <Text style={styles.title}>Crea tu Room</Text>
+      <View style={styles.formContainer}>
         <TextInput
           mode="outlined"
           label="Nombre"
@@ -47,11 +37,11 @@ const RoomModal = ({
           disabled={!isSwitchOn}
         />
       </View>
-      <Button style={styles.modalButton} onPress={handleCreateRoom} disabled={inputValues.name === ''}>
+      <Button style={styles.button} onPress={handleCreateRoom} disabled={inputValues.name === ''}>
         Crear
       </Button>
-    </Modal>
+    </>
   );
 };
 
-export default RoomModal;
+export default CreateRoomModalContent;

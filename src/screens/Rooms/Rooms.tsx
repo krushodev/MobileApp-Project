@@ -2,7 +2,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import socket from '../../api/socket';
 
 import { View } from 'react-native';
-import { RoomButton, RoomsList } from './components';
+import { CreateRoomContainer, RoomsList } from './components';
 
 import { listRooms } from '../../api/routes/roomsRoutes';
 
@@ -20,7 +20,7 @@ const Rooms = () => {
   return (
     <View style={styles.container}>
       <RoomsList roomsList={query.data} />
-      <RoomButton />
+      <CreateRoomContainer />
     </View>
   );
 };

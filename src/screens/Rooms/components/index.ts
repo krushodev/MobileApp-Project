@@ -1,6 +1,6 @@
-import RoomButton from './RoomButton/RoomButton';
+import CreateRoomContainer from './CreateRoomButton/CreateRoomContainer';
+import CreateRoomModalContent from './CreateRoomModalContent/CreateRoomModalContent';
 import RoomCard from './RoomCard/RoomCard';
-import RoomModal from './RoomModal/RoomModal';
 import RoomsList from './RoomsList/RoomsList';
 
-export { RoomButton, RoomCard, RoomModal, RoomsList };
+export { CreateRoomContainer, RoomCard, CreateRoomModalContent, RoomsList };
