@@ -5,7 +5,7 @@ import { Drawer as DrawerLayout } from 'react-native-drawer-layout';
 interface DrawerProps {
   children: React.ReactNode;
   position: 'left' | 'right';
-  content: () => React.ReactNode;
+  content: React.ReactNode;
   status?: boolean;
 }
 
@@ -21,7 +21,7 @@ const Drawer = ({ children, position, content, status }: DrawerProps) => {
   };
 
   return (
-    <DrawerLayout open={isOpen} onOpen={showDrawer} onClose={hideDrawer} drawerPosition={position} renderDrawerContent={content}>
+    <DrawerLayout open={isOpen} onOpen={showDrawer} onClose={hideDrawer} drawerPosition={position} renderDrawerContent={() => content}>
       {children}
     </DrawerLayout>
   );

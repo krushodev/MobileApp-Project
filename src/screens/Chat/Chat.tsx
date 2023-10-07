@@ -23,7 +23,7 @@ const Chat = () => {
 
   return (
     <View style={styles.container}>
-      <Drawer position="right" content={DrawerChatContent}>
+      <Drawer position="right" content={<DrawerChatContent room={query.data} />}>
         <MessageList messagesList={query.data?.messages} />
         <MessageForm roomId={params.roomId} />
       </Drawer>
