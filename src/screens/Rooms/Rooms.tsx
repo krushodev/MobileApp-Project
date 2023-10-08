@@ -7,9 +7,11 @@ import { CreateRoomContainer, RoomsList } from './components';
 import { listRooms } from '../../api/routes/roomsRoutes';
 
 import styles from './Rooms.styles';
+import { useRoute } from '@react-navigation/native';
 
 const Rooms = () => {
   const query = useQuery({ queryKey: ['roomsList'], queryFn: listRooms });
+  const params = useRoute().params as { isButtonPressed: boolean };
 
   const queryClient = useQueryClient();
 
@@ -20,7 +22,7 @@ const Rooms = () => {
   return (
     <View style={styles.container}>
       <RoomsList roomsList={query.data} />
-      <CreateRoomContainer />
+      <CreateRoomContainer isButtonPressed={params.isButtonPressed} />
     </View>
   );
 };

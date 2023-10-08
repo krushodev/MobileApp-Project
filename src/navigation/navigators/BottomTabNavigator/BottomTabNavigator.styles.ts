@@ -2,8 +2,11 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: '10%',
-    maxHeight: 70
+    height: 90,
+    maxHeight: 110,
+    /* position: 'relative', */
+    margin: 10,
+    borderRadius: 15
   }
 });
 

@@ -5,7 +5,7 @@ import colors from '../../../../constants/colors';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.secondary,
+    /* backgroundColor: colors.secondary, */
     zIndex: -10
   },
   textAlert: {

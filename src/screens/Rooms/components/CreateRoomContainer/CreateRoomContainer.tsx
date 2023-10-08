@@ -1,23 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { randomUUID } from 'expo-crypto';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import socket from '../../../../api/socket';
 
-import { FAB } from 'react-native-paper';
 import { Modal } from '../../../../components';
 import CreateRoomModalContent from '../CreateRoomModalContent/CreateRoomModalContent';
 
 import { createRoom } from '../../../../api/routes/roomsRoutes';
 import { useModal } from '../../../../hooks/useModal';
 
-import styles from './CreateRoomContainer.styles';
-import colors from '../../../../constants/colors';
-
 import type { IUser, RoomBody } from '../../../../types';
 import type { IRootState } from '../../../../store';
 
-const CreateRoomContainer = () => {
+interface CreateRoomContainerProps {
+  isButtonPressed: boolean;
+}
+
+const CreateRoomContainer = ({ isButtonPressed }: CreateRoomContainerProps) => {
   const [inputValues, setInputValues] = useState({ name: '', password: '' });
   const [isSwitchOn, setIsSwitchOn] = useState(false);
   const { isVisible, showModal, hideModal } = useModal();
@@ -65,7 +65,6 @@ const CreateRoomContainer = () => {
           setInputValues={setInputValues}
         />
       </Modal>
-      <FAB icon="plus" color={colors.secondary} style={styles.button} onPress={showModal} />
     </>
   );
 };

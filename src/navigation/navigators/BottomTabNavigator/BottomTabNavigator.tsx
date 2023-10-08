@@ -2,6 +2,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Home, Rooms, Settings } from '../../../screens';
 
+import CustomTabButton from '../../../components/CustomTabButton/CustomTabButton';
+
 import styles from './BottomTabNavigator.styles';
 import { Feather } from '@expo/vector-icons';
 
@@ -29,6 +31,22 @@ function BottomTabNavigator() {
         component={Rooms}
         options={{
           tabBarIcon: () => <Feather name="message-circle" size={30} />
+        }}
+      />
+      <Tab.Screen
+        name="Button"
+        component={Rooms}
+        options={{
+          tabBarIcon: () => <Feather name="plus" color="white" size={30} />,
+          tabBarButton: props => <CustomTabButton {...props} />
+        }}
+        /* listeners={{ tabPress: e => e.preventDefault() }} */
+      />
+      <Tab.Screen
+        name="Profile"
+        component={Settings}
+        options={{
+          tabBarIcon: () => <Feather name="user" size={30} />
         }}
       />
       <Tab.Screen
