@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   formContainer: {
     flex: 1,
     justifyContent: 'center',
-    gap: 25
+    gap: 12
   },
   inputsContainer: {
     padding: 20,
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: 'black',
     padding: 5,
-
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

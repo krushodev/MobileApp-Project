@@ -7,8 +7,6 @@ import LoginForm from './components/LoginForm/LoginForm';
 import { setUser } from '../../store/slices/authSlice';
 import { login } from '../../api/routes/authRoutes';
 
-import styles from './Login.styles';
-
 import type { IUser } from '../../types';
 
 const Login = () => {
