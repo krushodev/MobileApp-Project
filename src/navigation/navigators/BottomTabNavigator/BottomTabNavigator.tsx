@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Home, Rooms, Settings } from '../../../screens';
+import { Home, Rooms, Settings, CreateRoom } from '../../../screens';
 
 import CustomTabButton from '../../../components/CustomTabButton/CustomTabButton';
 
@@ -15,7 +15,8 @@ function BottomTabNavigator() {
       screenOptions={{
         headerTitleAlign: 'center',
         tabBarShowLabel: false,
-        tabBarStyle: styles.tabBar
+        tabBarStyle: styles.tabBar,
+        tabBarHideOnKeyboard: true
       }}
       initialRouteName="Home"
     >
@@ -34,13 +35,13 @@ function BottomTabNavigator() {
         }}
       />
       <Tab.Screen
-        name="Button"
-        component={Rooms}
+        name="Create Room"
+        component={CreateRoom}
         options={{
           tabBarIcon: () => <Feather name="plus" color="white" size={30} />,
-          tabBarButton: props => <CustomTabButton {...props} />
+          tabBarButton: props => <CustomTabButton {...props} />,
+          headerShown: false
         }}
-        /* listeners={{ tabPress: e => e.preventDefault() }} */
       />
       <Tab.Screen
         name="Profile"

@@ -1,42 +1,30 @@
 import { StyleSheet } from 'react-native';
 
-import colors from '../../../../constants/colors';
-
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center'
+    flex: 1
   },
   formContainer: {
-    flex: 1,
-    justifyContent: 'center',
     gap: 12
   },
   inputsContainer: {
     padding: 20,
     gap: 25
   },
-  redirectContainer: {
-    justifyContent: 'center',
+  privateSelectContainer: {
     flexDirection: 'row',
-    padding: 15,
-    gap: 10
-  },
-  redirectText: {
-    textAlign: 'center',
-    fontSize: 15
-  },
-  redirectButton: {
-    color: colors.primary
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   button: {
     backgroundColor: 'black',
-    padding: 5,
+    padding: 8,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     gap: 30,
-    margin: 20,
+    marginVertical: 65,
+    marginHorizontal: 30,
     borderRadius: 15
   }
 });

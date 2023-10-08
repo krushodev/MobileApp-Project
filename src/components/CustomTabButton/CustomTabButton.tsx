@@ -1,22 +1,17 @@
 import { TouchableOpacity, View } from 'react-native';
 
 import styles from './CustomTabButton.styles';
-import { useNavigation } from '@react-navigation/native';
-import { BottomNavigation } from '../../navigation/types';
+
+import type { GestureResponderEvent } from 'react-native';
 
 interface CustomTabButtonProps {
   children: React.ReactNode;
+  onPress?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent> | GestureResponderEvent) => void;
 }
 
-const CustomTabButton = ({ children }: CustomTabButtonProps) => {
-  const { navigate } = useNavigation<BottomNavigation>();
-
-  const handleClick = () => {
-    navigate('Rooms', { isButtonPressed: true });
-  };
-
+const CustomTabButton = ({ children, onPress }: CustomTabButtonProps) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={handleClick}>
+    <TouchableOpacity style={styles.button} onPress={onPress}>
       <View style={styles.container}>{children}</View>
     </TouchableOpacity>
   );

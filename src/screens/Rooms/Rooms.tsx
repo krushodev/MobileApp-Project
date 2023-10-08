@@ -22,7 +22,6 @@ const Rooms = () => {
   return (
     <View style={styles.container}>
       <RoomsList roomsList={query.data} />
-      <CreateRoomContainer isButtonPressed={params.isButtonPressed} />
     </View>
   );
 };
