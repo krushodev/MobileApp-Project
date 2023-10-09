@@ -4,20 +4,28 @@ import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 30,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 15,
-    backgroundColor: colors.tertiary,
-    borderRadius: 20,
-    margin: 10,
-    gap: 8
+    marginBottom: 15,
+    margin: 6
+  },
+  senderContainer: {
+    alignItems: 'flex-end'
+  },
+  receiverContainer: {
+    alignItems: 'flex-start'
   },
   infoContainer: {
-    flexDirection: 'row',
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderRadius: 20,
     gap: 12,
-    flex: 1
+    flex: 1,
+    width: '70%'
+  },
+  senderInfoContainer: {
+    backgroundColor: colors.secondary
+  },
+  receiverInfoContainer: {
+    backgroundColor: colors.tertiary
   },
   textContainer: {
     flex: 1

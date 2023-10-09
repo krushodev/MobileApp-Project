@@ -31,7 +31,7 @@ const MessageForm = ({ roomId }: MessageFormProps) => {
     onMutate: variables => {
       socket.emit('sendMessage', variables);
     },
-    onSuccess: async () => {
+    onSuccess: async variables => {
       await queryClient.refetchQueries({ queryKey: ['roomsList', { room: roomId }] });
     }
   });

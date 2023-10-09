@@ -7,8 +7,6 @@ import CreateRoomForm from './components/CreateRoomForm';
 import { createRoom } from '../../api/routes/roomsRoutes';
 import socket from '../../api/socket';
 
-import styles from './CreateRoom.styles';
-
 import type { IUser, RoomBody } from '../../types';
 import type { IRootState } from '../../store';
 import type { StackNavigation } from '../../navigation/types';
