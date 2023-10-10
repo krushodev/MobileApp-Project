@@ -2,12 +2,15 @@ import { useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { View } from 'react-native';
-import { Button } from 'react-native-paper';
-import { UserCard } from '../../components';
+import { Button, Divider, Text } from 'react-native-paper';
 
 import { removeUser } from '../../store/slices/authSlice';
 
+import settingsList from '../../global/settings';
+
 import styles from './Settings.styles';
+import SettingsCard from './components/SettingsCard/SettingsCard';
+import { randomUUID } from 'expo-crypto';
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -19,9 +22,13 @@ const Settings = () => {
 
   return (
     <View style={styles.container}>
-      <UserCard />
-      <Button style={styles.button} textColor="white" onPress={handleClick}>
-        Logout
+      <View>
+        {settingsList.map(item => (
+          <SettingsCard key={randomUUID()} title={item.name} icon={item.icon} />
+        ))}
+      </View>
+      <Button icon="logout" style={styles.button} textColor="white" onPress={handleClick}>
+        Cerrar sesión
       </Button>
     </View>
   );

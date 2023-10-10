@@ -7,8 +7,9 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: 'red',
-    padding: 8,
-    margin: 15
+    padding: 10,
+    marginTop: 0,
+    margin: 50
   }
 });
 
