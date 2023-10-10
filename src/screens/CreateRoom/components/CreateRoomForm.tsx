@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import topics from '../../../global/topics';
 
 import styles from './CreateRoomForm.styles';
+import { randomUUID } from 'expo-crypto';
 
 interface CreateRoomFormProps {
   handleSubmit: (values: { name: string; password: string; private: boolean; topics: string[] }) => void;
@@ -63,6 +64,7 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
                         mode={values.topics.includes(topic) ? 'flat' : 'outlined'}
                         icon={values.topics.includes(topic) ? 'check' : ''}
                         onPress={() => handleChip(topic)}
+                        key={randomUUID()}
                       >
                         {topic}
                       </Chip>

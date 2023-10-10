@@ -1,66 +1,39 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { randomUUID } from 'expo-crypto';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import socket from '../../../../api/socket';
-
-import { View } from 'react-native';
+import { KeyboardAvoidingView, View } from 'react-native';
 import { TextInput, ToggleButton } from 'react-native-paper';
-
-import { sendMessage } from '../../../../api/routes/roomsRoutes';
+import { Formik } from 'formik';
 
 import styles from './MessageForm.styles';
 import colors from '../../../../constants/colors';
 
-import type { IUser, MessageBody } from '../../../../types';
-import type { IRootState } from '../../../../store';
-
 interface MessageFormProps {
-  roomId: string;
+  handleSubmit: (values: { message: string }) => void;
 }
 
-const MessageForm = ({ roomId }: MessageFormProps) => {
-  const [inputValue, setInputValue] = useState('');
-
-  const queryClient = useQueryClient();
-
-  const user = useSelector<IRootState>(state => state.auth.user);
-
-  const mutation = useMutation({
-    mutationFn: sendMessage,
-    onMutate: variables => {
-      socket.emit('sendMessage', variables);
-    },
-    onSuccess: async variables => {
-      await queryClient.refetchQueries({ queryKey: ['roomsList', { room: roomId }] });
-    }
-  });
-
-  const handleClick = () => {
-    const newMessage: MessageBody = {
-      id: randomUUID(),
-      user: (user as IUser).id,
-      text: inputValue,
-      date: new Date()
-    };
-
-    mutation.mutateAsync({ id: roomId!, message: newMessage });
-
-    setInputValue('');
-  };
-
+const MessageForm = ({ handleSubmit }: MessageFormProps) => {
   return (
-    <View style={styles.container}>
-      <TextInput
-        onChangeText={setInputValue}
-        mode="outlined"
-        outlineStyle={styles.input}
-        cursorColor={styles.input.color}
-        value={inputValue}
-        style={styles.input}
-      />
-      <ToggleButton onPress={handleClick} disabled={inputValue === ''} size={35} icon="send" iconColor={colors.primary} />
-    </View>
+    <Formik
+      initialValues={{ message: '' }}
+      onSubmit={(values, { resetForm }) => {
+        handleSubmit(values);
+        resetForm();
+      }}
+    >
+      {({ handleBlur, handleSubmit: submit, handleChange, values }) => (
+        <View style={styles.container}>
+          <TextInput
+            onChangeText={handleChange('message')}
+            onBlur={handleBlur('message')}
+            mode="outlined"
+            outlineStyle={styles.input}
+            cursorColor={styles.input.color}
+            value={values.message}
+            style={styles.input}
+            placeholder="Escibe tu mensaje"
+          />
+          <ToggleButton onPress={() => submit()} disabled={values.message === ''} size={30} icon="send" iconColor={colors.primary} />
+        </View>
+      )}
+    </Formik>
   );
 };
 

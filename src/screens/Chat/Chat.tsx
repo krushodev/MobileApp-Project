@@ -1,19 +1,23 @@
 import { useRoute } from '@react-navigation/native';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import socket from '../../api/socket';
 
 import { View } from 'react-native';
 import { Drawer } from '../../components';
 import { DrawerChatContent, MessageForm, MessageList } from './components';
 
-import { getRoom } from '../../api/routes/roomsRoutes';
+import { getRoom, sendMessage } from '../../api/routes/roomsRoutes';
 
 import styles from './Chat.styles';
+import { randomUUID } from 'expo-crypto';
+import { IUser, MessageBody } from '../../types';
+import { useSelector } from 'react-redux';
+import { IRootState } from '../../store';
 
 const Chat = () => {
   const params = useRoute().params as { roomId: string };
-
   const queryClient = useQueryClient();
+  const user = useSelector<IRootState>(state => state.auth.user);
 
   const query = useQuery({ queryKey: ['roomsList', { room: params.roomId }], queryFn: () => getRoom(params.roomId) });
 
@@ -21,11 +25,32 @@ const Chat = () => {
     await queryClient.refetchQueries({ queryKey: ['roomsList', { room: data.id }] });
   });
 
+  const mutation = useMutation({
+    mutationFn: sendMessage,
+    onMutate: variables => {
+      socket.emit('sendMessage', variables);
+    },
+    onSuccess: async variables => {
+      await queryClient.refetchQueries({ queryKey: ['roomsList', { room: params.roomId }] });
+    }
+  });
+
+  const handleSubmit = (values: { message: string }) => {
+    const newMessage: MessageBody = {
+      id: randomUUID(),
+      user: (user as IUser).id,
+      text: values.message,
+      date: new Date()
+    };
+
+    mutation.mutateAsync({ id: params.roomId, message: newMessage });
+  };
+
   return (
     <View style={styles.container}>
       <Drawer position="right" content={<DrawerChatContent room={query.data} />}>
         <MessageList messagesList={query.data?.messages} />
-        <MessageForm roomId={params.roomId} />
+        <MessageForm handleSubmit={handleSubmit} />
       </Drawer>
     </View>
   );

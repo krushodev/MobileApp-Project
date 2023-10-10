@@ -4,19 +4,17 @@ import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.3,
-    gap: 10,
+    gap: 15,
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 10,
-    backgroundColor: colors.secondary
+    padding: 10
   },
   input: {
     flex: 1,
     color: colors.primary,
+    paddingVertical: 3,
     borderRadius: 15,
-    paddingVertical: 5,
-    borderColor: colors.primary
+    borderWidth: 0
   }
 });
 
