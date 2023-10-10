@@ -43,8 +43,6 @@ const RoomCard = ({ item, showModal, setRoomSelected }: RoomCardProps) => {
       await queryClient.refetchQueries({ queryKey: ['roomsList', { roomId: item.id }] });
     }
 
-    console.log('viene acá');
-
     navigate('ChatScreen', { roomId: item.id });
   };
 
