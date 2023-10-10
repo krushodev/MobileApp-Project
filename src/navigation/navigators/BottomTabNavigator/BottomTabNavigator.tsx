@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Home, Rooms, Settings, CreateRoom } from '../../../screens';
+import { Home, Rooms, Settings, CreateRoom, Profile } from '../../../screens';
 
 import CustomTabButton from '../../../components/CustomTabButton/CustomTabButton';
 
@@ -45,7 +45,7 @@ function BottomTabNavigator() {
       />
       <Tab.Screen
         name="Profile"
-        component={Settings}
+        component={Profile}
         options={{
           tabBarIcon: () => <Feather name="user" size={30} />
         }}

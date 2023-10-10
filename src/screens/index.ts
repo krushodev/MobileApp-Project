@@ -5,5 +5,6 @@ import Settings from './Settings/Settings';
 import Login from './Login/Login';
 import Signup from './Signup/Signup';
 import CreateRoom from './CreateRoom/CreateRoom';
+import Profile from './Profile/Profile';
 
-export { Home, Chat, Rooms, Settings, Login, Signup, CreateRoom };
+export { Home, Chat, Rooms, Settings, Login, Signup, CreateRoom, Profile };
