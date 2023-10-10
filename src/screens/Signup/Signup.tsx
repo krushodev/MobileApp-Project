@@ -11,7 +11,7 @@ const Signup = () => {
   const { navigate } = useNavigation<StackNavigation>();
 
   const handleSubmit = async (values: { username: string; email: string; password: string }) => {
-    const result = await signup({ id: randomUUID(), ...values });
+    const result = await signup({ id: randomUUID(), image: `https://ui-avatars.com/api/?name=${values.username}`, ...values });
 
     if (!result) return;
 

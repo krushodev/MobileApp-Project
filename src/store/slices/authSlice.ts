@@ -29,10 +29,16 @@ const authSlice = createSlice({
       state.user = null;
       state.accessToken = null;
       state.isActive = false;
+    },
+    setUserImage: (state, action) => {
+      if (state.user) {
+        state.user = { ...state.user, image: action.payload };
+      }
+      return;
     }
   }
 });
 
-export const { setUser, removeUser } = authSlice.actions;
+export const { setUser, removeUser, setUserImage } = authSlice.actions;
 
 export default authSlice.reducer;

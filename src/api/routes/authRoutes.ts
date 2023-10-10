@@ -49,3 +49,13 @@ export const provideRefreshToken = async (data: RefreshTokenBody): Promise<Refre
     console.log(err as string);
   }
 };
+
+export const updateImage = async (data: { id: string; image: string }) => {
+  try {
+    const response = await axios.post<SuccessResponse>(`/sessions/${data.id}/update-image`, { image: data.image });
+    const { message } = response.data;
+    return message;
+  } catch (err) {
+    console.log(err as string);
+  }
+};

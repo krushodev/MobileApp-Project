@@ -17,7 +17,12 @@ const SignupForm = ({ handleSubmit }: SignupFormProps) => {
   const { navigate } = useNavigation<StackNavigation>();
 
   return (
-    <Formik initialValues={{ username: '', email: '', password: '' }} onSubmit={values => handleSubmit(values)}>
+    <Formik
+      initialValues={{ username: '', email: '', password: '' }}
+      onSubmit={values => {
+        handleSubmit(values);
+      }}
+    >
       {({ handleChange, handleBlur, handleSubmit: submit, values }) => (
         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
           <ScrollView contentContainerStyle={styles.formContainer}>

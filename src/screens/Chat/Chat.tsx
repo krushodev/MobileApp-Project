@@ -1,5 +1,7 @@
 import { useRoute } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { randomUUID } from 'expo-crypto';
 import socket from '../../api/socket';
 
 import { View } from 'react-native';
@@ -9,10 +11,9 @@ import { DrawerChatContent, MessageForm, MessageList } from './components';
 import { getRoom, sendMessage } from '../../api/routes/roomsRoutes';
 
 import styles from './Chat.styles';
-import { randomUUID } from 'expo-crypto';
-import { IUser, MessageBody } from '../../types';
-import { useSelector } from 'react-redux';
-import { IRootState } from '../../store';
+
+import type { IUser, MessageBody } from '../../types';
+import type { IRootState } from '../../store';
 
 const Chat = () => {
   const params = useRoute().params as { roomId: string };
