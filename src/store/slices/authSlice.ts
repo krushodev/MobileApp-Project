@@ -35,10 +35,15 @@ const authSlice = createSlice({
         state.user = { ...state.user, image: action.payload };
       }
       return;
+    },
+    addUserRoom: (state, action) => {
+      if (state.user) {
+        state.user.rooms = [...state.user.rooms, action.payload];
+      }
     }
   }
 });
 
-export const { setUser, removeUser, setUserImage } = authSlice.actions;
+export const { setUser, removeUser, setUserImage, addUserRoom } = authSlice.actions;
 
 export default authSlice.reducer;

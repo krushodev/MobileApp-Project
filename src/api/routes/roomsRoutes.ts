@@ -1,6 +1,9 @@
 import axios from '../index';
 
+import { showToast } from '../../helper/toast';
+
 import type { IMessage, IRoom, MessageBody, RoomBody } from '../../types';
+import type { AxiosError } from 'axios';
 
 export const listRooms = async (): Promise<IRoom[] | undefined> => {
   try {
@@ -8,7 +11,15 @@ export const listRooms = async (): Promise<IRoom[] | undefined> => {
     const { payload } = response.data;
     return payload as IRoom[];
   } catch (err) {
-    console.log('error:', err);
+    const statusCode = (err as AxiosError).response?.status;
+
+    switch (statusCode) {
+      case 404:
+        showToast({ message: 'Error. No se han encontrado rooms', type: 'error' });
+        break;
+      default:
+        showToast({ message: 'Error en el servidor. Intenta nuevamente', type: 'warning' });
+    }
   }
 };
 
@@ -18,7 +29,15 @@ export const getRoom = async (id: string): Promise<IRoom | undefined> => {
     const { payload } = response.data;
     return payload as IRoom;
   } catch (err) {
-    console.log('Error', err);
+    const statusCode = (err as AxiosError).response?.status;
+
+    switch (statusCode) {
+      case 404:
+        showToast({ message: 'Error. La room no existe', type: 'error' });
+        break;
+      default:
+        showToast({ message: 'Error en el servidor. Intenta nuevamente', type: 'warning' });
+    }
   }
 };
 
@@ -29,7 +48,15 @@ export const createRoom = async (data: RoomBody) => {
 
     return payload as IRoom;
   } catch (err) {
-    console.log('Error', err);
+    const statusCode = (err as AxiosError).response?.status;
+
+    switch (statusCode) {
+      case 400:
+        showToast({ message: 'Error al crear la room. Verifica tus datos', type: 'error' });
+        break;
+      default:
+        showToast({ message: 'Error en el servidor. Intenta nuevamente', type: 'warning' });
+    }
   }
 };
 
@@ -39,17 +66,15 @@ export const removeRoom = async (id: string): Promise<string | undefined> => {
     const { message } = response.data;
     return message;
   } catch (err) {
-    console.log('Error', err);
-  }
-};
+    const statusCode = (err as AxiosError).response?.status;
 
-export const listMessages = async (id: string): Promise<IMessage[] | undefined> => {
-  try {
-    const response = await axios.get<SuccessResponse>(`/rooms/${id}/messages`);
-    const { payload } = response.data;
-    return payload as IMessage[];
-  } catch (err) {
-    console.log('Error', err);
+    switch (statusCode) {
+      case 404:
+        showToast({ message: 'Error. La room no existe', type: 'error' });
+        break;
+      default:
+        showToast({ message: 'Error en el servidor. Intenta nuevamente', type: 'warning' });
+    }
   }
 };
 
@@ -59,16 +84,38 @@ export const sendMessage = async (data: { id: string; message: MessageBody }): P
     const { payload } = response.data;
     return payload as IMessage;
   } catch (err) {
-    console.log('Error', err);
+    const statusCode = (err as AxiosError).response?.status;
+
+    switch (statusCode) {
+      case 400:
+        showToast({ message: 'Error al enviar mensaje. Verifica los datos', type: 'error' });
+        break;
+      case 404:
+        showToast({ message: 'Error. La room no existe', type: 'error' });
+        break;
+      default:
+        showToast({ message: 'Error en el servidor. Intenta nuevamente', type: 'warning' });
+    }
   }
 };
 
 export const addMember = async (data: { rid: string; uid: string }) => {
   try {
-    const response = await axios.post<SuccessResponse>(`/rooms/${data.rid}/addMember/${data.uid}`);
+    const response = await axios.post<SuccessResponse>(`/rooms/${data.rid}/add-member/${data.uid}`);
     const { message } = response.data;
     return message;
   } catch (err) {
-    console.log('Error', err);
+    const statusCode = (err as AxiosError).response?.status;
+
+    switch (statusCode) {
+      case 400:
+        showToast({ message: 'Error al unirte. Ya estás en la room', type: 'error' });
+        break;
+      case 404:
+        showToast({ message: 'Error. La room no existe', type: 'error' });
+        break;
+      default:
+        showToast({ message: 'Error en el servidor. Intenta nuevamente', type: 'warning' });
+    }
   }
 };

@@ -10,6 +10,7 @@ import { MainNavigator } from './src/navigation';
 import { store } from './src/store';
 
 import fonts from './src/global/fonts';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 function App() {
   const [loaded] = useFonts(fonts);
@@ -24,9 +25,11 @@ function App() {
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
         <View style={{ flex: 1, marginTop: 30 }}>
-          <NavigationContainer>
-            <MainNavigator />
-          </NavigationContainer>
+          <RootSiblingParent>
+            <NavigationContainer>
+              <MainNavigator />
+            </NavigationContainer>
+          </RootSiblingParent>
         </View>
       </QueryClientProvider>
     </Provider>

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { setUser } from '../store/slices/authSlice';
-import { getDataWithRefreshToken } from '../helper';
+import { getDataWithRefreshToken } from '../helper/auth';
 
 import type { IRootState } from '../store';
 

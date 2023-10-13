@@ -31,7 +31,7 @@ const Chat = () => {
     onMutate: variables => {
       socket.emit('sendMessage', variables);
     },
-    onSuccess: async variables => {
+    onSuccess: async () => {
       await queryClient.refetchQueries({ queryKey: ['roomsList', { room: params.roomId }] });
     }
   });

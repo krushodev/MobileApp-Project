@@ -7,14 +7,16 @@ import { Text, Avatar } from 'react-native-paper';
 import { setUserImage } from '../../../../store/slices/authSlice';
 import { updateImage } from '../../../../api/routes/authRoutes';
 
+import { showToast } from '../../../../helper/toast';
+
 import styles from './UserCard.styles';
 
 import type { IRootState } from '../../../../store';
 import type { IUser } from '../../../../types';
 
 const UserCard = () => {
-  const user = useSelector<IRootState>(state => state.auth.user) as IUser;
   const dispatch = useDispatch();
+  const user = useSelector<IRootState>(state => state.auth.user) as IUser;
 
   const handlePress = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -35,6 +37,8 @@ const UserCard = () => {
       if (!update) {
         return;
       }
+
+      showToast({ message: 'Actualización exitosa', type: 'success' });
     }
   };
 

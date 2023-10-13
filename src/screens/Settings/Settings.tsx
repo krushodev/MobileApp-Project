@@ -1,16 +1,17 @@
 import { useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { randomUUID } from 'expo-crypto';
 
 import { View } from 'react-native';
-import { Button, Divider, Text } from 'react-native-paper';
+import { Button } from 'react-native-paper';
 
-import { removeUser } from '../../store/slices/authSlice';
+import SettingsCard from './components/SettingsCard/SettingsCard';
 
 import settingsList from '../../global/settings';
+import { removeUser } from '../../store/slices/authSlice';
+import { showToast } from '../../helper/toast';
 
 import styles from './Settings.styles';
-import SettingsCard from './components/SettingsCard/SettingsCard';
-import { randomUUID } from 'expo-crypto';
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const Settings = () => {
   const handleClick = async () => {
     await AsyncStorage.removeItem('token');
     dispatch(removeUser());
+    showToast({ message: 'Has cerrado sesión', type: 'info' });
   };
 
   return (

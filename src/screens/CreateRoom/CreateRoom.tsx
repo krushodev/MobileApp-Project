@@ -1,11 +1,14 @@
 import { randomUUID } from 'expo-crypto';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import socket from '../../api/socket';
+
 import CreateRoomForm from './components/CreateRoomForm';
 
 import { createRoom } from '../../api/routes/roomsRoutes';
-import socket from '../../api/socket';
+import { showToast } from '../../helper/toast';
+import { addUserRoom } from '../../store/slices/authSlice';
 
 import type { IUser, RoomBody } from '../../types';
 import type { IRootState } from '../../store';
@@ -14,6 +17,7 @@ import type { StackNavigation } from '../../navigation/types';
 const CreateRoom = () => {
   const queryClient = useQueryClient();
   const { navigate } = useNavigation<StackNavigation>();
+  const dispatch = useDispatch();
 
   const user = useSelector<IRootState>(state => state.auth.user);
 
@@ -22,8 +26,10 @@ const CreateRoom = () => {
     onMutate: variables => {
       socket.emit('createRoom', variables);
     },
-    onSuccess: async () => {
+    onSuccess: async variables => {
       await queryClient.refetchQueries({ queryKey: ['roomsList'] });
+      showToast({ message: 'Nueva room creada', type: 'info' });
+      dispatch(addUserRoom({ room: variables?.id, isOwner: false }));
       navigate('Rooms');
     }
   });

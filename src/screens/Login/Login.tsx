@@ -6,6 +6,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 
 import { setUser } from '../../store/slices/authSlice';
 import { login } from '../../api/routes/authRoutes';
+import { showToast } from '../../helper/toast';
 
 import type { IUser } from '../../types';
 
@@ -26,9 +27,15 @@ const Login = () => {
       dispatch(setUser({ accessToken, user: decodedAccessToken.user }));
       await AsyncStorage.setItem('token', JSON.stringify(refreshToken));
     }
+
+    showToast({ message: 'Logueo exitoso', type: 'success' });
   };
 
-  return <LoginForm handleSubmit={handleSubmit} />;
+  return (
+    <>
+      <LoginForm handleSubmit={handleSubmit} />
+    </>
+  );
 };
 
 export default Login;

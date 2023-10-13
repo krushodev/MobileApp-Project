@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import { FlatList, View } from 'react-native';
 import { Text } from 'react-native-paper';
@@ -13,7 +13,7 @@ interface MessageListProps {
 }
 
 const MessageList = ({ messagesList }: MessageListProps) => {
-  let listViewRef = useRef<FlatList<IMessage>>(null);
+  const listViewRef = useRef<FlatList<IMessage>>(null);
 
   const handleScroll = () => {
     if (listViewRef.current) {

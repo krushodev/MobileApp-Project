@@ -22,21 +22,19 @@ const RoomsList = ({ roomsList }: RoomListProps) => {
   return (
     <>
       <View style={styles.container}>
-        <>
-          {roomsList ? (
-            roomsList.length > 0 ? (
-              <FlatList
-                data={roomsList}
-                renderItem={({ item }) => <RoomCard item={item} showModal={showModal} setRoomSelected={setRoomSelected} />}
-                keyExtractor={item => item.id}
-              />
-            ) : (
-              <Text style={styles.textAlert}>No hay rooms</Text>
-            )
+        {roomsList ? (
+          roomsList.length > 0 ? (
+            <FlatList
+              data={roomsList}
+              renderItem={({ item }) => <RoomCard room={item} showModal={showModal} setRoomSelected={setRoomSelected} />}
+              keyExtractor={item => item.id}
+            />
           ) : (
-            <Loading />
-          )}
-        </>
+            <Text style={styles.textAlert}>No hay rooms</Text>
+          )
+        ) : (
+          <Loading />
+        )}
       </View>
       <RoomPasswordValidationContainer isVisible={isVisible} hideModal={hideModal} roomSelected={roomSelected!} />
     </>

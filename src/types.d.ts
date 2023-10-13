@@ -29,7 +29,7 @@ interface IRoom {
   topics: string[];
   members: { user: IUser }[];
   messages: IMessage[];
-  owner: IUser | null;
+  owner: string | null;
   isPrivate: boolean;
   password: string | null;
 }
@@ -40,4 +40,15 @@ interface IUser {
   email: string;
   image: string;
   password: string;
+  rooms: {
+    room: string;
+    isOwner: boolean;
+  }[];
 }
+
+type ToastProps = {
+  message: string;
+  type: 'error' | 'success' | 'warning' | 'info';
+  duration?: number;
+  position?: number;
+};
