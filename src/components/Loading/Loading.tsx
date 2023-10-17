@@ -7,7 +7,7 @@ import colors from '../../constants/colors';
 const Loading = () => {
   return (
     <View style={styles.container}>
-      <ActivityIndicator animating={true} color={colors.primary} size={70} hidesWhenStopped={true} />
+      <ActivityIndicator animating={true} color={colors.chetwodeBlue500} size={70} hidesWhenStopped={true} />
     </View>
   );
 };

@@ -4,14 +4,14 @@ import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.chetwodeBlue500,
     padding: 20,
     marginBottom: 10,
     zIndex: -10
   },
   text: {
     fontSize: 20,
-    color: colors.secondary
+    color: colors.chetwodeBlue100
   }
 });
 

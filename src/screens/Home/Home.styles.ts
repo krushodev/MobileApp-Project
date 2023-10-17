@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   button: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.chetwodeBlue500,
     padding: 8
   }
 });

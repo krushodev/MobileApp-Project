@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
+import { useModal } from '../../../../hooks/useModal';
+
 import { View, Text, FlatList } from 'react-native';
 import RoomCard from '../RoomCard/RoomCard';
 import RoomPasswordValidationContainer from '../RoomPasswordValidationContainer/RoomPasswordValidationContainer';
-
-import { useModal } from '../../../../hooks/useModal';
+import Loading from '../../../../components/Loading/Loading';
 
 import styles from './RoomsList.styles';
 
 import type { IRoom } from '../../../../types';
-import Loading from '../../../../components/Loading/Loading';
 
 interface RoomListProps {
   roomsList: IRoom[] | undefined;

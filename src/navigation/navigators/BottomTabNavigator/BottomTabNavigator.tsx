@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Home, Rooms, Settings, CreateRoom, Profile } from '../../../screens';
 
-import CustomTabButton from '../../../components/CustomTabButton/CustomTabButton';
+import { CustomTabButton } from '../../../components';
 
 import styles from './BottomTabNavigator.styles';
 import { Feather } from '@expo/vector-icons';

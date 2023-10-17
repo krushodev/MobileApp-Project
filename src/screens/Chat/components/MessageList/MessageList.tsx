@@ -24,19 +24,13 @@ const MessageList = ({ messagesList }: MessageListProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.listContainer}>
-        {messagesList && messagesList.length > 0 ? (
-          <FlatList
-            ref={listViewRef}
-            data={messagesList}
-            onContentSizeChange={handleScroll}
-            renderItem={({ item }) => <Message data={item} />}
-            keyExtractor={item => item.id}
-          />
-        ) : (
-          <Text variant="headlineMedium" style={styles.textAlert}>
-            No hay mensajes
-          </Text>
-        )}
+        <FlatList
+          ref={listViewRef}
+          data={messagesList}
+          onContentSizeChange={handleScroll}
+          renderItem={({ item }) => <Message data={item} />}
+          keyExtractor={item => item.id}
+        />
       </View>
     </View>
   );

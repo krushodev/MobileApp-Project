@@ -3,14 +3,14 @@ import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.chetwodeBlue200,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 10,
     margin: 20,
     marginBottom: 5,
-    borderRadius: 20
+    borderRadius: 25
   },
   infoContainer: {
     flexDirection: 'row',

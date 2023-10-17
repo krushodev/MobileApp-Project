@@ -7,13 +7,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   listContainer: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.chetwodeBlue500,
     flex: 1
-  },
-  textAlert: {
-    color: colors.secondary,
-    padding: 20,
-    textAlign: 'center'
   }
 });
 

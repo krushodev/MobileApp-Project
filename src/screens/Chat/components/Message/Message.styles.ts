@@ -16,19 +16,36 @@ const styles = StyleSheet.create({
   infoContainer: {
     paddingVertical: 10,
     paddingHorizontal: 12,
-    borderRadius: 20,
     gap: 12,
     flex: 1,
     width: '70%'
   },
   senderInfoContainer: {
-    backgroundColor: colors.secondary
+    backgroundColor: colors.chetwodeBlue200,
+    borderTopLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 15
   },
   receiverInfoContainer: {
-    backgroundColor: colors.tertiary
+    backgroundColor: colors.chetwodeBlue900,
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
+    borderBottomLeftRadius: 15
   },
   textContainer: {
     flex: 1
+  },
+  senderName: {
+    color: colors.chetwodeBlue600
+  },
+  receiverName: {
+    color: colors.chetwodeBlue400
+  },
+  senderText: {
+    color: colors.chetwodeBlue950
+  },
+  receiverText: {
+    color: colors.chetwodeBlue100
   }
 });
 

@@ -10,11 +10,14 @@ const styles = StyleSheet.create({
   formContainer: {
     flex: 1,
     justifyContent: 'center',
-    gap: 12
+    gap: 25
   },
   inputsContainer: {
     padding: 20,
     gap: 25
+  },
+  input: {
+    backgroundColor: colors.chetwodeBlue200
   },
   redirectContainer: {
     justifyContent: 'center',
@@ -27,10 +30,11 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   redirectButton: {
-    color: colors.primary
+    color: colors.chetwodeBlue700,
+    fontWeight: 'bold'
   },
   button: {
-    backgroundColor: 'black',
+    backgroundColor: colors.chetwodeBlue500,
     padding: 5,
     display: 'flex',
     flexDirection: 'row',

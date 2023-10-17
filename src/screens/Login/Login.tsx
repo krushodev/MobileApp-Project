@@ -31,11 +31,7 @@ const Login = () => {
     showToast({ message: 'Logueo exitoso', type: 'success' });
   };
 
-  return (
-    <>
-      <LoginForm handleSubmit={handleSubmit} />
-    </>
-  );
+  return <LoginForm handleSubmit={handleSubmit} />;
 };
 
 export default Login;

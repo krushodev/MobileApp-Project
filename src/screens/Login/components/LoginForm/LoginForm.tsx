@@ -6,6 +6,7 @@ import { TextInput, Button, Text } from 'react-native-paper';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import styles from './LoginForm.styles';
+import colors from '../../../../constants/colors';
 
 import type { StackNavigation } from '../../../../navigation/types';
 
@@ -22,12 +23,23 @@ const LoginForm = ({ handleSubmit }: LoginFormProps) => {
         <KeyboardAwareScrollView contentContainerStyle={styles.container}>
           <ScrollView contentContainerStyle={styles.formContainer}>
             <View style={styles.inputsContainer}>
-              <TextInput label="Email" onChangeText={handleChange('email')} onBlur={handleBlur('email')} value={values.email}></TextInput>
+              <TextInput
+                label="Email"
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                value={values.email}
+                style={styles.input}
+                textColor={colors.chetwodeBlue900}
+                underlineColor={colors.chetwodeBlue950}
+              ></TextInput>
               <TextInput
                 label="Contraseña"
                 onChangeText={handleChange('password')}
                 onBlur={handleBlur('password')}
                 value={values.password}
+                style={styles.input}
+                textColor={colors.chetwodeBlue900}
+                underlineColor={colors.chetwodeBlue950}
               ></TextInput>
             </View>
             <View style={styles.redirectContainer}>
@@ -36,7 +48,7 @@ const LoginForm = ({ handleSubmit }: LoginFormProps) => {
                 <Text style={styles.redirectButton}>Regístrate</Text>
               </TouchableOpacity>
             </View>
-            <Button textColor="white" contentStyle={styles.button} onPress={() => submit()}>
+            <Button textColor={colors.chetwodeBlue100} contentStyle={styles.button} onPress={() => submit()}>
               Iniciar sesión
             </Button>
           </ScrollView>

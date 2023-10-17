@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, View } from 'react-native';
+import { View } from 'react-native';
 import { TextInput, ToggleButton } from 'react-native-paper';
 import { Formik } from 'formik';
 
@@ -25,12 +25,20 @@ const MessageForm = ({ handleSubmit }: MessageFormProps) => {
             onBlur={handleBlur('message')}
             mode="outlined"
             outlineStyle={styles.input}
-            cursorColor={styles.input.color}
+            cursorColor={colors.chetwodeBlue500}
+            textColor={colors.chetwodeBlue900}
+            placeholderTextColor={colors.chetwodeBlue900}
             value={values.message}
             style={styles.input}
             placeholder="Escibe tu mensaje"
           />
-          <ToggleButton onPress={() => submit()} disabled={values.message === ''} size={30} icon="send" iconColor={colors.primary} />
+          <ToggleButton
+            onPress={() => submit()}
+            disabled={values.message === ''}
+            size={30}
+            icon="send"
+            iconColor={colors.chetwodeBlue700}
+          />
         </View>
       )}
     </Formik>

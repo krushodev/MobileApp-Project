@@ -1,8 +1,9 @@
+import { useAuth } from '../../hooks/useAuth';
+
 import AuthNavigator from './AuthNavigator/AuthNavigator';
 import StackNavigator from './StackNavigator/StackNavigator';
 
-import { useAuth } from '../../hooks/useAuth';
-import Loading from '../../components/Loading/Loading';
+import { Loading } from '../../components';
 
 const MainNavigator = () => {
   const { loading, isAuthenticated } = useAuth();
