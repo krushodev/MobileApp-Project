@@ -13,10 +13,7 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <Title />
-      <Button mode="contained" contentStyle={styles.button} onPress={() => navigate('Rooms')}>
-        Ingresar
-      </Button>
+      <Title title="Home" />
     </View>
   );
 };

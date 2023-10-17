@@ -47,7 +47,7 @@ const RoomPasswordValidationContainer = ({ isVisible, hideModal, roomSelected }:
 
     dispatch(addUserRoom({ room: roomSelected.id, isOwner: false }));
 
-    navigate('ChatScreen', { roomId: roomSelected.id });
+    navigate('ChatScreen', { roomId: roomSelected.id, title: roomSelected.name });
   };
 
   return (

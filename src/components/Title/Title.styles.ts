@@ -1,12 +1,15 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    marginTop: 20,
+    marginBottom: 20
+  },
   title: {
-    textAlign: 'center',
-    marginTop: 40,
-    marginBottom: 30,
+    marginLeft: 15,
     padding: 15,
-    fontFamily: 'RobotoRegular'
+    fontWeight: 'bold'
   }
 });
 

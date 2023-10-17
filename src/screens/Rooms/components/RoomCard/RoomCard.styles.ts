@@ -6,7 +6,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.chetwodeBlue500,
     padding: 20,
-    marginBottom: 10,
+    marginHorizontal: 20,
+    borderRadius: 15,
+    marginBottom: 15,
     zIndex: -10
   },
   text: {

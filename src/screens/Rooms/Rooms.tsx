@@ -7,6 +7,7 @@ import { RoomsList } from './components';
 import { listRooms } from '../../api/routes/roomsRoutes';
 
 import styles from './Rooms.styles';
+import { Title } from '../../components';
 
 const Rooms = () => {
   const queryClient = useQueryClient();
@@ -18,6 +19,7 @@ const Rooms = () => {
 
   return (
     <View style={styles.container}>
+      <Title title="Rooms" />
       <RoomsList roomsList={query.data} />
     </View>
   );

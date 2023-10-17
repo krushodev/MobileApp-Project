@@ -53,7 +53,7 @@ const RoomCard = ({ room, showModal, setRoomSelected }: RoomCardProps) => {
       dispatch(addUserRoom({ room: room.id, isOwner: false }));
     }
 
-    navigate('ChatScreen', { roomId: room.id });
+    navigate('ChatScreen', { roomId: room.id, title: room.name });
   };
 
   return (

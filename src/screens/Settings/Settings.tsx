@@ -12,6 +12,7 @@ import { removeUser } from '../../store/slices/authSlice';
 import { showToast } from '../../helper/toast';
 
 import styles from './Settings.styles';
+import { Title } from '../../components';
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -24,14 +25,17 @@ const Settings = () => {
 
   return (
     <View style={styles.container}>
-      <View>
-        {settingsList.map(item => (
-          <SettingsCard key={randomUUID()} title={item.name} icon={item.icon} />
-        ))}
+      <Title title="Settings" />
+      <View style={styles.optionsContainer}>
+        <View>
+          {settingsList.map(item => (
+            <SettingsCard key={randomUUID()} title={item.name} icon={item.icon} />
+          ))}
+        </View>
+        <Button icon="logout" style={styles.button} textColor="white" onPress={handleClick}>
+          Cerrar sesión
+        </Button>
       </View>
-      <Button icon="logout" style={styles.button} textColor="white" onPress={handleClick}>
-        Cerrar sesión
-      </Button>
     </View>
   );
 };

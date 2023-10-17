@@ -1,19 +1,19 @@
-import { useSelector } from 'react-redux';
-
+import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 
 import styles from './Title.styles';
 
-import type { IRootState } from '../../store';
-import type { IUser } from '../../types';
+interface TitleProps {
+  title: string;
+}
 
-const Title = () => {
-  const user = useSelector<IRootState>(state => state.auth.user);
-
+const Title = ({ title }: TitleProps) => {
   return (
-    <Text variant="displaySmall" style={styles.title}>
-      Bienvenido, {(user as IUser).username}
-    </Text>
+    <View style={styles.container}>
+      <Text variant="displaySmall" style={styles.title}>
+        {title}
+      </Text>
+    </View>
   );
 };
 

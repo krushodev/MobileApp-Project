@@ -6,6 +6,10 @@ const styles = StyleSheet.create({
     maxHeight: 110,
     margin: 10,
     borderRadius: 15
+  },
+  tabBarIconContainer: {
+    alignItems: 'center',
+    gap: 5
   }
 });
 
