@@ -7,7 +7,7 @@ import { Title } from '../../components';
 const Profile = () => {
   return (
     <View style={styles.container}>
-      <Title title="Profile" />
+      <Title title="Perfil" />
       <UserCard />
     </View>
   );

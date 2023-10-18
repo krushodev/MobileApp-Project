@@ -38,7 +38,7 @@ function BottomTabNavigator() {
                 variant="bodySmall"
                 style={{ color: focused ? colors.chetwodeBlue900 : colors.chetwodeBlue400, fontWeight: focused ? 'bold' : 'normal' }}
               >
-                Home
+                Inicio
               </Text>
             </View>
           )
@@ -83,7 +83,7 @@ function BottomTabNavigator() {
                 variant="bodySmall"
                 style={{ color: focused ? colors.chetwodeBlue900 : colors.chetwodeBlue400, fontWeight: focused ? 'bold' : 'normal' }}
               >
-                Profile
+                Perfil
               </Text>
             </View>
           )
@@ -100,7 +100,7 @@ function BottomTabNavigator() {
                 variant="bodySmall"
                 style={{ color: focused ? colors.chetwodeBlue900 : colors.chetwodeBlue400, fontWeight: focused ? 'bold' : 'normal' }}
               >
-                Settings
+                Ajustes
               </Text>
             </View>
           )

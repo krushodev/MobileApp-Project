@@ -8,9 +8,9 @@ import { Formik } from 'formik';
 import topics from '../../../global/topics';
 
 import styles from './CreateRoomForm.styles';
+import colors from '../../../constants/colors';
 
 import type { BottomNavigation } from '../../../navigation/types';
-import colors from '../../../constants/colors';
 
 interface CreateRoomFormProps {
   handleSubmit: (values: { name: string; password: string; private: boolean; topics: string[] }) => void;

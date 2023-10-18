@@ -1,19 +1,14 @@
-import { useNavigation } from '@react-navigation/native';
-
-import { StackNavigation } from '../../navigation/types';
-
-import { View } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Image, View } from 'react-native';
 import { Title } from '../../components';
+import HomeCard from './components/HomeCard/HomeCard';
 
 import styles from './Home.styles';
 
 const Home = () => {
-  const { navigate } = useNavigation<StackNavigation>();
-
   return (
     <View style={styles.container}>
-      <Title title="Home" />
+      <Title title="Inicio" />
+      <HomeCard />
     </View>
   );
 };

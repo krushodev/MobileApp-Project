@@ -59,7 +59,7 @@ const RoomCard = ({ room, showModal, setRoomSelected }: RoomCardProps) => {
   return (
     <TouchableOpacity style={styles.container} onPress={handleClick}>
       <Text style={styles.text}>{room.name}</Text>
-      <Text>Members: {room.members?.length} </Text>
+      <Text>Miembros: {room.members?.length} </Text>
     </TouchableOpacity>
   );
 };

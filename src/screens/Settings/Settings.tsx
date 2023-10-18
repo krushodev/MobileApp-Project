@@ -25,7 +25,7 @@ const Settings = () => {
 
   return (
     <View style={styles.container}>
-      <Title title="Settings" />
+      <Title title="Ajustes" />
       <View style={styles.optionsContainer}>
         <View>
           {settingsList.map(item => (

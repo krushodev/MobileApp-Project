@@ -54,7 +54,7 @@ const CreateRoom = () => {
 
   return (
     <View style={styles.container}>
-      <Title title="Create Room" />
+      <Title title="Crear Room" />
       <CreateRoomForm handleSubmit={handleSubmit} />
     </View>
   );
