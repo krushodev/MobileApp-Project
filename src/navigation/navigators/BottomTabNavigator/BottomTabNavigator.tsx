@@ -67,7 +67,9 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: () => <Feather name="plus" color="white" size={30} />,
           tabBarButton: props => <CustomTabButton {...props} />,
-          headerShown: false
+          tabBarStyle: {
+            display: 'none'
+          }
         }}
       />
       <Tab.Screen

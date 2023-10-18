@@ -4,11 +4,15 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import socket from '../../api/socket';
 
+import { View } from 'react-native';
+import { Title } from '../../components';
 import CreateRoomForm from './components/CreateRoomForm';
 
 import { createRoom } from '../../api/routes/roomsRoutes';
 import { showToast } from '../../helper/toast';
 import { addUserRoom } from '../../store/slices/authSlice';
+
+import styles from './CreateRoom.styles';
 
 import type { IUser, RoomBody } from '../../types';
 import type { IRootState } from '../../store';
@@ -48,7 +52,12 @@ const CreateRoom = () => {
     mutation.mutateAsync(newRoom);
   };
 
-  return <CreateRoomForm handleSubmit={handleSubmit} />;
+  return (
+    <View style={styles.container}>
+      <Title title="Create Room" />
+      <CreateRoomForm handleSubmit={handleSubmit} />
+    </View>
+  );
 };
 
 export default CreateRoom;

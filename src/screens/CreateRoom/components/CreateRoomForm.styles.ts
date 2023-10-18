@@ -1,31 +1,51 @@
 import { StyleSheet } from 'react-native';
 
+import colors from '../../../constants/colors';
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    marginTop: 10,
+    paddingHorizontal: 20
   },
   formContainer: {
-    gap: 12
+    flex: 1,
+    justifyContent: 'space-between'
   },
   inputsContainer: {
-    padding: 20,
-    gap: 25
+    gap: 20
+  },
+  input: {
+    backgroundColor: colors.chetwodeBlue200
   },
   privateSelectContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between'
   },
-  button: {
-    backgroundColor: 'black',
-    padding: 8,
-    display: 'flex',
+  topicsContainer: {
+    gap: 15
+  },
+  topicsChipContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    gap: 30,
-    marginVertical: 65,
-    marginHorizontal: 30,
+    gap: 10,
+    flexWrap: 'wrap'
+  },
+  buttonsContainer: {
+    gap: 15,
+    marginBottom: '20%',
     borderRadius: 15
+  },
+  button: {
+    padding: 8
+  },
+  buttonSubmit: {
+    backgroundColor: colors.chetwodeBlue600
+  },
+  buttonCancel: {
+    borderWidth: 0.3,
+    borderColor: colors.chetwodeBlue600,
+    backgroundColor: colors.chetwodeBlue200
   }
 });
 
