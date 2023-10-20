@@ -2,7 +2,7 @@ import { randomUUID } from 'expo-crypto';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import socket from '../../api/socket';
+import socket from '../../services/socket';
 
 import { View } from 'react-native';
 import { Title } from '../../components';

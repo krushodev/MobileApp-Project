@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { randomUUID } from 'expo-crypto';
-import socket from '../../api/socket';
+import socket from '../../services/socket';
 
 import { View } from 'react-native';
 import { Drawer } from '../../components';

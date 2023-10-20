@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query';
-import socket from '../../api/socket';
+import socket from '../../services/socket';
 
 import { View } from 'react-native';
 import { RoomsList } from './components';
