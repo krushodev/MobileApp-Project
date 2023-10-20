@@ -1,3 +1,3 @@
-import HomeCard from './HomeCard/HomeCard';
+import FeatureCard from './FeatureCard/FeatureCard';
 
-export { HomeCard };
+export { FeatureCard };
