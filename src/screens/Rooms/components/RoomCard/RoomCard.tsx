@@ -2,13 +2,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { useQueryClient } from '@tanstack/react-query';
 
-import { TouchableOpacity, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { Text } from 'react-native-paper';
 
 import { addMember } from '../../../../api/routes/roomsRoutes';
 
 import { showToast } from '../../../../helper/toast';
 import { addUserRoom } from '../../../../store/slices/authSlice';
 
+import { globalStyles } from '../../../../../global.styles';
 import styles from './RoomCard.styles';
 
 import type { IRootState } from '../../../../store';
@@ -58,8 +60,12 @@ const RoomCard = ({ room, showModal, setRoomSelected }: RoomCardProps) => {
 
   return (
     <TouchableOpacity style={styles.container} onPress={handleClick}>
-      <Text style={styles.text}>{room.name}</Text>
-      <Text>Miembros: {room.members?.length} </Text>
+      <Text variant="headlineMedium" style={[globalStyles.textRegular, styles.text]}>
+        {room.name}
+      </Text>
+      <Text variant="headlineSmall" style={globalStyles.textRegular}>
+        Miembros: {room.members?.length}
+      </Text>
     </TouchableOpacity>
   );
 };

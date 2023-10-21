@@ -5,6 +5,7 @@ import { TextInput, Button, Text } from 'react-native-paper';
 import { Formik } from 'formik';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
+import { globalStyles } from '../../../../../global.styles';
 import styles from './SignupForm.styles';
 import colors from '../../../../constants/colors';
 
@@ -25,8 +26,8 @@ const SignupForm = ({ handleSubmit }: SignupFormProps) => {
       }}
     >
       {({ handleChange, handleBlur, handleSubmit: submit, values }) => (
-        <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-          <ScrollView contentContainerStyle={styles.formContainer}>
+        <KeyboardAwareScrollView contentContainerStyle={[globalStyles.container, styles.container]}>
+          <ScrollView contentContainerStyle={[globalStyles.container, styles.formContainer]}>
             <View style={styles.inputsContainer}>
               <TextInput
                 label="Nombre de usuario"
@@ -49,9 +50,9 @@ const SignupForm = ({ handleSubmit }: SignupFormProps) => {
               ></TextInput>
             </View>
             <View style={styles.redirectContainer}>
-              <Text style={styles.redirectText}>¿Ya tienes una cuenta?</Text>
+              <Text style={[globalStyles.textBold, styles.redirectText]}>¿Ya tienes una cuenta?</Text>
               <TouchableOpacity onPress={() => navigate('Login')}>
-                <Text style={styles.redirectButton}>Inicia sesión</Text>
+                <Text style={[globalStyles.textBold, styles.redirectButton]}>Inicia sesión</Text>
               </TouchableOpacity>
             </View>
             <Button textColor="white" contentStyle={styles.button} onPress={() => submit()}>

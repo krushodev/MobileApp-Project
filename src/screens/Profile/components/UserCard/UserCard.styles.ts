@@ -4,7 +4,7 @@ import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.chetwodeBlue500,
     marginTop: 70,
     margin: 15,
     padding: 15,
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   text: {
-    color: colors.secondary
+    color: colors.chetwodeBlue200
   },
   locationContainer: {
     flexDirection: 'row',

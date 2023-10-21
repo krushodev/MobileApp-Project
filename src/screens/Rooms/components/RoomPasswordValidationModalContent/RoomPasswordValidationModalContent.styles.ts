@@ -5,14 +5,12 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   title: {
-    fontSize: 30,
     padding: 15,
     textAlign: 'center'
   },
   formContainer: {
     padding: 20,
-    gap: 20,
-    flex: 1
+    gap: 20
   },
   button: {
     padding: 10,

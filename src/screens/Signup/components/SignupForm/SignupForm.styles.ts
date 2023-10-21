@@ -4,11 +4,9 @@ import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center'
   },
   formContainer: {
-    flex: 1,
     justifyContent: 'center',
     gap: 25
   },

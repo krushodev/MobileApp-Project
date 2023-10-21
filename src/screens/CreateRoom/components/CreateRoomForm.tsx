@@ -7,6 +7,7 @@ import { Formik } from 'formik';
 
 import topics from '../../../global/topics';
 
+import { globalStyles } from '../../../../global.styles';
 import styles from './CreateRoomForm.styles';
 import colors from '../../../constants/colors';
 
@@ -43,8 +44,8 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
         };
 
         return (
-          <KeyboardAvoidingView style={styles.container}>
-            <ScrollView contentContainerStyle={styles.formContainer}>
+          <KeyboardAvoidingView style={[globalStyles.container, styles.container]}>
+            <ScrollView contentContainerStyle={[globalStyles.container, styles.formContainer]}>
               <View>
                 <View style={styles.inputsContainer}>
                   <TextInput
@@ -57,7 +58,9 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
                     underlineColor={colors.chetwodeBlue950}
                   ></TextInput>
                   <View style={styles.privateSelectContainer}>
-                    <Text variant="titleMedium">Room Privada</Text>
+                    <Text variant="titleMedium" style={globalStyles.textBold}>
+                      Room Privada
+                    </Text>
                     <Switch value={values.private} onValueChange={handleSwitch} color={colors.chetwodeBlue500} />
                   </View>
                   <TextInput
@@ -71,7 +74,9 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
                     underlineColor={colors.chetwodeBlue950}
                   ></TextInput>
                   <View style={styles.topicsContainer}>
-                    <Text variant="titleMedium">Topics</Text>
+                    <Text variant="titleMedium" style={globalStyles.textBold}>
+                      Topics
+                    </Text>
                     <View style={styles.topicsChipContainer}>
                       {topics.map(topic => (
                         <Chip

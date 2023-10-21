@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { Title } from '../../components';
 import UserCard from './components/UserCard/UserCard';
 
-import styles from './Profile.styles';
-import { Title } from '../../components';
+import { globalStyles } from '../../../global.styles';
 
 const Profile = () => {
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <Title title="Perfil" />
       <UserCard />
     </View>

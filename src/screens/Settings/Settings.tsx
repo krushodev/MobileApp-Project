@@ -4,15 +4,15 @@ import { randomUUID } from 'expo-crypto';
 
 import { View } from 'react-native';
 import { Button } from 'react-native-paper';
-
+import { Title } from '../../components';
 import SettingsCard from './components/SettingsCard/SettingsCard';
 
 import settingsList from '../../global/settings';
 import { removeUser } from '../../store/slices/authSlice';
 import { showToast } from '../../helper/toast';
 
+import { globalStyles } from '../../../global.styles';
 import styles from './Settings.styles';
-import { Title } from '../../components';
 
 const Settings = () => {
   const dispatch = useDispatch();
@@ -24,9 +24,9 @@ const Settings = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <Title title="Ajustes" />
-      <View style={styles.optionsContainer}>
+      <View style={[globalStyles.container, styles.optionsContainer]}>
         <View>
           {settingsList.map(item => (
             <SettingsCard key={randomUUID()} title={item.name} icon={item.icon} />

@@ -1,10 +1,11 @@
 import { View, FlatList } from 'react-native';
+import { Text } from 'react-native-paper';
 import MemberCard from '../MemberCard/MemberCard';
 
+import { globalStyles } from '../../../../../global.styles';
 import styles from './DrawerChatContent.styles';
 
 import type { IRoom } from '../../../../types';
-import { Text } from 'react-native-paper';
 
 interface DrawerChatContentProps {
   room: IRoom | undefined;
@@ -12,8 +13,8 @@ interface DrawerChatContentProps {
 
 const DrawerChatContent = ({ room }: DrawerChatContentProps) => {
   return (
-    <View style={styles.container}>
-      <Text variant="titleLarge" style={styles.text}>
+    <View style={globalStyles.container}>
+      <Text variant="titleLarge" style={[styles.text, globalStyles.textRegular]}>
         Miembros
       </Text>
       <FlatList

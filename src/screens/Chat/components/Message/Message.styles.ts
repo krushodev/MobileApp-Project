@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 12,
     gap: 12,
-    flex: 1,
     width: '70%'
   },
   senderInfoContainer: {
@@ -31,9 +30,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
     borderBottomLeftRadius: 15
-  },
-  textContainer: {
-    flex: 1
   },
   senderName: {
     color: colors.chetwodeBlue600

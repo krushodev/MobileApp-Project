@@ -5,6 +5,7 @@ import { View, ScrollView, TouchableOpacity } from 'react-native';
 import { TextInput, Button, Text } from 'react-native-paper';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
+import { globalStyles } from '../../../../../global.styles';
 import styles from './LoginForm.styles';
 import colors from '../../../../constants/colors';
 
@@ -20,8 +21,8 @@ const LoginForm = ({ handleSubmit }: LoginFormProps) => {
   return (
     <Formik initialValues={{ email: '', password: '' }} onSubmit={values => handleSubmit(values)}>
       {({ handleBlur, handleChange, handleSubmit: submit, values }) => (
-        <KeyboardAwareScrollView contentContainerStyle={styles.container}>
-          <ScrollView contentContainerStyle={styles.formContainer}>
+        <KeyboardAwareScrollView contentContainerStyle={[globalStyles.container, styles.container]}>
+          <ScrollView contentContainerStyle={[globalStyles.container, styles.formContainer]}>
             <View style={styles.inputsContainer}>
               <TextInput
                 label="Email"
@@ -43,9 +44,9 @@ const LoginForm = ({ handleSubmit }: LoginFormProps) => {
               ></TextInput>
             </View>
             <View style={styles.redirectContainer}>
-              <Text style={styles.redirectText}>¿No tienes una cuenta?</Text>
+              <Text style={[globalStyles.textBold, styles.redirectText]}>¿No tienes una cuenta?</Text>
               <TouchableOpacity onPress={() => navigate('Signup')}>
-                <Text style={styles.redirectButton}>Regístrate</Text>
+                <Text style={[globalStyles.textBold, styles.redirectButton]}>Regístrate</Text>
               </TouchableOpacity>
             </View>
             <Button textColor={colors.chetwodeBlue100} contentStyle={styles.button} onPress={() => submit()}>

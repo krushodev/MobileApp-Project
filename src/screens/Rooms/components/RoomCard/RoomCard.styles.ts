@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     zIndex: -10
   },
   text: {
-    fontSize: 20,
     color: colors.chetwodeBlue100
   }
 });

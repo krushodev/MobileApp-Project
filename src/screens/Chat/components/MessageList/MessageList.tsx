@@ -1,9 +1,9 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import { FlatList, View } from 'react-native';
-import { Text } from 'react-native-paper';
 import Message from '../Message/Message';
 
+import { globalStyles } from '../../../../../global.styles';
 import styles from './MessageList.styles';
 
 import type { IMessage } from '../../../../types';
@@ -22,8 +22,8 @@ const MessageList = ({ messagesList }: MessageListProps) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.listContainer}>
+    <View style={globalStyles.container}>
+      <View style={[styles.listContainer, globalStyles.container]}>
         <FlatList
           ref={listViewRef}
           data={messagesList}

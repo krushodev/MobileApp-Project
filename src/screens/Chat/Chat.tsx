@@ -10,7 +10,7 @@ import { DrawerChatContent, MessageForm, MessageList } from './components';
 
 import { getRoom, sendMessage } from '../../api/routes/roomsRoutes';
 
-import styles from './Chat.styles';
+import { globalStyles } from '../../../global.styles';
 
 import type { IUser, MessageBody } from '../../types';
 import type { IRootState } from '../../store';
@@ -48,7 +48,7 @@ const Chat = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <Drawer position="right" content={<DrawerChatContent room={query.data} />}>
         <MessageList messagesList={query.data?.messages} />
         <MessageForm handleSubmit={handleSubmit} />

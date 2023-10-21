@@ -1,6 +1,7 @@
 import { View } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 
+import { globalStyles } from '../../../../../global.styles';
 import styles from './MemberCard.styles';
 
 import type { IUser } from '../../../../types';
@@ -14,9 +15,11 @@ const MemberCard = ({ user }: MemberCardProps) => {
     <View style={styles.container}>
       <View style={styles.memberContainer}>
         <IconButton icon="circle" iconColor="green" size={10} />
-        <Text variant="titleMedium">{user.username}</Text>
+        <Text variant="titleMedium" style={globalStyles.textRegular}>
+          {user.username}
+        </Text>
       </View>
-      <Text>Online</Text>
+      <Text style={globalStyles.textRegular}>Online</Text>
     </View>
   );
 };

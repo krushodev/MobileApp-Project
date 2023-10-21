@@ -1,19 +1,21 @@
-import { useFonts } from 'expo-font';
+import { useFonts, Roboto_400Regular, Roboto_300Light, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { View } from 'react-native';
-
 import { MainNavigator } from './src/navigation';
+
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { RootSiblingParent } from 'react-native-root-siblings';
 
 import { store } from './src/store';
 
-import fonts from './src/global/fonts';
-import { RootSiblingParent } from 'react-native-root-siblings';
-
 function App() {
-  const [loaded] = useFonts(fonts);
+  const [loaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_300Light,
+    Roboto_700Bold
+  });
 
   const queryClient = new QueryClient();
 
@@ -24,13 +26,13 @@ function App() {
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <View style={{ flex: 1, marginTop: 30 }}>
+        <SafeAreaProvider>
           <RootSiblingParent>
             <NavigationContainer>
               <MainNavigator />
             </NavigationContainer>
           </RootSiblingParent>
-        </View>
+        </SafeAreaProvider>
       </QueryClientProvider>
     </Provider>
   );

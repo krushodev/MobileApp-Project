@@ -4,7 +4,7 @@ import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.chetwodeBlue200,
     paddingVertical: 8,
     paddingHorizontal: 15,
     margin: 10,

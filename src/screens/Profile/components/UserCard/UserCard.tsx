@@ -9,6 +9,7 @@ import { updateImage } from '../../../../api/routes/authRoutes';
 
 import { showToast } from '../../../../helper/toast';
 
+import { globalStyles } from '../../../../../global.styles';
 import styles from './UserCard.styles';
 
 import type { IRootState } from '../../../../store';
@@ -48,10 +49,10 @@ const UserCard = () => {
         <Avatar.Image style={styles.image} source={{ uri: user.image }} size={100} />
       </TouchableOpacity>
       <View style={styles.infoContainer}>
-        <Text style={styles.text} variant="headlineMedium">
+        <Text style={[globalStyles.textRegular, styles.text]} variant="headlineMedium">
           {user.username}
         </Text>
-        <Text style={styles.text} variant="titleMedium">
+        <Text style={[globalStyles.textRegular, styles.text]} variant="titleMedium">
           {user.email}
         </Text>
       </View>

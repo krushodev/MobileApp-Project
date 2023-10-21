@@ -4,11 +4,9 @@ import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center'
   },
   formContainer: {
-    flex: 1,
     justifyContent: 'center',
     gap: 25
   },
@@ -30,8 +28,7 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   redirectButton: {
-    color: colors.chetwodeBlue700,
-    fontWeight: 'bold'
+    color: colors.chetwodeBlue700
   },
   button: {
     backgroundColor: colors.chetwodeBlue500,

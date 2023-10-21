@@ -1,12 +1,13 @@
+import { useSelector } from 'react-redux';
+
 import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 
+import { globalStyles } from '../../../../../global.styles';
 import styles from './Message.styles';
 
 import type { IMessage, IUser } from '../../../../types';
-import { useSelector } from 'react-redux';
-import { IRootState } from '../../../../store';
-import colors from '../../../../constants/colors';
+import type { IRootState } from '../../../../store';
 
 interface MessageProps {
   data: IMessage;
@@ -19,12 +20,12 @@ const Message = ({ data }: MessageProps) => {
 
   return (
     <View style={[styles.container, isSender ? styles.senderContainer : styles.receiverContainer]}>
-      <View style={[styles.infoContainer, isSender ? styles.senderInfoContainer : styles.receiverInfoContainer]}>
-        <View style={styles.textContainer}>
-          <Text variant="titleMedium" style={isSender ? styles.senderName : styles.receiverName}>
+      <View style={[globalStyles.container, styles.infoContainer, isSender ? styles.senderInfoContainer : styles.receiverInfoContainer]}>
+        <View style={globalStyles.container}>
+          <Text variant="titleMedium" style={[globalStyles.textRegular, isSender ? styles.senderName : styles.receiverName]}>
             {data.user.username}
           </Text>
-          <Text variant="labelMedium" style={isSender ? styles.senderText : styles.receiverText}>
+          <Text variant="labelMedium" style={[globalStyles.textRegular, isSender ? styles.senderText : styles.receiverText]}>
             {data.text}
           </Text>
         </View>

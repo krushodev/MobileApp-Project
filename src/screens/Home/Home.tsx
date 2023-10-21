@@ -4,11 +4,12 @@ import FeatureCard from './components/FeatureCard/FeatureCard';
 
 import features from '../../global/features';
 
+import { globalStyles } from '../../../global.styles';
 import styles from './Home.styles';
 
 const Home = () => {
   return (
-    <View style={styles.container}>
+    <View style={[globalStyles.container, styles.container]}>
       <Title title="Inicio" />
       <Carousel
         data={features}

@@ -2,12 +2,12 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import socket from '../../services/socket';
 
 import { View } from 'react-native';
+import { Title } from '../../components';
 import { RoomsList } from './components';
 
 import { listRooms } from '../../api/routes/roomsRoutes';
 
-import styles from './Rooms.styles';
-import { Title } from '../../components';
+import { globalStyles } from '../../../global.styles';
 
 const Rooms = () => {
   const queryClient = useQueryClient();
@@ -18,7 +18,7 @@ const Rooms = () => {
   });
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <Title title="Rooms" />
       <RoomsList roomsList={query.data} />
     </View>

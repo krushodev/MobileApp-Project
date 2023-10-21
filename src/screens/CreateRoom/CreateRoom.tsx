@@ -12,7 +12,7 @@ import { createRoom } from '../../api/routes/roomsRoutes';
 import { showToast } from '../../helper/toast';
 import { addUserRoom } from '../../store/slices/authSlice';
 
-import styles from './CreateRoom.styles';
+import { globalStyles } from '../../../global.styles';
 
 import type { IUser, RoomBody } from '../../types';
 import type { IRootState } from '../../store';
@@ -53,7 +53,7 @@ const CreateRoom = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <Title title="Crear Room" />
       <CreateRoomForm handleSubmit={handleSubmit} />
     </View>
