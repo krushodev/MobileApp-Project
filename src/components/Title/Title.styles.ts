@@ -8,8 +8,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginLeft: 15,
-    padding: 15,
-    fontWeight: 'bold'
+    padding: 15
   }
 });
 

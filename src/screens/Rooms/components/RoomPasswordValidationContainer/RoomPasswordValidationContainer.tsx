@@ -32,6 +32,7 @@ const RoomPasswordValidationContainer = ({ isVisible, hideModal, roomSelected }:
 
     if (!validation) {
       hideModal();
+      showToast({ message: 'Contraseña de Room incorrecta', type: 'error' });
       return;
     }
 

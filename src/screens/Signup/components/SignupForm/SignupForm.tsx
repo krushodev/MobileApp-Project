@@ -38,7 +38,15 @@ const SignupForm = ({ handleSubmit }: SignupFormProps) => {
                 textColor={colors.chetwodeBlue900}
                 underlineColor={colors.chetwodeBlue950}
               ></TextInput>
-              <TextInput label="Email" onChangeText={handleChange('email')} onBlur={handleBlur('email')} value={values.email}></TextInput>
+              <TextInput
+                label="Email"
+                onChangeText={handleChange('email')}
+                onBlur={handleBlur('email')}
+                value={values.email}
+                style={styles.input}
+                textColor={colors.chetwodeBlue900}
+                underlineColor={colors.chetwodeBlue950}
+              ></TextInput>
               <TextInput
                 label="Contraseña"
                 onChangeText={handleChange('password')}

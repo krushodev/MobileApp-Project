@@ -60,10 +60,10 @@ const RoomCard = ({ room, showModal, setRoomSelected }: RoomCardProps) => {
 
   return (
     <TouchableOpacity style={styles.container} onPress={handleClick}>
-      <Text variant="headlineMedium" style={[globalStyles.textRegular, styles.text]}>
+      <Text variant="titleLarge" style={[globalStyles.textRegular, styles.text]}>
         {room.name}
       </Text>
-      <Text variant="headlineSmall" style={globalStyles.textRegular}>
+      <Text variant="titleSmall" style={globalStyles.textRegular}>
         Miembros: {room.members?.length}
       </Text>
     </TouchableOpacity>

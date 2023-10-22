@@ -4,5 +4,6 @@ import Modal from './Modal/Modal';
 import Loading from './Loading/Loading';
 import CustomTabButton from './CustomTabButton/CustomTabButton';
 import Carousel from './Carousel/Carousel';
+import SafeWrapper from './SafeWrapper/SafeWrapper';
 
-export { Title, Drawer, Modal, Loading, CustomTabButton, Carousel };
+export { Title, Drawer, Modal, Loading, CustomTabButton, Carousel, SafeWrapper };

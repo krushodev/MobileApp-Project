@@ -1,7 +1,9 @@
 import { StyleSheet } from 'react-native';
 
+import colors from '../../../../constants/colors';
+
 const styles = StyleSheet.create({
-  constainer: {
+  container: {
     height: '100%'
   },
   title: {
@@ -10,7 +12,11 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     padding: 20,
-    gap: 20
+    gap: 20,
+    justifyContent: 'space-evenly'
+  },
+  input: {
+    backgroundColor: colors.chetwodeBlue200
   },
   button: {
     padding: 10,

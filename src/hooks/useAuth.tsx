@@ -9,9 +9,7 @@ import type { IRootState } from '../store';
 
 export const useAuth = () => {
   const [loading, setLoading] = useState(true);
-
   const dispatch = useDispatch();
-
   const user = useSelector<IRootState>(state => state.auth.user);
 
   const validateSession = async () => {
@@ -38,11 +36,14 @@ export const useAuth = () => {
 
   useEffect(() => {
     if (!user) {
-      validateSession();
+      (async function () {
+        await validateSession();
+        setLoading(false);
+      })();
+    } else {
+      setLoading(false);
     }
-
-    setLoading(false);
-  }, [user]);
+  }, []);
 
   return { loading, isAuthenticated: user ? true : false };
 };

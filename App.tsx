@@ -5,8 +5,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { MainNavigator } from './src/navigation';
 
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { RootSiblingParent } from 'react-native-root-siblings';
+import { SafeWrapper } from './src/components';
 
 import { store } from './src/store';
 
@@ -26,13 +26,13 @@ function App() {
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <SafeAreaProvider>
+        <SafeWrapper>
           <RootSiblingParent>
             <NavigationContainer>
               <MainNavigator />
             </NavigationContainer>
           </RootSiblingParent>
-        </SafeAreaProvider>
+        </SafeWrapper>
       </QueryClientProvider>
     </Provider>
   );

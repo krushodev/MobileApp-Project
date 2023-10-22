@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import PagerView from 'react-native-pager-view';
 
+import { globalStyles } from '../../../global.styles';
 import styles from './Carousel.styles';
 
 interface CarouselProps {
@@ -43,7 +44,7 @@ const Carousel = ({ data, renderItem, autoPlay, intervalAutoPlay, initialPage }:
   }, [activePage]);
 
   return (
-    <PagerView ref={viewPage} initialPage={initialPage} scrollEnabled={true} style={styles.container}>
+    <PagerView ref={viewPage} initialPage={initialPage} scrollEnabled={true} style={[globalStyles.container, styles.container]}>
       {data.map((item, index) => renderItem({ item, index }))}
     </PagerView>
   );
