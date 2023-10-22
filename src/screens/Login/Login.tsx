@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { decodeToken } from 'react-jwt';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -10,7 +11,6 @@ import { login } from '../../api/routes/authRoutes';
 import { showToast } from '../../helper/toast';
 
 import type { IUser } from '../../types';
-import { useState } from 'react';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);

@@ -5,13 +5,13 @@ import { View, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { Button, Chip, Switch, Text, TextInput } from 'react-native-paper';
 import { Formik } from 'formik';
 
-import topics from '../../../global/topics';
+import topics from '../../../../global/topics';
 
-import { globalStyles } from '../../../../global.styles';
+import { globalStyles } from '../../../../../global.styles';
 import styles from './CreateRoomForm.styles';
-import colors from '../../../constants/colors';
+import colors from '../../../../constants/colors';
 
-import type { BottomNavigation } from '../../../navigation/types';
+import type { BottomNavigation } from '../../../../navigation/types';
 
 interface CreateRoomFormProps {
   handleSubmit: (values: { name: string; password: string; private: boolean; topics: string[] }) => void;

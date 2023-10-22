@@ -6,7 +6,7 @@ import socket from '../../services/socket';
 
 import { View } from 'react-native';
 import { Title } from '../../components';
-import CreateRoomForm from './components/CreateRoomForm';
+import CreateRoomForm from './components/CreateRoomForm/CreateRoomForm';
 
 import { createRoom } from '../../api/routes/roomsRoutes';
 import { showToast } from '../../helper/toast';

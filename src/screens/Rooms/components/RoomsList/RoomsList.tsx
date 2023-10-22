@@ -5,7 +5,7 @@ import { View, FlatList } from 'react-native';
 import { Text } from 'react-native-paper';
 import RoomCard from '../RoomCard/RoomCard';
 import RoomPasswordValidationContainer from '../RoomPasswordValidationContainer/RoomPasswordValidationContainer';
-import Loading from '../../../../components/Loading/Loading';
+import { Loading } from '../../../../components';
 
 import { globalStyles } from '../../../../../global.styles';
 import styles from './RoomsList.styles';
