@@ -4,19 +4,23 @@ import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
+    flex: 2,
     backgroundColor: colors.chetwodeBlue500,
-    marginTop: 70,
-    margin: 15,
-    padding: 15,
-    gap: 10,
+    paddingBottom: 30,
+    gap: 25,
     alignItems: 'center',
-    borderRadius: 15
+    justifyContent: 'center'
   },
-  image: {
-    top: -50
+  imageContainer: {
+    padding: 5
+  },
+  imageIconButton: {
+    backgroundColor: colors.chetwodeBlue800,
+    position: 'absolute',
+    bottom: 0,
+    right: 0
   },
   infoContainer: {
-    marginTop: -40,
     alignItems: 'center'
   },
   text: {

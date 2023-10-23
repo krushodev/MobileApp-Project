@@ -1,14 +1,16 @@
 import { View } from 'react-native';
-import { Title } from '../../components';
 import UserCard from './components/UserCard/UserCard';
+import UserStatsCard from './components/UserStatsCard/UserStatsCard';
 
 import { globalStyles } from '../../../global.styles';
 
 const Profile = () => {
   return (
     <View style={globalStyles.container}>
-      <Title title="Perfil" />
       <UserCard />
+      <View style={globalStyles.container}>
+        <UserStatsCard />
+      </View>
     </View>
   );
 };

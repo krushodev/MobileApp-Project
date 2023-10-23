@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as ImagePicker from 'expo-image-picker';
 
 import { TouchableOpacity, View } from 'react-native';
-import { Text, Avatar } from 'react-native-paper';
+import { Text, Avatar, IconButton } from 'react-native-paper';
 
 import { setUserImage } from '../../../../store/slices/authSlice';
 import { updateImage } from '../../../../api/routes/authRoutes';
@@ -11,6 +11,7 @@ import { showToast } from '../../../../helper/toast';
 
 import { globalStyles } from '../../../../../global.styles';
 import styles from './UserCard.styles';
+import colors from '../../../../constants/colors';
 
 import type { IRootState } from '../../../../store';
 import type { IUser } from '../../../../types';
@@ -45,14 +46,17 @@ const UserCard = () => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={handlePress}>
-        <Avatar.Image style={styles.image} source={{ uri: user.image }} size={100} />
-      </TouchableOpacity>
+      <View style={styles.imageContainer}>
+        <TouchableOpacity onPress={handlePress}>
+          <Avatar.Image source={{ uri: user.image }} size={135} />
+        </TouchableOpacity>
+        <IconButton icon="camera" iconColor={colors.chetwodeBlue100} style={styles.imageIconButton} onPress={handlePress} />
+      </View>
       <View style={styles.infoContainer}>
-        <Text style={[globalStyles.textRegular, styles.text]} variant="headlineMedium">
+        <Text style={[globalStyles.textRegular, styles.text]} variant="headlineLarge">
           {user.username}
         </Text>
-        <Text style={[globalStyles.textRegular, styles.text]} variant="titleMedium">
+        <Text style={[globalStyles.textRegular, styles.text]} variant="titleSmall">
           {user.email}
         </Text>
       </View>
