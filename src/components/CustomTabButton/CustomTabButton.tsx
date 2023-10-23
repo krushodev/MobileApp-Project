@@ -1,4 +1,4 @@
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableHighlight, TouchableOpacity, View } from 'react-native';
 
 import styles from './CustomTabButton.styles';
 
@@ -11,7 +11,7 @@ interface CustomTabButtonProps {
 
 const CustomTabButton = ({ children, onPress }: CustomTabButtonProps) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={onPress}>
       <View style={styles.container}>{children}</View>
     </TouchableOpacity>
   );

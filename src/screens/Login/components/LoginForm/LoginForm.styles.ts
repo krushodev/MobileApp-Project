@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     gap: 25
   },
   inputsContainer: {
-    gap: 25,
+    gap: 8,
     marginBottom: 20
   },
   input: {

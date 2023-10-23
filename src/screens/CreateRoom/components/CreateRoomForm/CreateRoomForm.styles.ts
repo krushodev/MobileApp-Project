@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   inputsContainer: {
-    gap: 20
+    gap: 5
   },
   input: {
     backgroundColor: colors.chetwodeBlue200

@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { randomUUID } from 'expo-crypto';
 
 import { View } from 'react-native';
 import { Text } from 'react-native-paper';
@@ -26,7 +27,7 @@ const UserStatsCard = () => {
   return (
     <View style={styles.container}>
       {stats.map(item => (
-        <View style={styles.statContainer}>
+        <View style={styles.statContainer} key={randomUUID()}>
           <Text variant="titleMedium" style={globalStyles.textRegular}>
             {item.name}
           </Text>

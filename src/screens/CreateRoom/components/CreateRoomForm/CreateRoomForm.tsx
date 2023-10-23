@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import { randomUUID } from 'expo-crypto';
+import * as yup from 'yup';
 
 import { View, ScrollView, KeyboardAvoidingView } from 'react-native';
-import { Chip, Switch, Text, TextInput } from 'react-native-paper';
+import { Chip, HelperText, Switch, Text, TextInput } from 'react-native-paper';
 import { Formik } from 'formik';
 import { Button } from '../../../../components';
 
@@ -21,15 +22,27 @@ interface CreateRoomFormProps {
 const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
   const { navigate } = useNavigation<BottomNavigation>();
 
+  const validationSchema = yup.object({
+    name: yup.string().required('Este campo es obligatorio'),
+    private: yup.boolean().required(),
+    password: yup.string().when('private', {
+      is: true,
+      then: schema => schema.required('Este campo es obligatorio'),
+      otherwise: schema => schema.required('Este campo es obligatorio')
+    }),
+    topics: yup.array().required()
+  });
+
   return (
     <Formik
       initialValues={{ name: '', password: '', private: false, topics: [''] }}
+      validationSchema={validationSchema}
       onSubmit={(values, { resetForm }) => {
         handleSubmit(values);
         resetForm();
       }}
     >
-      {({ handleChange, handleBlur, handleSubmit: submit, values, setFieldValue }) => {
+      {({ handleChange, handleBlur, handleSubmit: submit, values, setFieldValue, errors, touched, handleReset }) => {
         const handleSwitch = () => {
           setFieldValue('private', !values.private);
         };
@@ -49,29 +62,41 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
             <ScrollView contentContainerStyle={[globalStyles.container, styles.formContainer]}>
               <View>
                 <View style={styles.inputsContainer}>
-                  <TextInput
-                    label="Nombre de Room"
-                    onChangeText={handleChange('name')}
-                    onBlur={handleBlur('name')}
-                    value={values.name}
-                    style={styles.input}
-                    theme={{ colors: { primary: colors.chetwodeBlue600 } }}
-                  ></TextInput>
+                  <View>
+                    <TextInput
+                      label="Nombre de Room"
+                      error={errors.name && touched.name ? true : false}
+                      onChangeText={handleChange('name')}
+                      onBlur={handleBlur('name')}
+                      value={values.name}
+                      style={styles.input}
+                      theme={{ colors: { primary: colors.chetwodeBlue600 } }}
+                    ></TextInput>
+                    <HelperText visible={errors.name && touched.name ? true : false} type="error">
+                      {errors.name}
+                    </HelperText>
+                  </View>
                   <View style={styles.privateSelectContainer}>
                     <Text variant="titleMedium" style={globalStyles.textBold}>
                       Room Privada
                     </Text>
                     <Switch value={values.private} onValueChange={handleSwitch} color={colors.chetwodeBlue500} />
                   </View>
-                  <TextInput
-                    label="Contraseña de Room"
-                    onChangeText={handleChange('password')}
-                    onBlur={handleBlur('password')}
-                    value={values.password}
-                    disabled={!values.private}
-                    style={styles.input}
-                    theme={{ colors: { primary: colors.chetwodeBlue600 } }}
-                  ></TextInput>
+                  <View>
+                    <TextInput
+                      label="Contraseña de Room"
+                      error={values.private && errors.password && touched.password ? true : false}
+                      onChangeText={handleChange('password')}
+                      onBlur={handleBlur('password')}
+                      value={values.password}
+                      disabled={!values.private}
+                      style={styles.input}
+                      theme={{ colors: { primary: colors.chetwodeBlue600 } }}
+                    ></TextInput>
+                    <HelperText visible={values.private && errors.password && touched.password ? true : false} type="error">
+                      {errors.password}
+                    </HelperText>
+                  </View>
                   <View style={styles.topicsContainer}>
                     <Text variant="titleMedium" style={globalStyles.textBold}>
                       Topics
@@ -93,7 +118,14 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
               </View>
               <View style={styles.buttonsContainer}>
                 <Button text="Crear" type="primary" onPress={() => submit()} />
-                <Button text="Cancelar" type="secondary" onPress={() => navigate('Home')} />
+                <Button
+                  text="Cancelar"
+                  type="secondary"
+                  onPress={() => {
+                    navigate('Home');
+                    handleReset();
+                  }}
+                />
               </View>
             </ScrollView>
           </KeyboardAvoidingView>
