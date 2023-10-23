@@ -9,5 +9,13 @@ export default {
   chetwodeBlue700: '#6852af',
   chetwodeBlue800: '#574592',
   chetwodeBlue900: '#483a78',
-  chetwodeBlue950: '#2d2451'
+  chetwodeBlue950: '#2d2451',
+  lime600: '#65a30d',
+  zinc400: '#a1a1aa',
+  zinc500: '#71717a',
+  zinc200: '#e4e4e7',
+  zinc950: '#09090b',
+  red600: '#dc2626',
+  sky500: '#0ea5e9',
+  amber600: '#d97706'
 };

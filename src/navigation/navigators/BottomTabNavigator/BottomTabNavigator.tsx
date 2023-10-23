@@ -33,10 +33,10 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="home" size={30} color={focused ? colors.chetwodeBlue900 : colors.chetwodeBlue400} />
+              <Feather name="home" size={30} color={focused ? colors.chetwodeBlue500 : colors.zinc400} />
               <Text
                 variant="bodySmall"
-                style={{ color: focused ? colors.chetwodeBlue900 : colors.chetwodeBlue400, fontWeight: focused ? 'bold' : 'normal' }}
+                style={{ color: focused ? colors.chetwodeBlue500 : colors.zinc400, fontWeight: focused ? 'bold' : 'normal' }}
               >
                 Inicio
               </Text>
@@ -50,10 +50,10 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="message-circle" size={30} color={focused ? colors.chetwodeBlue900 : colors.chetwodeBlue400} />
+              <Feather name="message-circle" size={30} color={focused ? colors.chetwodeBlue500 : colors.zinc400} />
               <Text
                 variant="bodySmall"
-                style={{ color: focused ? colors.chetwodeBlue900 : colors.chetwodeBlue400, fontWeight: focused ? 'bold' : 'normal' }}
+                style={{ color: focused ? colors.chetwodeBlue500 : colors.zinc400, fontWeight: focused ? 'bold' : 'normal' }}
               >
                 Rooms
               </Text>
@@ -78,10 +78,10 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="user" size={30} color={focused ? colors.chetwodeBlue900 : colors.chetwodeBlue400} />
+              <Feather name="user" size={30} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
               <Text
                 variant="bodySmall"
-                style={{ color: focused ? colors.chetwodeBlue900 : colors.chetwodeBlue400, fontWeight: focused ? 'bold' : 'normal' }}
+                style={{ color: focused ? colors.chetwodeBlue500 : colors.zinc400, fontWeight: focused ? 'bold' : 'normal' }}
               >
                 Perfil
               </Text>
@@ -95,10 +95,10 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="settings" size={30} color={focused ? colors.chetwodeBlue900 : colors.chetwodeBlue400} />
+              <Feather name="settings" size={30} color={focused ? colors.chetwodeBlue500 : colors.zinc400} />
               <Text
                 variant="bodySmall"
-                style={{ color: focused ? colors.chetwodeBlue900 : colors.chetwodeBlue400, fontWeight: focused ? 'bold' : 'normal' }}
+                style={{ color: focused ? colors.chetwodeBlue500 : colors.zinc400, fontWeight: focused ? 'bold' : 'normal' }}
               >
                 Ajustes
               </Text>

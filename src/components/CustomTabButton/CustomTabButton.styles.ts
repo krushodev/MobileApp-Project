@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     height: 70,
     borderRadius: 35,
     backgroundColor: colors.chetwodeBlue500,
-    shadowColor: colors.chetwodeBlue950,
+    shadowColor: colors.zinc950,
     shadowOffset: {
       width: 0,
       height: 3
