@@ -2,8 +2,9 @@ import { useNavigation } from '@react-navigation/native';
 import { randomUUID } from 'expo-crypto';
 
 import { View, ScrollView, KeyboardAvoidingView } from 'react-native';
-import { Button, Chip, Switch, Text, TextInput } from 'react-native-paper';
+import { Chip, Switch, Text, TextInput } from 'react-native-paper';
 import { Formik } from 'formik';
+import { Button } from '../../../../components';
 
 import topics from '../../../../global/topics';
 
@@ -54,8 +55,7 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
                     onBlur={handleBlur('name')}
                     value={values.name}
                     style={styles.input}
-                    textColor={colors.chetwodeBlue900}
-                    underlineColor={colors.chetwodeBlue950}
+                    theme={{ colors: { primary: colors.chetwodeBlue600 } }}
                   ></TextInput>
                   <View style={styles.privateSelectContainer}>
                     <Text variant="titleMedium" style={globalStyles.textBold}>
@@ -70,8 +70,7 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
                     value={values.password}
                     disabled={!values.private}
                     style={styles.input}
-                    textColor={colors.chetwodeBlue900}
-                    underlineColor={colors.chetwodeBlue950}
+                    theme={{ colors: { primary: colors.chetwodeBlue600 } }}
                   ></TextInput>
                   <View style={styles.topicsContainer}>
                     <Text variant="titleMedium" style={globalStyles.textBold}>
@@ -93,12 +92,8 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
                 </View>
               </View>
               <View style={styles.buttonsContainer}>
-                <Button textColor={colors.chetwodeBlue50} style={[styles.button, styles.buttonSubmit]} onPress={() => submit()}>
-                  Crear
-                </Button>
-                <Button textColor={colors.chetwodeBlue500} style={[styles.button, styles.buttonCancel]} onPress={() => navigate('Home')}>
-                  Cancelar
-                </Button>
+                <Button text="Crear" type="primary" onPress={() => submit()} />
+                <Button text="Cancelar" type="secondary" onPress={() => navigate('Home')} />
               </View>
             </ScrollView>
           </KeyboardAvoidingView>

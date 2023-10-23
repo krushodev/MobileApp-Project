@@ -2,9 +2,9 @@ import { useNavigation } from '@react-navigation/native';
 
 import { Formik } from 'formik';
 import { View, ScrollView, TouchableOpacity } from 'react-native';
-import { TextInput, Button, Text } from 'react-native-paper';
+import { TextInput, Text } from 'react-native-paper';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Title } from '../../../../components';
+import { Title, Button } from '../../../../components';
 
 import { globalStyles } from '../../../../../global.styles';
 import styles from './LoginForm.styles';
@@ -24,7 +24,7 @@ const LoginForm = ({ handleSubmit }: LoginFormProps) => {
       {({ handleBlur, handleChange, handleSubmit: submit, values }) => (
         <KeyboardAwareScrollView contentContainerStyle={[globalStyles.container, styles.container]}>
           <ScrollView contentContainerStyle={[globalStyles.container, styles.formContainer]}>
-            <Title title="Iniciar sesión" />
+            <Title title="Iniciar sesión" align="center" />
             <View style={styles.inputsContainer}>
               <TextInput
                 label="Email"
@@ -32,8 +32,7 @@ const LoginForm = ({ handleSubmit }: LoginFormProps) => {
                 onBlur={handleBlur('email')}
                 value={values.email}
                 style={styles.input}
-                textColor={colors.chetwodeBlue900}
-                underlineColor={colors.chetwodeBlue950}
+                theme={{ colors: { primary: colors.chetwodeBlue600 } }}
               ></TextInput>
               <TextInput
                 label="Contraseña"
@@ -41,15 +40,12 @@ const LoginForm = ({ handleSubmit }: LoginFormProps) => {
                 onBlur={handleBlur('password')}
                 value={values.password}
                 style={styles.input}
-                textColor={colors.chetwodeBlue900}
-                underlineColor={colors.chetwodeBlue950}
+                theme={{ colors: { primary: colors.chetwodeBlue600 } }}
               ></TextInput>
             </View>
-            <Button textColor={colors.chetwodeBlue100} contentStyle={styles.button} onPress={() => submit()}>
-              Iniciar sesión
-            </Button>
+            <Button text="Iniciar sesión" type="primary" onPress={() => submit()} />
             <View style={styles.redirectContainer}>
-              <Text style={[globalStyles.textBold, styles.redirectText]}>¿No tienes una cuenta?</Text>
+              <Text style={[globalStyles.textRegular, styles.redirectText]}>¿No tienes una cuenta?</Text>
               <TouchableOpacity onPress={() => navigate('Signup')}>
                 <Text style={[globalStyles.textBold, styles.redirectButton]}>Registrarse</Text>
               </TouchableOpacity>

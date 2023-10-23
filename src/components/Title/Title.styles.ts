@@ -7,7 +7,6 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   title: {
-    marginLeft: 15,
     padding: 15
   }
 });

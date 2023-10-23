@@ -4,15 +4,16 @@ import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center'
+    justifyContent: 'center',
+    padding: 20
   },
   formContainer: {
     justifyContent: 'center',
     gap: 25
   },
   inputsContainer: {
-    padding: 20,
-    gap: 25
+    gap: 25,
+    marginBottom: 20
   },
   input: {
     backgroundColor: colors.chetwodeBlue200

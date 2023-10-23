@@ -6,12 +6,16 @@ import { globalStyles } from '../../../global.styles';
 
 interface TitleProps {
   title: string;
+  align?: 'center' | 'left' | 'right';
 }
 
-const Title = ({ title }: TitleProps) => {
+const Title = ({ title, align }: TitleProps) => {
   return (
     <View style={styles.container}>
-      <Text variant="displaySmall" style={[globalStyles.textBold, styles.title]}>
+      <Text
+        variant="displaySmall"
+        style={[globalStyles.textBold, styles.title, { textAlign: align ?? 'left', marginLeft: !align || align === 'left' ? 15 : 0 }]}
+      >
         {title}
       </Text>
     </View>

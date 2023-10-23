@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   topicsContainer: {
-    gap: 15
+    gap: 20
   },
   topicsChipContainer: {
     flexDirection: 'row',
@@ -31,19 +31,7 @@ const styles = StyleSheet.create({
   },
   buttonsContainer: {
     gap: 15,
-    marginBottom: '20%',
-    borderRadius: 15
-  },
-  button: {
-    padding: 8
-  },
-  buttonSubmit: {
-    backgroundColor: colors.chetwodeBlue600
-  },
-  buttonCancel: {
-    borderWidth: 0.3,
-    borderColor: colors.chetwodeBlue600,
-    backgroundColor: colors.chetwodeBlue200
+    marginBottom: '25%'
   }
 });
 

@@ -10,6 +10,5 @@ export const globalStyles = StyleSheet.create({
   },
   textBold: {
     fontFamily: 'Roboto_700Bold'
-  },
-  button: {}
+  }
 });

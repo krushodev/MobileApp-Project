@@ -1,10 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 
 import { TouchableOpacity, View, ScrollView } from 'react-native';
-import { TextInput, Button, Text } from 'react-native-paper';
+import { TextInput, Text } from 'react-native-paper';
 import { Formik } from 'formik';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { Title } from '../../../../components';
+import { Title, Button } from '../../../../components';
 
 import { globalStyles } from '../../../../../global.styles';
 import styles from './SignupForm.styles';
@@ -29,7 +29,7 @@ const SignupForm = ({ handleSubmit }: SignupFormProps) => {
       {({ handleChange, handleBlur, handleSubmit: submit, values }) => (
         <KeyboardAwareScrollView contentContainerStyle={[globalStyles.container, styles.container]}>
           <ScrollView contentContainerStyle={[globalStyles.container, styles.formContainer]}>
-            <Title title="Registrarse" />
+            <Title title="Registrarse" align="center" />
             <View style={styles.inputsContainer}>
               <TextInput
                 label="Nombre de usuario"
@@ -37,8 +37,7 @@ const SignupForm = ({ handleSubmit }: SignupFormProps) => {
                 onBlur={handleBlur('username')}
                 value={values.username}
                 style={styles.input}
-                textColor={colors.chetwodeBlue900}
-                underlineColor={colors.chetwodeBlue950}
+                theme={{ colors: { primary: colors.chetwodeBlue600 } }}
               ></TextInput>
               <TextInput
                 label="Email"
@@ -46,8 +45,7 @@ const SignupForm = ({ handleSubmit }: SignupFormProps) => {
                 onBlur={handleBlur('email')}
                 value={values.email}
                 style={styles.input}
-                textColor={colors.chetwodeBlue900}
-                underlineColor={colors.chetwodeBlue950}
+                theme={{ colors: { primary: colors.chetwodeBlue600 } }}
               ></TextInput>
               <TextInput
                 label="Contraseña"
@@ -55,15 +53,12 @@ const SignupForm = ({ handleSubmit }: SignupFormProps) => {
                 onBlur={handleBlur('password')}
                 value={values.password}
                 style={styles.input}
-                textColor={colors.chetwodeBlue900}
-                underlineColor={colors.chetwodeBlue950}
+                theme={{ colors: { primary: colors.chetwodeBlue600 } }}
               ></TextInput>
             </View>
-            <Button textColor="white" contentStyle={styles.button} onPress={() => submit()}>
-              Registrarse
-            </Button>
+            <Button text="Registrarse" type="primary" onPress={() => submit()} />
             <View style={styles.redirectContainer}>
-              <Text style={[globalStyles.textBold, styles.redirectText]}>¿Ya tienes una cuenta?</Text>
+              <Text style={[globalStyles.textRegular, styles.redirectText]}>¿Ya tienes una cuenta?</Text>
               <TouchableOpacity onPress={() => navigate('Login')}>
                 <Text style={[globalStyles.textBold, styles.redirectButton]}>Iniciar sesión</Text>
               </TouchableOpacity>

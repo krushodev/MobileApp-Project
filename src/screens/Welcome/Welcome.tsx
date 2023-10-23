@@ -1,13 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 
 import { View, Image } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Button } from '../../components';
 
 import Logo from '../../assets/images/logo_small.png';
 
 import { globalStyles } from '../../../global.styles';
 import styles from './Welcome.styles';
-import colors from '../../constants/colors';
 
 import type { StackNavigation } from '../../navigation/types';
 
@@ -26,12 +25,8 @@ const Welcome = () => {
         />
       </View>
       <View style={[globalStyles.container, styles.buttonsContainer]}>
-        <Button textColor={colors.chetwodeBlue50} style={[styles.button, styles.buttonLogin]} onPress={() => navigate('Login')}>
-          Login
-        </Button>
-        <Button textColor={colors.chetwodeBlue500} style={[styles.button, styles.buttonSignup]} onPress={() => navigate('Signup')}>
-          Registrarse
-        </Button>
+        <Button text="Iniciar sesión" type="primary" onPress={() => navigate('Login')} />
+        <Button text="Registrarse" type="secondary" onPress={() => navigate('Signup')} />
       </View>
     </View>
   );
