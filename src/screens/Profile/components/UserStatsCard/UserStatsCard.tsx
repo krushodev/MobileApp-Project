@@ -28,12 +28,8 @@ const UserStatsCard = () => {
     <View style={styles.container}>
       {stats.map(item => (
         <View style={styles.statContainer} key={randomUUID()}>
-          <Text variant="titleMedium" style={globalStyles.textRegular}>
-            {item.name}
-          </Text>
-          <Text variant="titleMedium" style={[globalStyles.textBold, styles.statData]}>
-            {item.data}
-          </Text>
+          <Text style={[globalStyles.textRegular, styles.statName]}>{item.name}</Text>
+          <Text style={[globalStyles.textBold, styles.statData]}>{item.data}</Text>
         </View>
       ))}
     </View>

@@ -1,7 +1,7 @@
 import DrawerChatContent from './DrawerChatContent/DrawerChatContent';
-import Message from './Message/Message';
+import MessageCard from './MessageCard/MessageCard';
 import MessageForm from './MessageForm/MessageForm';
 import MessageList from './MessageList/MessageList';
 import MemberCard from './MemberCard/MemberCard';
 
-export { DrawerChatContent, Message, MessageForm, MessageList, MemberCard };
+export { DrawerChatContent, MessageCard, MessageForm, MessageList, MemberCard };

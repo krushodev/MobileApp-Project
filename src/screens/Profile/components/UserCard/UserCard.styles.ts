@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import colors from '../../../../constants/colors';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,8 +24,13 @@ const styles = StyleSheet.create({
   infoContainer: {
     alignItems: 'center'
   },
-  text: {
-    color: colors.chetwodeBlue200
+  usernameText: {
+    color: colors.chetwodeBlue200,
+    fontSize: responsiveFontSize(4.5)
+  },
+  emailText: {
+    color: colors.chetwodeBlue200,
+    fontSize: responsiveFontSize(2)
   },
   locationContainer: {
     flexDirection: 'row',

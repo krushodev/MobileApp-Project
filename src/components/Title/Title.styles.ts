@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { responsiveFontSize, responsiveScreenWidth } from 'react-native-responsive-dimensions';
 
 const styles = StyleSheet.create({
   container: {
@@ -7,6 +8,7 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   title: {
+    fontSize: responsiveFontSize(4.2),
     padding: 15
   }
 });

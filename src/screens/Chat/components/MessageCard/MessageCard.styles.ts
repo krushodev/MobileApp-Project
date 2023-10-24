@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import colors from '../../../../constants/colors';
+import { responsiveFontSize, responsiveWidth } from 'react-native-responsive-dimensions';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 12,
     gap: 12,
-    width: '70%'
+    width: responsiveWidth(57)
   },
   senderInfoContainer: {
     backgroundColor: colors.chetwodeBlue200,
@@ -32,16 +33,20 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 15
   },
   senderName: {
-    color: colors.chetwodeBlue600
+    color: colors.chetwodeBlue600,
+    fontSize: responsiveFontSize(2)
   },
   receiverName: {
-    color: colors.chetwodeBlue400
+    color: colors.chetwodeBlue400,
+    fontSize: responsiveFontSize(2)
   },
   senderText: {
-    color: colors.chetwodeBlue950
+    color: colors.chetwodeBlue950,
+    fontSize: responsiveFontSize(1.7)
   },
   receiverText: {
-    color: colors.chetwodeBlue100
+    color: colors.chetwodeBlue100,
+    fontSize: responsiveFontSize(1.7)
   }
 });
 

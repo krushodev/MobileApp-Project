@@ -1,4 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import { Home, Rooms, Settings, CreateRoom, Profile } from '../../../screens';
 
@@ -7,6 +8,7 @@ import { Text } from 'react-native-paper';
 import { Feather } from '@expo/vector-icons';
 import { CustomTabButton } from '../../../components';
 
+import { globalStyles } from '../../../../global.styles';
 import styles from './BottomTabNavigator.styles';
 import colors from '../../../constants/colors';
 
@@ -33,10 +35,15 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="home" size={30} color={focused ? colors.chetwodeBlue500 : colors.zinc400} />
+              <Feather name="home" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue500 : colors.zinc400} />
               <Text
-                variant="bodySmall"
-                style={{ color: focused ? colors.chetwodeBlue500 : colors.zinc400, fontWeight: focused ? 'bold' : 'normal' }}
+                style={[
+                  focused ? globalStyles.textBold : globalStyles.textRegular,
+                  styles.tabBarLabel,
+                  {
+                    color: focused ? colors.chetwodeBlue500 : colors.zinc400
+                  }
+                ]}
               >
                 Inicio
               </Text>
@@ -50,10 +57,15 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="message-circle" size={30} color={focused ? colors.chetwodeBlue500 : colors.zinc400} />
+              <Feather name="message-circle" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue500 : colors.zinc400} />
               <Text
-                variant="bodySmall"
-                style={{ color: focused ? colors.chetwodeBlue500 : colors.zinc400, fontWeight: focused ? 'bold' : 'normal' }}
+                style={[
+                  focused ? globalStyles.textBold : globalStyles.textRegular,
+                  styles.tabBarLabel,
+                  {
+                    color: focused ? colors.chetwodeBlue500 : colors.zinc400
+                  }
+                ]}
               >
                 Rooms
               </Text>
@@ -65,7 +77,7 @@ function BottomTabNavigator() {
         name="CreateRoom"
         component={CreateRoom}
         options={{
-          tabBarIcon: () => <Feather name="plus" color="white" size={30} />,
+          tabBarIcon: () => <Feather name="plus" color="white" size={responsiveFontSize(4)} />,
           tabBarButton: props => <CustomTabButton {...props} />,
           tabBarStyle: {
             display: 'none'
@@ -78,10 +90,15 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="user" size={30} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
+              <Feather name="user" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
               <Text
-                variant="bodySmall"
-                style={{ color: focused ? colors.chetwodeBlue500 : colors.zinc400, fontWeight: focused ? 'bold' : 'normal' }}
+                style={[
+                  focused ? globalStyles.textBold : globalStyles.textRegular,
+                  styles.tabBarLabel,
+                  {
+                    color: focused ? colors.chetwodeBlue500 : colors.zinc400
+                  }
+                ]}
               >
                 Perfil
               </Text>
@@ -95,10 +112,15 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="settings" size={30} color={focused ? colors.chetwodeBlue500 : colors.zinc400} />
+              <Feather name="settings" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue500 : colors.zinc400} />
               <Text
-                variant="bodySmall"
-                style={{ color: focused ? colors.chetwodeBlue500 : colors.zinc400, fontWeight: focused ? 'bold' : 'normal' }}
+                style={[
+                  focused ? globalStyles.textBold : globalStyles.textRegular,
+                  styles.tabBarLabel,
+                  {
+                    color: focused ? colors.chetwodeBlue500 : colors.zinc400
+                  }
+                ]}
               >
                 Ajustes
               </Text>

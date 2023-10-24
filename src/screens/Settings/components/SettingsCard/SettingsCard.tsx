@@ -3,6 +3,7 @@ import { IconButton, Text } from 'react-native-paper';
 
 import { globalStyles } from '../../../../../global.styles';
 import styles from './SettingsCard.styles';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 interface SettingsCardProps {
   title: string;
@@ -14,12 +15,10 @@ const SettingsCard = ({ title, icon }: SettingsCardProps) => {
     <TouchableOpacity>
       <View style={styles.container}>
         <View style={styles.infoContainer}>
-          <IconButton icon={icon} size={30} />
-          <Text variant="titleMedium" style={globalStyles.textRegular}>
-            {title}
-          </Text>
+          <IconButton icon={icon} size={responsiveFontSize(4)} />
+          <Text style={[globalStyles.textRegular, styles.infoText]}>{title}</Text>
         </View>
-        <IconButton icon="arrow-right" size={30} />
+        <IconButton icon="arrow-right" size={responsiveFontSize(4)} />
       </View>
     </TouchableOpacity>
   );

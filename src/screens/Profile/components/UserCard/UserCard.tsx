@@ -15,6 +15,7 @@ import colors from '../../../../constants/colors';
 
 import type { IRootState } from '../../../../store';
 import type { IUser } from '../../../../types';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 const UserCard = () => {
   const dispatch = useDispatch();
@@ -48,17 +49,19 @@ const UserCard = () => {
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         <TouchableOpacity onPress={handlePress}>
-          <Avatar.Image source={{ uri: user.image }} size={135} />
+          <Avatar.Image source={{ uri: user.image }} size={responsiveFontSize(20)} />
         </TouchableOpacity>
-        <IconButton icon="camera" iconColor={colors.chetwodeBlue100} style={styles.imageIconButton} onPress={handlePress} />
+        <IconButton
+          icon="camera"
+          size={responsiveFontSize(3.5)}
+          iconColor={colors.chetwodeBlue100}
+          style={styles.imageIconButton}
+          onPress={handlePress}
+        />
       </View>
       <View style={styles.infoContainer}>
-        <Text style={[globalStyles.textRegular, styles.text]} variant="headlineLarge">
-          {user.username}
-        </Text>
-        <Text style={[globalStyles.textRegular, styles.text]} variant="titleSmall">
-          {user.email}
-        </Text>
+        <Text style={[globalStyles.textRegular, styles.usernameText]}>{user.username}</Text>
+        <Text style={[globalStyles.textRegular, styles.emailText]}>{user.email}</Text>
       </View>
     </View>
   );

@@ -1,4 +1,4 @@
-import { TouchableHighlight, TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 
 import styles from './CustomTabButton.styles';
 

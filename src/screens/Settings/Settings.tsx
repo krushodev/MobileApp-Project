@@ -3,8 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { randomUUID } from 'expo-crypto';
 
 import { View } from 'react-native';
-import { Button } from 'react-native-paper';
-import { Title } from '../../components';
+import { Title, Button } from '../../components';
 import SettingsCard from './components/SettingsCard/SettingsCard';
 
 import settingsList from '../../global/settings';
@@ -26,15 +25,13 @@ const Settings = () => {
   return (
     <View style={globalStyles.container}>
       <Title title="Ajustes" />
-      <View style={[globalStyles.container, styles.optionsContainer]}>
-        <View>
+      <View style={styles.optionsContainer}>
+        <View style={styles.cardsContainer}>
           {settingsList.map(item => (
             <SettingsCard key={randomUUID()} title={item.name} icon={item.icon} />
           ))}
         </View>
-        <Button icon="logout" style={styles.button} textColor="white" onPress={handleClick}>
-          Cerrar sesión
-        </Button>
+        <Button text="Cerrar sesión" type="primary" />
       </View>
     </View>
   );

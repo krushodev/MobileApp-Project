@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
+
 import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: '-12%',
+    marginTop: responsiveFontSize(-7),
     marginHorizontal: 15,
     borderRadius: 15,
     backgroundColor: colors.chetwodeBlue50,
@@ -21,10 +23,15 @@ const styles = StyleSheet.create({
   },
   statContainer: {
     padding: 10,
-    alignItems: 'center'
+    alignItems: 'center',
+    gap: 8
+  },
+  statName: {
+    fontSize: responsiveFontSize(2.2)
   },
   statData: {
-    color: colors.chetwodeBlue600
+    color: colors.chetwodeBlue600,
+    fontSize: responsiveFontSize(2.2)
   }
 });
 

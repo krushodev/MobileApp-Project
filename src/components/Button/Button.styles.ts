@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import colors from '../../constants/colors';
 
@@ -6,22 +7,25 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingVertical: 15,
+    paddingVertical: responsiveFontSize(2.2),
     borderRadius: 15
   },
   buttonPrimary: {
-    backgroundColor: colors.chetwodeBlue600
+    backgroundColor: colors.chetwodeBlue500
   },
   buttonSecondary: {
     borderWidth: 0.5,
-    borderColor: colors.chetwodeBlue600,
+    borderColor: colors.chetwodeBlue500,
     backgroundColor: colors.chetwodeBlue200
   },
-  contentPrimary: {
+  text: {
+    fontSize: responsiveFontSize(2)
+  },
+  textPrimary: {
     color: colors.chetwodeBlue50
   },
-  contentSecondary: {
-    color: colors.chetwodeBlue600
+  textSecondary: {
+    color: colors.chetwodeBlue500
   }
 });
 

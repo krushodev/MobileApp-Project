@@ -1,4 +1,6 @@
 import { StyleSheet } from 'react-native';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
+
 import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
@@ -8,6 +10,9 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     alignItems: 'center'
+  },
+  featureText: {
+    fontSize: responsiveFontSize(3)
   },
   usernameText: {
     color: colors.chetwodeBlue500

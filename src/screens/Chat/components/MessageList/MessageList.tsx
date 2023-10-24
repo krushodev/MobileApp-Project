@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 
 import { FlatList, View } from 'react-native';
-import Message from '../Message/Message';
+import Message from '../MessageCard/MessageCard';
 
 import { globalStyles } from '../../../../../global.styles';
 import styles from './MessageList.styles';

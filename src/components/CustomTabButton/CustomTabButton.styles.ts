@@ -1,12 +1,13 @@
 import { StyleSheet } from 'react-native';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    width: 70,
-    height: 70,
-    borderRadius: 35,
+    width: responsiveFontSize(10),
+    height: responsiveFontSize(10),
+    borderRadius: 50,
     backgroundColor: colors.chetwodeBlue500,
     shadowColor: colors.zinc950,
     shadowOffset: {

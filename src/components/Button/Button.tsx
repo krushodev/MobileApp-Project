@@ -24,10 +24,7 @@ const Button = ({ text, type, style, contentStyle, onPress, onPressIn, onPressOu
       onPressOut={onPressOut}
       onLongPress={onLongPress}
     >
-      <Text
-        variant="bodyLarge"
-        style={[globalStyles.textRegular, type === 'primary' ? styles.contentPrimary : styles.contentSecondary, contentStyle]}
-      >
+      <Text style={[globalStyles.textRegular, styles.text, type === 'primary' ? styles.textPrimary : styles.textSecondary, contentStyle]}>
         {text}
       </Text>
     </TouchableOpacity>

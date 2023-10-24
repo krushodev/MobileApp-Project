@@ -12,10 +12,7 @@ interface TitleProps {
 const Title = ({ title, align }: TitleProps) => {
   return (
     <View style={styles.container}>
-      <Text
-        variant="displaySmall"
-        style={[globalStyles.textBold, styles.title, { textAlign: align ?? 'left', marginLeft: !align || align === 'left' ? 15 : 0 }]}
-      >
+      <Text style={[globalStyles.textBold, styles.title, { textAlign: align ?? 'left', marginLeft: !align || align === 'left' ? 15 : 0 }]}>
         {title}
       </Text>
     </View>
