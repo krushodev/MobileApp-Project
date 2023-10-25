@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import type { IUser } from '../../types';
 
-interface AuthStateProps {
+export interface AuthStateProps {
   user: IUser | null;
   isActive: boolean;
   accessToken: string | null;

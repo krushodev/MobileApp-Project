@@ -1,8 +1,15 @@
+import { useDispatch } from 'react-redux';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import BottomTabNavigator from '../BottomTabNavigator/BottomTabNavigator';
 
 import { Chat, Rooms } from '../../../screens';
+
+import { IconButton } from 'react-native-paper';
+
+import { toggleDrawer } from '../../../store/slices/drawerSlice';
+
+import colors from '../../../constants/colors';
 
 import type { RootStackParamList } from '../../types';
 
@@ -11,6 +18,7 @@ type screens = ['HomeScreen', 'RoomsScreen', 'ChatScreen'];
 const Stack = createNativeStackNavigator<RootStackParamList<screens>>();
 
 const StackNavigator = () => {
+  const dispatch = useDispatch();
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="HomeScreen" component={BottomTabNavigator} />
@@ -24,7 +32,10 @@ const StackNavigator = () => {
 
             return {
               headerShown: true,
-              title: params.title ? params.title : 'Room'
+              title: params.title ? params.title : 'Room',
+              headerRight: () => (
+                <IconButton icon="account-group" iconColor={colors.chetwodeBlue700} onPress={() => dispatch(toggleDrawer())} size={30} />
+              )
             };
           }}
         />

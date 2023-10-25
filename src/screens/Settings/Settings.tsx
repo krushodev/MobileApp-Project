@@ -16,7 +16,7 @@ import styles from './Settings.styles';
 const Settings = () => {
   const dispatch = useDispatch();
 
-  const handleClick = async () => {
+  const handlePress = async () => {
     await AsyncStorage.removeItem('token');
     dispatch(removeUser());
     showToast({ message: 'Has cerrado sesión', type: 'info' });
@@ -31,7 +31,7 @@ const Settings = () => {
             <SettingsCard key={randomUUID()} title={item.name} icon={item.icon} />
           ))}
         </View>
-        <Button text="Cerrar sesión" type="primary" />
+        <Button text="Cerrar sesión" type="primary" onPress={() => handlePress()} />
       </View>
     </View>
   );
