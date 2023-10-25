@@ -1,17 +1,25 @@
 import { StyleSheet } from 'react-native';
 
+import colors from '../../../../constants/colors';
+
 const styles = StyleSheet.create({
   container: {
-    gap: 15,
     flexDirection: 'row',
-    alignItems: 'center',
-    padding: 10
+    gap: 12,
+    padding: 8,
+    backgroundColor: colors.chetwodeBlue100
+  },
+  formContainer: {
+    flex: 4,
+    gap: 5,
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   input: {
     flex: 1,
-    paddingVertical: 3,
     borderRadius: 15,
-    borderWidth: 0
+    borderWidth: 0,
+    backgroundColor: colors.chetwodeBlue100
   }
 });
 

@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 
 import { FlatList, View } from 'react-native';
-import Message from '../MessageCard/MessageCard';
+import MessageCard from '../MessageCard/MessageCard';
 
 import { globalStyles } from '../../../../../global.styles';
 import styles from './MessageList.styles';
@@ -22,16 +22,15 @@ const MessageList = ({ messagesList }: MessageListProps) => {
   };
 
   return (
-    <View style={globalStyles.container}>
-      <View style={[styles.listContainer, globalStyles.container]}>
-        <FlatList
-          ref={listViewRef}
-          data={messagesList}
-          onContentSizeChange={handleScroll}
-          renderItem={({ item }) => <Message data={item} />}
-          keyExtractor={item => item.id}
-        />
-      </View>
+    <View style={[styles.listContainer, globalStyles.container]}>
+      <FlatList
+        ref={listViewRef}
+        data={messagesList}
+        onContentSizeChange={handleScroll}
+        onLayout={handleScroll}
+        renderItem={({ item }) => <MessageCard data={item} />}
+        keyExtractor={item => item.id}
+      />
     </View>
   );
 };
