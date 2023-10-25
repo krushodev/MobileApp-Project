@@ -21,17 +21,15 @@ interface RoomPasswordValidationContainerProps {
 }
 
 const RoomPasswordValidationContainer = ({ isVisible, hideModal, roomSelected }: RoomPasswordValidationContainerProps) => {
-  const [inputValue, setInputValue] = useState('');
   const { navigate } = useNavigation<StackNavigation>();
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const user = useSelector<IRootState>(state => state.auth.user);
 
-  const handleSubmit = async () => {
-    const validation = inputValue === roomSelected.password;
+  const handleSubmit = async (values: { password: string }) => {
+    const validation = values.password === roomSelected.password;
 
     if (!validation) {
-      hideModal();
       showToast({ message: 'Contraseña de Room incorrecta', type: 'error' });
       return;
     }
@@ -53,7 +51,7 @@ const RoomPasswordValidationContainer = ({ isVisible, hideModal, roomSelected }:
 
   return (
     <Modal isVisible={isVisible} onClose={hideModal}>
-      <RoomPasswordValidationModalContent setInputValue={setInputValue} handleSubmit={handleSubmit} />
+      <RoomPasswordValidationModalContent hideModal={hideModal} handleSubmit={handleSubmit} />
     </Modal>
   );
 };

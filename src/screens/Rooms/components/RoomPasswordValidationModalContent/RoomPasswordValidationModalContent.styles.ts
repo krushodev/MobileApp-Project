@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import colors from '../../../../constants/colors';
 
@@ -7,21 +8,21 @@ const styles = StyleSheet.create({
     height: '100%'
   },
   title: {
-    padding: 15,
-    textAlign: 'center'
+    padding: 30,
+    textAlign: 'center',
+    fontSize: responsiveFontSize(3)
   },
   formContainer: {
     padding: 20,
-    gap: 20,
-    justifyContent: 'space-evenly'
+    gap: 25,
+    justifyContent: 'space-between'
   },
   input: {
-    backgroundColor: colors.chetwodeBlue200
+    backgroundColor: colors.chetwodeBlue200,
+    fontSize: responsiveFontSize(2)
   },
-  button: {
-    padding: 10,
-    backgroundColor: '#c3c3c3',
-    margin: 10
+  buttonsContainer: {
+    gap: 12
   }
 });
 
