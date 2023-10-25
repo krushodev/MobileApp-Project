@@ -6,6 +6,7 @@ import * as yup from 'yup';
 
 import styles from './MessageForm.styles';
 import colors from '../../../../constants/colors';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 interface MessageFormProps {
   handleSubmit: (values: { message: string }) => void;
@@ -28,7 +29,7 @@ const MessageForm = ({ handleSubmit }: MessageFormProps) => {
       {({ handleBlur, handleSubmit: submit, handleChange, values }) => (
         <View style={styles.container}>
           <View style={styles.formContainer}>
-            <ToggleButton size={30} icon="emoticon-happy-outline" iconColor={colors.chetwodeBlue700} />
+            <ToggleButton size={responsiveFontSize(3.5)} icon="emoticon-happy-outline" iconColor={colors.chetwodeBlue700} />
             <TextInput
               onChangeText={handleChange('message')}
               onBlur={handleBlur('message')}
@@ -44,13 +45,13 @@ const MessageForm = ({ handleSubmit }: MessageFormProps) => {
 
             <ToggleButton
               style={{ display: !values.message ? 'flex' : 'none' }}
-              size={30}
+              size={responsiveFontSize(3.5)}
               icon="link-variant"
               iconColor={colors.chetwodeBlue700}
             />
             <ToggleButton
               style={{ display: !values.message ? 'flex' : 'none' }}
-              size={30}
+              size={responsiveFontSize(3.5)}
               icon="camera"
               iconColor={colors.chetwodeBlue700}
             />
@@ -59,7 +60,7 @@ const MessageForm = ({ handleSubmit }: MessageFormProps) => {
                 display: values.message ? 'flex' : 'none'
               }}
               onPress={() => submit()}
-              size={35}
+              size={responsiveFontSize(4)}
               icon="send"
               iconColor={colors.chetwodeBlue700}
             />

@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import { randomUUID } from 'expo-crypto';
 import * as yup from 'yup';
 
-import { View, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { View } from 'react-native';
 import { Chip, HelperText, Switch, Text, TextInput } from 'react-native-paper';
 import { Formik } from 'formik';
 import { Button } from '../../../../components';
@@ -58,77 +58,72 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
         };
 
         return (
-          <KeyboardAvoidingView style={[globalStyles.container, styles.container]}>
-            <ScrollView contentContainerStyle={[globalStyles.container, styles.formContainer]}>
-              <View>
-                <View style={styles.inputsContainer}>
-                  <View>
-                    <TextInput
-                      label="Nombre de Room"
-                      error={errors.name && touched.name ? true : false}
-                      onChangeText={handleChange('name')}
-                      onBlur={handleBlur('name')}
-                      value={values.name}
-                      style={styles.input}
-                      theme={{ colors: { primary: colors.chetwodeBlue600 } }}
-                    ></TextInput>
-                    <HelperText visible={errors.name && touched.name ? true : false} type="error">
-                      {errors.name}
-                    </HelperText>
-                  </View>
-                  <View style={styles.privateSelectContainer}>
-                    <Text variant="titleMedium" style={globalStyles.textBold}>
-                      Room Privada
-                    </Text>
-                    <Switch value={values.private} onValueChange={handleSwitch} color={colors.chetwodeBlue500} />
-                  </View>
-                  <View>
-                    <TextInput
-                      label="Contraseña de Room"
-                      error={values.private && errors.password && touched.password ? true : false}
-                      onChangeText={handleChange('password')}
-                      onBlur={handleBlur('password')}
-                      value={values.password}
-                      disabled={!values.private}
-                      style={styles.input}
-                      theme={{ colors: { primary: colors.chetwodeBlue600 } }}
-                    ></TextInput>
-                    <HelperText visible={values.private && errors.password && touched.password ? true : false} type="error">
-                      {errors.password}
-                    </HelperText>
-                  </View>
-                  <View style={styles.topicsContainer}>
-                    <Text variant="titleMedium" style={globalStyles.textBold}>
-                      Topics
-                    </Text>
-                    <View style={styles.topicsChipContainer}>
-                      {topics.map(topic => (
-                        <Chip
-                          style={{ backgroundColor: values.topics.includes(topic) ? colors.chetwodeBlue500 : colors.chetwodeBlue200 }}
-                          onPress={() => handleChip(topic)}
-                          key={randomUUID()}
-                          selectedColor={values.topics.includes(topic) ? colors.chetwodeBlue100 : colors.chetwodeBlue500}
-                        >
-                          {topic}
-                        </Chip>
-                      ))}
-                    </View>
+          <View style={styles.container}>
+            <View>
+              <View style={styles.inputsContainer}>
+                <View>
+                  <TextInput
+                    label="Nombre de Room"
+                    error={errors.name && touched.name ? true : false}
+                    onChangeText={handleChange('name')}
+                    onBlur={handleBlur('name')}
+                    value={values.name}
+                    style={styles.input}
+                    theme={{ colors: { primary: colors.chetwodeBlue600 } }}
+                  ></TextInput>
+                  <HelperText visible={errors.name && touched.name ? true : false} type="error">
+                    {errors.name}
+                  </HelperText>
+                </View>
+                <View style={styles.privateSelectContainer}>
+                  <Text style={[globalStyles.textBold, styles.privateSelectText]}>Room Privada</Text>
+                  <Switch value={values.private} onValueChange={handleSwitch} color={colors.chetwodeBlue500} />
+                </View>
+                <View>
+                  <TextInput
+                    label="Contraseña de Room"
+                    error={values.private && errors.password && touched.password ? true : false}
+                    onChangeText={handleChange('password')}
+                    onBlur={handleBlur('password')}
+                    value={values.password}
+                    disabled={!values.private}
+                    style={styles.input}
+                    theme={{ colors: { primary: colors.chetwodeBlue600 } }}
+                  ></TextInput>
+                  <HelperText visible={values.private && errors.password && touched.password ? true : false} type="error">
+                    {errors.password}
+                  </HelperText>
+                </View>
+                <View style={styles.topicsContainer}>
+                  <Text style={[globalStyles.textBold, styles.topicText]}>Topics</Text>
+                  <View style={styles.topicsChipContainer}>
+                    {topics.map(topic => (
+                      <Chip
+                        style={{ backgroundColor: values.topics.includes(topic) ? colors.chetwodeBlue500 : colors.chetwodeBlue200 }}
+                        textStyle={styles.chipText}
+                        onPress={() => handleChip(topic)}
+                        key={randomUUID()}
+                        selectedColor={values.topics.includes(topic) ? colors.chetwodeBlue100 : colors.chetwodeBlue500}
+                      >
+                        {topic}
+                      </Chip>
+                    ))}
                   </View>
                 </View>
               </View>
-              <View style={styles.buttonsContainer}>
-                <Button text="Crear" type="primary" onPress={() => submit()} />
-                <Button
-                  text="Cancelar"
-                  type="secondary"
-                  onPress={() => {
-                    navigate('Home');
-                    handleReset();
-                  }}
-                />
-              </View>
-            </ScrollView>
-          </KeyboardAvoidingView>
+            </View>
+            <View style={styles.buttonsContainer}>
+              <Button text="Crear" type="primary" onPress={() => submit()} />
+              <Button
+                text="Cancelar"
+                type="secondary"
+                onPress={() => {
+                  navigate('Home');
+                  handleReset();
+                }}
+              />
+            </View>
+          </View>
         );
       }}
     </Formik>

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import colors from '../../../../constants/colors';
 
@@ -6,7 +7,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.chetwodeBlue200,
     paddingVertical: 8,
-    paddingHorizontal: 15,
+    paddingHorizontal: 12,
     margin: 10,
     borderRadius: 12,
     flexDirection: 'row',
@@ -16,6 +17,9 @@ const styles = StyleSheet.create({
   memberContainer: {
     flexDirection: 'row',
     alignItems: 'center'
+  },
+  text: {
+    fontSize: responsiveFontSize(1.8)
   }
 });
 

@@ -12,6 +12,7 @@ import { toggleDrawer } from '../../../store/slices/drawerSlice';
 import colors from '../../../constants/colors';
 
 import type { RootStackParamList } from '../../types';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 type screens = ['HomeScreen', 'RoomsScreen', 'ChatScreen'];
 
@@ -34,7 +35,12 @@ const StackNavigator = () => {
               headerShown: true,
               title: params.title ? params.title : 'Room',
               headerRight: () => (
-                <IconButton icon="account-group" iconColor={colors.chetwodeBlue700} onPress={() => dispatch(toggleDrawer())} size={30} />
+                <IconButton
+                  icon="account-group"
+                  iconColor={colors.chetwodeBlue700}
+                  onPress={() => dispatch(toggleDrawer())}
+                  size={responsiveFontSize(4)}
+                />
               )
             };
           }}

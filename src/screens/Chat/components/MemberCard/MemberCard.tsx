@@ -1,3 +1,5 @@
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
+
 import { View } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 
@@ -14,12 +16,10 @@ const MemberCard = ({ user }: MemberCardProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.memberContainer}>
-        <IconButton icon="circle" iconColor="green" size={10} />
-        <Text variant="titleMedium" style={globalStyles.textRegular}>
-          {user.username}
-        </Text>
+        <IconButton icon="circle" iconColor="green" size={responsiveFontSize(1.5)} />
+        <Text style={[globalStyles.textRegular, styles.text]}>{user.username}</Text>
       </View>
-      <Text style={globalStyles.textRegular}>Online</Text>
+      <Text style={[globalStyles.textBold, styles.text]}>online</Text>
     </View>
   );
 };

@@ -14,9 +14,7 @@ interface DrawerChatContentProps {
 const DrawerChatContent = ({ room }: DrawerChatContentProps) => {
   return (
     <View style={globalStyles.container}>
-      <Text variant="titleLarge" style={[styles.text, globalStyles.textRegular]}>
-        Miembros
-      </Text>
+      <Text style={[styles.text, globalStyles.textRegular]}>Miembros</Text>
       <FlatList
         style={styles.membersList}
         data={room?.members}
