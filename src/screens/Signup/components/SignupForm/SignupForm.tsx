@@ -84,14 +84,14 @@ const SignupForm = ({ handleSubmit }: SignupFormProps) => {
             </View>
             <Button text="Registrarse" type="primary" onPress={() => submit()} />
             <View style={styles.redirectContainer}>
-              <Text style={[globalStyles.textRegular, styles.redirectText]}>¿Ya tienes una cuenta?</Text>
+              <Text style={[globalStyles.textRegular, styles.text, styles.redirectText]}>¿Ya tienes una cuenta?</Text>
               <TouchableOpacity
                 onPress={() => {
                   navigate('Login');
                   handleReset();
                 }}
               >
-                <Text style={[globalStyles.textBold, styles.redirectButton]}>Iniciar sesión</Text>
+                <Text style={[globalStyles.textBold, styles.text, styles.redirectButtonText]}>Iniciar sesión</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>

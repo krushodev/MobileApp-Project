@@ -63,9 +63,9 @@ const LoginForm = ({ handleSubmit }: LoginFormProps) => {
             </View>
             <Button text="Iniciar sesión" type="primary" onPress={() => submit()} />
             <View style={styles.redirectContainer}>
-              <Text style={[globalStyles.textRegular, styles.redirectText]}>¿No tienes una cuenta?</Text>
+              <Text style={[globalStyles.textRegular, styles.text, styles.redirectText]}>¿No tienes una cuenta?</Text>
               <TouchableOpacity onPress={() => navigate('Signup')}>
-                <Text style={[globalStyles.textBold, styles.redirectButton]}>Registrarse</Text>
+                <Text style={[globalStyles.textBold, styles.text, styles.redirectButtonText]}>Registrarse</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>

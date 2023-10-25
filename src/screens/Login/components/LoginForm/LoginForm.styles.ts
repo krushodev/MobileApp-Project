@@ -1,10 +1,10 @@
 import { StyleSheet } from 'react-native';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'center',
     padding: 20
   },
   formContainer: {
@@ -12,11 +12,12 @@ const styles = StyleSheet.create({
     gap: 25
   },
   inputsContainer: {
-    gap: 8,
-    marginBottom: 20
+    gap: 7,
+    marginBottom: 5
   },
   input: {
-    backgroundColor: colors.chetwodeBlue200
+    backgroundColor: colors.chetwodeBlue200,
+    fontSize: responsiveFontSize(2)
   },
   redirectContainer: {
     justifyContent: 'center',
@@ -24,11 +25,13 @@ const styles = StyleSheet.create({
     padding: 15,
     gap: 10
   },
-  redirectText: {
-    textAlign: 'center',
-    fontSize: 15
+  text: {
+    fontSize: responsiveFontSize(2)
   },
-  redirectButton: {
+  redirectText: {
+    textAlign: 'center'
+  },
+  redirectButtonText: {
     color: colors.chetwodeBlue700
   },
   button: {
