@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useRoute } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -12,7 +13,7 @@ import { getRoom, sendMessage } from '../../api/routes/roomsRoutes';
 
 import { globalStyles } from '../../../global.styles';
 
-import type { IUser, MessageBody } from '../../types';
+import type { IMessage, IRoom, IUser, MessageBody } from '../../types';
 import type { IRootState } from '../../store';
 
 const Chat = () => {
@@ -20,21 +21,67 @@ const Chat = () => {
   const queryClient = useQueryClient();
   const user = useSelector<IRootState>(state => state.auth.user);
 
-  const query = useQuery({ queryKey: ['roomsList', { room: params.roomId }], queryFn: () => getRoom(params.roomId) });
+  const queryKey = ['roomList', { room: params.roomId }];
 
-  socket.on('receiveMessages', async data => {
-    await queryClient.refetchQueries({ queryKey: ['roomsList', { room: data.id }] });
-  });
+  const query = useQuery({ queryKey, queryFn: () => getRoom(params.roomId) });
 
   const mutation = useMutation({
     mutationFn: sendMessage,
-    onMutate: variables => {
-      socket.emit('sendMessage', variables);
+    onMutate: async variables => {
+      await queryClient.cancelQueries({ queryKey });
+
+      const optimisticMessage = { ...variables.message, user: user as IUser };
+
+      queryClient.setQueryData<IRoom>(queryKey, old => {
+        if (!old) {
+          return old;
+        }
+
+        return { ...old, messages: [...old.messages!, optimisticMessage] };
+      });
+
+      socket.emit('sendMessage', { id: variables.id, message: optimisticMessage });
+
+      return { optimisticMessage };
     },
-    onSuccess: async () => {
-      await queryClient.refetchQueries({ queryKey: ['roomsList', { room: params.roomId }] });
+    onError: (error, variables, context) => {
+      queryClient.setQueryData<IRoom>(queryKey, old => {
+        if (!old) {
+          return old;
+        }
+
+        const newMessages = old.messages!.filter(message => message.id !== context?.optimisticMessage.id);
+
+        return { ...old, messages: newMessages };
+      });
+    },
+    onSuccess: (result, variables, context) => {
+      queryClient.setQueryData<IRoom>(queryKey, old => {
+        if (!old) {
+          return old;
+        }
+
+        const newMessages = old.messages!.map(message => (message.id === context?.optimisticMessage.id ? result! : message));
+
+        return {
+          ...old,
+          messages: newMessages
+        };
+      });
     }
   });
+
+  const handleReceiveMessage = async (data: { id: string; message: IMessage }) => {
+    await queryClient.cancelQueries({ queryKey });
+
+    queryClient.setQueryData<IRoom>(queryKey, old => {
+      if (!old) {
+        return old;
+      }
+
+      return { ...old, messages: [...old.messages!, data.message] };
+    });
+  };
 
   const handleSubmit = (values: { message: string }) => {
     const newMessage: MessageBody = {
@@ -46,6 +93,14 @@ const Chat = () => {
 
     mutation.mutateAsync({ id: params.roomId, message: newMessage });
   };
+
+  useEffect(() => {
+    socket.on('receiveMessages', handleReceiveMessage);
+
+    return () => {
+      socket.off('receiveMessages');
+    };
+  }, []);
 
   return (
     <View style={globalStyles.container}>
