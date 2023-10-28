@@ -95,10 +95,10 @@ const Chat = () => {
   };
 
   useEffect(() => {
-    socket.on('receiveMessages', handleReceiveMessage);
+    socket.on('updateMessages', handleReceiveMessage);
 
     return () => {
-      socket.off('receiveMessages');
+      socket.off('updateMessages');
     };
   }, []);
 

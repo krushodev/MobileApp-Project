@@ -6,6 +6,8 @@ import { setUser } from '../store/slices/authSlice';
 import { getDataWithRefreshToken } from '../helper/auth';
 
 import type { IRootState } from '../store';
+import socket from '../services/socket';
+import { IUser } from '../types';
 
 export const useAuth = () => {
   const [loading, setLoading] = useState(true);
@@ -31,6 +33,8 @@ export const useAuth = () => {
       decodedAccessToken: { user }
     } = data;
 
+    socket.emit('saveConnection', user.id);
+
     dispatch(setUser({ accessToken, user }));
   };
 
@@ -41,6 +45,7 @@ export const useAuth = () => {
         setLoading(false);
       })();
     } else {
+      socket.emit('saveConnection', (user as IUser).id);
       setLoading(false);
     }
   }, []);

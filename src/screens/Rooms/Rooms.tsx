@@ -13,7 +13,7 @@ const Rooms = () => {
   const queryClient = useQueryClient();
   const query = useQuery({ queryKey: ['roomsList'], queryFn: listRooms });
 
-  socket.on('resolveNewRooms', async () => {
+  socket.on('updateRooms', async () => {
     await queryClient.refetchQueries({ queryKey: ['roomsList'] });
   });
 

@@ -1,6 +1,7 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { randomUUID } from 'expo-crypto';
+import socket from '../../services/socket';
 
 import { View } from 'react-native';
 import { Title, Button } from '../../components';
@@ -13,11 +14,16 @@ import { showToast } from '../../helper/toast';
 import { globalStyles } from '../../../global.styles';
 import styles from './Settings.styles';
 
+import type { IRootState } from '../../store';
+import type { IUser } from '../../types';
+
 const Settings = () => {
   const dispatch = useDispatch();
+  const user = useSelector<IRootState>(state => state.auth.user);
 
   const handlePress = async () => {
     await AsyncStorage.removeItem('token');
+    socket.emit('removeConnection', (user as IUser).id);
     dispatch(removeUser());
     showToast({ message: 'Has cerrado sesión', type: 'info' });
   };

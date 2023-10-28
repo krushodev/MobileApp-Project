@@ -1,3 +1,4 @@
+import { useConnection } from '../../../../hooks/useConnection';
 import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import { View } from 'react-native';
@@ -13,13 +14,17 @@ interface MemberCardProps {
 }
 
 const MemberCard = ({ user }: MemberCardProps) => {
+  const { connectedUsers } = useConnection();
+
+  const isActive = connectedUsers.includes(user.id);
+
   return (
     <View style={styles.container}>
       <View style={styles.memberContainer}>
-        <IconButton icon="circle" iconColor="green" size={responsiveFontSize(1.5)} />
+        <IconButton icon="circle" iconColor={isActive ? 'green' : 'red'} size={responsiveFontSize(1.5)} />
         <Text style={[globalStyles.textRegular, styles.text]}>{user.username}</Text>
       </View>
-      <Text style={[globalStyles.textBold, styles.text]}>online</Text>
+      <Text style={[globalStyles.textBold, styles.text]}>{isActive ? 'online' : 'offline'}</Text>
     </View>
   );
 };

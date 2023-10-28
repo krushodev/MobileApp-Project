@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { decodeToken } from 'react-jwt';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import socket from '../../services/socket';
 
 import LoginForm from './components/LoginForm/LoginForm';
 import { Loading } from '../../components';
@@ -33,6 +34,7 @@ const Login = () => {
 
     if (decodedAccessToken?.user && decodedRefreshToken?.user.id) {
       dispatch(setUser({ accessToken, user: decodedAccessToken.user }));
+      socket.emit('saveConnection', decodedAccessToken.user.id);
       await AsyncStorage.setItem('token', JSON.stringify(refreshToken));
       showToast({ message: 'Logueo exitoso', type: 'success' });
     }
