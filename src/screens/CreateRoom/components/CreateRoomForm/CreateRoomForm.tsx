@@ -29,7 +29,7 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
     password: yup.string().when('private', {
       is: true,
       then: schema => schema.required('Este campo es obligatorio'),
-      otherwise: schema => schema.required('Este campo es obligatorio')
+      otherwise: schema => schema
     }),
     topics: yup.array().required()
   });
@@ -94,6 +94,7 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
                     right={
                       <TextInput.Icon
                         size={responsiveFontSize(3.5)}
+                        disabled={!values.private}
                         color={colors.chetwodeBlue500}
                         icon={values.passwordVisible ? 'eye' : 'eye-off'}
                         onPress={() => setFieldValue('passwordVisible', !values.passwordVisible)}

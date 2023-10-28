@@ -1,11 +1,12 @@
-import { randomUUID } from 'expo-crypto';
+import { useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
+import { randomUUID } from 'expo-crypto';
 import socket from '../../services/socket';
 
 import { ScrollView } from 'react-native';
-import { Title } from '../../components';
+import { Loading, Title } from '../../components';
 import CreateRoomForm from './components/CreateRoomForm/CreateRoomForm';
 
 import { createRoom } from '../../api/routes/roomsRoutes';
@@ -17,6 +18,8 @@ import type { IRootState } from '../../store';
 import type { StackNavigation } from '../../navigation/types';
 
 const CreateRoom = () => {
+  const [loading, setLoading] = useState(false);
+
   const queryClient = useQueryClient();
   const { navigate } = useNavigation<StackNavigation>();
   const dispatch = useDispatch();
@@ -32,6 +35,7 @@ const CreateRoom = () => {
       await queryClient.refetchQueries({ queryKey: ['roomsList'] });
       showToast({ message: 'Nueva room creada', type: 'info' });
       dispatch(addUserRoom({ room: variables?.id, isOwner: false }));
+      setLoading(false);
       navigate('Rooms');
     }
   });
@@ -48,7 +52,13 @@ const CreateRoom = () => {
     };
 
     mutation.mutateAsync(newRoom);
+
+    setLoading(true);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <ScrollView>
