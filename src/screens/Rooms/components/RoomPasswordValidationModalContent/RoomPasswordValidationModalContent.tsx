@@ -1,5 +1,7 @@
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 import * as yup from 'yup';
 
+import { Formik } from 'formik';
 import { View } from 'react-native';
 import { TextInput, Text, HelperText } from 'react-native-paper';
 import { Button } from '../../../../components';
@@ -7,7 +9,6 @@ import { Button } from '../../../../components';
 import { globalStyles } from '../../../../../global.styles';
 import styles from './RoomPasswordValidationModalContent.styles';
 import colors from '../../../../constants/colors';
-import { Formik } from 'formik';
 
 interface PasswordValidationModalContentProps {
   handleSubmit: (values: { password: string }) => void;
@@ -21,14 +22,14 @@ const RoomPasswordValidationModalContent = ({ handleSubmit, hideModal }: Passwor
 
   return (
     <Formik
-      initialValues={{ password: '' }}
+      initialValues={{ password: '', passwordVisible: false }}
       validationSchema={validationSchema}
       onSubmit={(values, { resetForm }) => {
         handleSubmit(values);
         resetForm();
       }}
     >
-      {({ handleChange, handleBlur, handleSubmit: submit, values, errors, touched, handleReset }) => (
+      {({ handleChange, handleBlur, handleSubmit: submit, values, errors, touched, handleReset, setFieldValue }) => (
         <View style={styles.container}>
           <Text style={[globalStyles.textBold, styles.title]}>Room Privada</Text>
           <View style={[globalStyles.container, styles.formContainer]}>
@@ -41,6 +42,15 @@ const RoomPasswordValidationModalContent = ({ handleSubmit, hideModal }: Passwor
                 value={values.password}
                 style={styles.input}
                 theme={{ colors: { primary: colors.chetwodeBlue600 } }}
+                secureTextEntry={!values.passwordVisible}
+                right={
+                  <TextInput.Icon
+                    size={responsiveFontSize(3.5)}
+                    color={colors.chetwodeBlue500}
+                    icon={values.passwordVisible ? 'eye' : 'eye-off'}
+                    onPress={() => setFieldValue('passwordVisible', !values.passwordVisible)}
+                  />
+                }
               />
               <HelperText visible={errors.password && touched.password ? true : false} type="error">
                 {errors.password}

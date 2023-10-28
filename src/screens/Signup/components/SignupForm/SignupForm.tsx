@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 import * as yup from 'yup';
 
 import { TouchableOpacity, View, ScrollView } from 'react-native';
@@ -28,13 +29,13 @@ const SignupForm = ({ handleSubmit }: SignupFormProps) => {
 
   return (
     <Formik
-      initialValues={{ username: '', email: '', password: '' }}
+      initialValues={{ username: '', email: '', password: '', passwordVisible: false }}
       validationSchema={validationSchema}
       onSubmit={values => {
         handleSubmit(values);
       }}
     >
-      {({ handleChange, handleBlur, handleSubmit: submit, values, errors, touched, handleReset }) => (
+      {({ handleChange, handleBlur, handleSubmit: submit, values, errors, touched, handleReset, setFieldValue }) => (
         <KeyboardAwareScrollView contentContainerStyle={[globalStyles.container, styles.container]}>
           <ScrollView contentContainerStyle={[globalStyles.container, styles.formContainer]}>
             <Title title="Registrarse" align="center" />
@@ -76,6 +77,15 @@ const SignupForm = ({ handleSubmit }: SignupFormProps) => {
                   value={values.password}
                   style={styles.input}
                   theme={{ colors: { primary: colors.chetwodeBlue600 } }}
+                  secureTextEntry={!values.passwordVisible}
+                  right={
+                    <TextInput.Icon
+                      size={responsiveFontSize(3.5)}
+                      color={colors.chetwodeBlue500}
+                      icon={values.passwordVisible ? 'eye' : 'eye-off'}
+                      onPress={() => setFieldValue('passwordVisible', !values.passwordVisible)}
+                    />
+                  }
                 ></TextInput>
                 <HelperText visible={errors.password && touched.password ? true : false} type="error">
                   {errors.password}

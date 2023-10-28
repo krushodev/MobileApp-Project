@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 import * as yup from 'yup';
 
 import { Formik } from 'formik';
@@ -26,8 +27,12 @@ const LoginForm = ({ handleSubmit }: LoginFormProps) => {
   });
 
   return (
-    <Formik initialValues={{ email: '', password: '' }} validationSchema={validationSchema} onSubmit={values => handleSubmit(values)}>
-      {({ handleBlur, handleChange, handleSubmit: submit, values, errors, touched }) => (
+    <Formik
+      initialValues={{ email: '', password: '', passwordVisible: false }}
+      validationSchema={validationSchema}
+      onSubmit={values => handleSubmit(values)}
+    >
+      {({ handleBlur, handleChange, handleSubmit: submit, values, errors, touched, setFieldValue }) => (
         <KeyboardAwareScrollView contentContainerStyle={[globalStyles.container, styles.container]}>
           <ScrollView contentContainerStyle={[globalStyles.container, styles.formContainer]}>
             <Title title="Iniciar sesión" align="center" />
@@ -55,6 +60,15 @@ const LoginForm = ({ handleSubmit }: LoginFormProps) => {
                   value={values.password}
                   style={styles.input}
                   theme={{ colors: { primary: colors.chetwodeBlue600 } }}
+                  secureTextEntry={!values.passwordVisible}
+                  right={
+                    <TextInput.Icon
+                      size={responsiveFontSize(3.5)}
+                      color={colors.chetwodeBlue500}
+                      icon={values.passwordVisible ? 'eye' : 'eye-off'}
+                      onPress={() => setFieldValue('passwordVisible', !values.passwordVisible)}
+                    />
+                  }
                 ></TextInput>
                 <HelperText visible={errors.password && touched.password ? true : false} type="error">
                   {errors.password}

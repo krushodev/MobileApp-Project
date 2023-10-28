@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { randomUUID } from 'expo-crypto';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 import * as yup from 'yup';
 
 import { View } from 'react-native';
@@ -35,7 +36,7 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
 
   return (
     <Formik
-      initialValues={{ name: '', password: '', private: false, topics: [''] }}
+      initialValues={{ name: '', password: '', private: false, topics: [''], passwordVisible: false }}
       validationSchema={validationSchema}
       onSubmit={(values, { resetForm }) => {
         handleSubmit(values);
@@ -89,6 +90,15 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
                     disabled={!values.private}
                     style={styles.input}
                     theme={{ colors: { primary: colors.chetwodeBlue600 } }}
+                    secureTextEntry={!values.passwordVisible}
+                    right={
+                      <TextInput.Icon
+                        size={responsiveFontSize(3.5)}
+                        color={colors.chetwodeBlue500}
+                        icon={values.passwordVisible ? 'eye' : 'eye-off'}
+                        onPress={() => setFieldValue('passwordVisible', !values.passwordVisible)}
+                      />
+                    }
                   ></TextInput>
                   <HelperText visible={values.private && errors.password && touched.password ? true : false} type="error">
                     {errors.password}
