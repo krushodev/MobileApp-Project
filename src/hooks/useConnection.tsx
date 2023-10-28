@@ -5,9 +5,8 @@ export const useConnection = () => {
   const [connectedUsers, setConnectedUsers] = useState<string[]>([]);
 
   const handleReceiveConnection = async () => {
-    socket.emit('getConnections', (err: Error, response: string[]) => {
+    socket.timeout(1000).emit('getConnections', (err: Error, response: string[]) => {
       if (err) return;
-      console.log(response);
       setConnectedUsers(response);
     });
   };
