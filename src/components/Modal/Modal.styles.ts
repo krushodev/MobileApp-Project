@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { responsiveHeight } from 'react-native-responsive-dimensions';
 
 import colors from '../../constants/colors';
 
@@ -8,11 +9,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   content: {
-    maxHeight: 340,
+    height: responsiveHeight(57),
     width: '90%',
-    justifyContent: 'flex-start',
     backgroundColor: colors.chetwodeBlue50,
-    gap: 30,
     borderRadius: 20
   }
 });

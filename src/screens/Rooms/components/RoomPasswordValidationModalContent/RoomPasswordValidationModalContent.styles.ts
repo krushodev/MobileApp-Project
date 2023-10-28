@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   formContainer: {
     padding: 20,
     gap: 25,
-    justifyContent: 'space-between'
+    justifyContent: 'space-evenly'
   },
   input: {
     backgroundColor: colors.chetwodeBlue200,
