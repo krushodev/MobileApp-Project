@@ -24,7 +24,7 @@ const MemberCard = ({ user }: MemberCardProps) => {
         <IconButton icon="circle" iconColor={isActive ? 'green' : 'red'} size={responsiveFontSize(1.5)} />
         <Text style={[globalStyles.textRegular, styles.text]}>{user.username}</Text>
       </View>
-      <Text style={[globalStyles.textBold, styles.text]}>{isActive ? 'online' : 'offline'}</Text>
+      <Text style={[globalStyles.textBold, styles.text]}>{isActive ? 'en línea' : 'ausente'}</Text>
     </View>
   );
 };

@@ -104,7 +104,7 @@ const Chat = () => {
 
   return (
     <View style={globalStyles.container}>
-      <Drawer position="right" content={<DrawerChatContent room={query.data} />}>
+      <Drawer position="right" content={<DrawerChatContent room={query.data!} />}>
         <MessageList messagesList={query.data?.messages} />
         <MessageForm handleSubmit={handleSubmit} />
       </Drawer>

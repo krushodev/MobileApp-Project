@@ -40,10 +40,16 @@ const authSlice = createSlice({
       if (state.user) {
         state.user.rooms = [...state.user.rooms, action.payload];
       }
+    },
+    removeUserRoom: (state, action) => {
+      if (state.user) {
+        const newRooms = state.user.rooms.filter(item => item.room !== action.payload);
+        state.user.rooms = newRooms;
+      }
     }
   }
 });
 
-export const { setUser, removeUser, setUserImage, addUserRoom } = authSlice.actions;
+export const { setUser, removeUser, setUserImage, addUserRoom, removeUserRoom } = authSlice.actions;
 
 export default authSlice.reducer;

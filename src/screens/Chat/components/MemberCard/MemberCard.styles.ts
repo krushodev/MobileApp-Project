@@ -6,8 +6,8 @@ import colors from '../../../../constants/colors';
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.chetwodeBlue200,
-    paddingVertical: 8,
-    paddingHorizontal: 12,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
     margin: 10,
     borderRadius: 12,
     flexDirection: 'row',

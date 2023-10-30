@@ -2,14 +2,17 @@ import { StyleSheet } from 'react-native';
 import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 const styles = StyleSheet.create({
+  container: {
+    paddingVertical: 25,
+    paddingHorizontal: 15
+  },
   text: {
     textAlign: 'center',
     fontSize: responsiveFontSize(2.8),
-    margin: 15,
-    marginBottom: 5
+    marginBottom: 10
   },
   membersList: {
-    margin: 15
+    marginBottom: 40
   }
 });
 

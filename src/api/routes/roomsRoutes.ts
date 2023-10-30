@@ -119,3 +119,21 @@ export const addMember = async (data: { rid: string; uid: string }) => {
     }
   }
 };
+
+export const removeMember = async (data: { rid: string; uid: string }) => {
+  try {
+    const response = await axios.post<SuccessResponse>(`/rooms/${data.rid}/remove-member/${data.uid}`);
+    const { message } = response.data;
+    return message;
+  } catch (err) {
+    const statusCode = (err as AxiosError).response?.status;
+
+    switch (statusCode) {
+      case 404:
+        showToast({ message: 'Error. La room no existe', type: 'error' });
+        break;
+      default:
+        showToast({ message: 'Error en el servidor. Intenta nuevamente', type: 'warning' });
+    }
+  }
+};

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { useQueryClient } from '@tanstack/react-query';
+import socket from '../../../../services/socket';
 
 import { TouchableOpacity } from 'react-native';
 import { Text } from 'react-native-paper';
@@ -28,6 +29,10 @@ const RoomCard = ({ room, showModal, setRoomSelected }: RoomCardProps) => {
   const queryClient = useQueryClient();
   const dispatch = useDispatch();
   const user = useSelector<IRootState>(state => state.auth.user);
+
+  socket.on('updateRoom', async () => {
+    await queryClient.refetchQueries({ queryKey: ['roomsList', { roomId: room.id }] });
+  });
 
   const handleClick = async () => {
     const userIsInRoom = (user as IUser).rooms.some(userRoom => {

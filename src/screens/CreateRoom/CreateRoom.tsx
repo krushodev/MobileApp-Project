@@ -34,7 +34,7 @@ const CreateRoom = () => {
     onSuccess: async variables => {
       await queryClient.refetchQueries({ queryKey: ['roomsList'] });
       showToast({ message: 'Nueva room creada', type: 'info' });
-      dispatch(addUserRoom({ room: variables?.id, isOwner: false }));
+      dispatch(addUserRoom({ room: variables?.id, isOwner: true }));
       setLoading(false);
       navigate('Rooms');
     }
