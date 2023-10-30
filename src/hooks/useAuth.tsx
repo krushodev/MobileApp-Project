@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import socket from '../services/socket';
 
 import { setUser } from '../store/slices/authSlice';
 import { getDataWithRefreshToken } from '../helper/auth';
 
 import type { IRootState } from '../store';
-import socket from '../services/socket';
-import { IUser } from '../types';
+import type { IUser } from '../types';
 
 export const useAuth = () => {
   const [loading, setLoading] = useState(true);

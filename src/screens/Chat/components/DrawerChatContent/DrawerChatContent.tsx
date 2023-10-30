@@ -51,6 +51,7 @@ const DrawerChatContent = ({ room }: DrawerChatContentProps) => {
     mutationFn: removeMember,
     onSuccess: async variables => {
       await queryClient.refetchQueries({ queryKey: ['roomsList', { roomId: room.id }] });
+      socket.emit('updateMembers', room);
       showToast({ message: 'Has abandonado la room', type: 'success' });
       dispatch(removeUserRoom(room.id));
       setLoading(false);

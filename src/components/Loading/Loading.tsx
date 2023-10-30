@@ -1,10 +1,11 @@
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
+
 import { View } from 'react-native';
 import { ActivityIndicator } from 'react-native-paper';
 
 import { globalStyles } from '../../../global.styles';
 import styles from './Loading.styles';
 import colors from '../../constants/colors';
-import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 const Loading = () => {
   return (

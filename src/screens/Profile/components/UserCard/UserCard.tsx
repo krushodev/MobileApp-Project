@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import * as ImagePicker from 'expo-image-picker';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import { TouchableOpacity, View } from 'react-native';
 import { Text, Avatar, IconButton } from 'react-native-paper';
@@ -15,7 +16,6 @@ import colors from '../../../../constants/colors';
 
 import type { IRootState } from '../../../../store';
 import type { IUser } from '../../../../types';
-import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 const UserCard = () => {
   const dispatch = useDispatch();

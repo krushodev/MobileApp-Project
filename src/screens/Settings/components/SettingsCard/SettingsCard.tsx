@@ -1,9 +1,10 @@
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
+
 import { TouchableOpacity, View } from 'react-native';
 import { IconButton, Text } from 'react-native-paper';
 
 import { globalStyles } from '../../../../../global.styles';
 import styles from './SettingsCard.styles';
-import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 interface SettingsCardProps {
   title: string;

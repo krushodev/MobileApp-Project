@@ -1,3 +1,5 @@
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
+
 import { View } from 'react-native';
 import { Text } from 'react-native-paper';
 
@@ -5,7 +7,6 @@ import { globalStyles } from '../../../../../global.styles';
 import styles from './FeatureCard.styles';
 
 import type { SvgProps } from 'react-native-svg';
-import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 interface FeatureCardProps {
   Image: React.FC<SvgProps>;

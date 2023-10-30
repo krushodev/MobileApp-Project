@@ -9,12 +9,18 @@ import { listRooms } from '../../api/routes/roomsRoutes';
 
 import { globalStyles } from '../../../global.styles';
 
+import type { RoomBody } from '../../types';
+
 const Rooms = () => {
   const queryClient = useQueryClient();
   const query = useQuery({ queryKey: ['roomsList'], queryFn: listRooms });
 
   socket.on('updateRooms', async () => {
     await queryClient.refetchQueries({ queryKey: ['roomsList'] });
+  });
+
+  socket.on('updateRoom', async (data: RoomBody) => {
+    await queryClient.refetchQueries({ queryKey: ['roomsList', { roomId: data.id }] });
   });
 
   return (

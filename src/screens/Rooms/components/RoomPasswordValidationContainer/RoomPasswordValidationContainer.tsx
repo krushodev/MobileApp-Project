@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useQueryClient } from '@tanstack/react-query';
 import { useDispatch, useSelector } from 'react-redux';
+import socket from '../../../../services/socket';
 
 import RoomPasswordValidationModalContent from '../RoomPasswordValidationModalContent/RoomPasswordValidationModalContent';
 import { Modal } from '../../../../components';
@@ -39,6 +39,8 @@ const RoomPasswordValidationContainer = ({ isVisible, hideModal, roomSelected }:
     if (!result) return;
 
     await queryClient.refetchQueries({ queryKey: ['roomsList', { roomId: roomSelected.id }] });
+
+    socket.emit('updateMembers', roomSelected);
 
     hideModal();
 

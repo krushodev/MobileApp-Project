@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
+import { responsiveFontSize, responsiveWidth } from 'react-native-responsive-dimensions';
 
 import colors from '../../../../constants/colors';
-import { responsiveFontSize, responsiveWidth } from 'react-native-responsive-dimensions';
 
 const styles = StyleSheet.create({
   container: {

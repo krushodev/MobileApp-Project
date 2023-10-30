@@ -30,10 +30,6 @@ const RoomCard = ({ room, showModal, setRoomSelected }: RoomCardProps) => {
   const dispatch = useDispatch();
   const user = useSelector<IRootState>(state => state.auth.user);
 
-  socket.on('updateRoom', async () => {
-    await queryClient.refetchQueries({ queryKey: ['roomsList', { roomId: room.id }] });
-  });
-
   const handleClick = async () => {
     const userIsInRoom = (user as IUser).rooms.some(userRoom => {
       return userRoom.room === room.id;
@@ -54,6 +50,8 @@ const RoomCard = ({ room, showModal, setRoomSelected }: RoomCardProps) => {
       if (!result) return;
 
       await queryClient.refetchQueries({ queryKey: ['roomsList', { roomId: room.id }] });
+
+      socket.emit('updateMembers', room);
 
       showToast({ message: 'Te has unido a la room', type: 'info' });
 

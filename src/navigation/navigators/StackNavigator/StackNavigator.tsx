@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import BottomTabNavigator from '../BottomTabNavigator/BottomTabNavigator';
 
@@ -12,7 +13,6 @@ import { toggleDrawer } from '../../../store/slices/drawerSlice';
 import colors from '../../../constants/colors';
 
 import type { RootStackParamList } from '../../types';
-import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 type screens = ['HomeScreen', 'RoomsScreen', 'ChatScreen'];
 

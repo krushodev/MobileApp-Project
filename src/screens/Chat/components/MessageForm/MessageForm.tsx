@@ -1,3 +1,5 @@
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
+
 import { View } from 'react-native';
 import { TextInput, ToggleButton } from 'react-native-paper';
 import { Formik } from 'formik';
@@ -6,7 +8,6 @@ import * as yup from 'yup';
 
 import styles from './MessageForm.styles';
 import colors from '../../../../constants/colors';
-import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 interface MessageFormProps {
   handleSubmit: (values: { message: string }) => void;
