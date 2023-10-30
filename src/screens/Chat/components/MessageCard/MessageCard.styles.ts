@@ -1,40 +1,66 @@
 import { StyleSheet } from 'react-native';
-import { responsiveFontSize, responsiveWidth } from 'react-native-responsive-dimensions';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 import colors from '../../../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 15,
-    margin: 6
+    marginBottom: 5,
+    margin: 6,
+    padding: 2,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    gap: 4
   },
+  imageContainer: {
+    marginBottom: responsiveFontSize(-1.5)
+  },
+  senderImageContainer: {
+    display: 'none'
+  },
+  receiverImageContainer: {},
   senderContainer: {
-    alignItems: 'flex-end'
+    justifyContent: 'flex-end'
   },
   receiverContainer: {
-    alignItems: 'flex-start'
+    justifyContent: 'flex-start'
   },
   infoContainer: {
-    paddingVertical: 10,
+    paddingTop: 8,
+    paddingBottom: 20,
     paddingHorizontal: 12,
-    gap: 12,
-    width: responsiveWidth(57)
+    maxWidth: '65%'
+  },
+  dateContainer: {
+    position: 'absolute',
+    right: 15,
+    bottom: 5
+  },
+  dateText: {
+    fontSize: responsiveFontSize(1.3)
+  },
+  senderDateText: {
+    color: colors.chetwodeBlue600
+  },
+  receiverDateText: {
+    color: colors.chetwodeBlue300
   },
   senderInfoContainer: {
     backgroundColor: colors.chetwodeBlue200,
-    borderTopLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 15
+    borderTopLeftRadius: 15,
+    borderBottomRightRadius: 15,
+    borderBottomLeftRadius: 15,
+    borderTopRightRadius: 3
   },
   receiverInfoContainer: {
     backgroundColor: colors.chetwodeBlue900,
-    borderTopRightRadius: 20,
-    borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 15
+    borderTopRightRadius: 15,
+    borderBottomRightRadius: 15,
+    borderTopLeftRadius: 15,
+    borderBottomLeftRadius: 3
   },
   senderName: {
-    color: colors.chetwodeBlue600,
-    fontSize: responsiveFontSize(2)
+    display: 'none'
   },
   receiverName: {
     color: colors.chetwodeBlue400,

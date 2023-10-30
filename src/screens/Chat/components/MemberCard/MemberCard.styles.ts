@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.chetwodeBlue200,
     paddingVertical: 6,
     paddingHorizontal: 10,
-    margin: 10,
+    marginHorizontal: 10,
+    marginVertical: 5,
     borderRadius: 12,
     flexDirection: 'row',
     alignItems: 'center',
@@ -16,7 +17,8 @@ const styles = StyleSheet.create({
   },
   memberContainer: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    gap: 8
   },
   text: {
     fontSize: responsiveFontSize(1.8)

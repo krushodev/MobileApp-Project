@@ -3,7 +3,7 @@ import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 25,
+    paddingVertical: 18,
     paddingHorizontal: 15
   },
   text: {
