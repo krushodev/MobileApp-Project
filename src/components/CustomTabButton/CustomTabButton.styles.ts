@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     width: responsiveFontSize(10),
     height: responsiveFontSize(10),
     borderRadius: 50,
-    backgroundColor: colors.chetwodeBlue500,
+    backgroundColor: colors.chetwodeBlue600,
     shadowColor: colors.zinc950,
     shadowOffset: {
       width: 0,

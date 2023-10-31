@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useModal } from '../../../../hooks/useModal';
 
 import { View, FlatList } from 'react-native';
-import { Text } from 'react-native-paper';
 import RoomCard from '../RoomCard/RoomCard';
 import RoomPasswordValidationContainer from '../RoomPasswordValidationContainer/RoomPasswordValidationContainer';
+import RoomEmptyCard from '../RoomEmptyCard/RoomEmptyCard';
 import { Loading } from '../../../../components';
 
 import { globalStyles } from '../../../../../global.styles';
@@ -31,9 +31,7 @@ const RoomsList = ({ roomsList }: RoomListProps) => {
               keyExtractor={item => item.id}
             />
           ) : (
-            <Text variant="titleMedium" style={[globalStyles.textRegular, styles.textAlert]}>
-              No hay rooms
-            </Text>
+            <RoomEmptyCard />
           )
         ) : (
           <Loading />

@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
     padding: 2,
     flexDirection: 'row',
     alignItems: 'flex-end',
-    gap: 4
+    gap: 4,
+    paddingBottom: 8
   },
   imageContainer: {
     marginBottom: responsiveFontSize(-1.5)

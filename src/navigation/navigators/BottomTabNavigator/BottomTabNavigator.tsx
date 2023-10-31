@@ -35,13 +35,13 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="home" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue500 : colors.zinc400} />
+              <Feather name="home" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
               <Text
                 style={[
                   focused ? globalStyles.textBold : globalStyles.textRegular,
                   styles.tabBarLabel,
                   {
-                    color: focused ? colors.chetwodeBlue500 : colors.zinc400
+                    color: focused ? colors.chetwodeBlue600 : colors.zinc400
                   }
                 ]}
               >
@@ -57,13 +57,13 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="message-circle" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue500 : colors.zinc400} />
+              <Feather name="message-circle" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
               <Text
                 style={[
                   focused ? globalStyles.textBold : globalStyles.textRegular,
                   styles.tabBarLabel,
                   {
-                    color: focused ? colors.chetwodeBlue500 : colors.zinc400
+                    color: focused ? colors.chetwodeBlue600 : colors.zinc400
                   }
                 ]}
               >
@@ -96,7 +96,7 @@ function BottomTabNavigator() {
                   focused ? globalStyles.textBold : globalStyles.textRegular,
                   styles.tabBarLabel,
                   {
-                    color: focused ? colors.chetwodeBlue500 : colors.zinc400
+                    color: focused ? colors.chetwodeBlue600 : colors.zinc400
                   }
                 ]}
               >
@@ -112,13 +112,13 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="settings" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue500 : colors.zinc400} />
+              <Feather name="settings" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
               <Text
                 style={[
                   focused ? globalStyles.textBold : globalStyles.textRegular,
                   styles.tabBarLabel,
                   {
-                    color: focused ? colors.chetwodeBlue500 : colors.zinc400
+                    color: focused ? colors.chetwodeBlue600 : colors.zinc400
                   }
                 ]}
               >
