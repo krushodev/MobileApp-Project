@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { useQueryClient } from '@tanstack/react-query';
+import { randomUUID } from 'expo-crypto';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 import socket from '../../../../services/socket';
 
 import { TouchableOpacity, View } from 'react-native';
@@ -18,7 +20,6 @@ import colors from '../../../../constants/colors';
 import type { IRootState } from '../../../../store';
 import type { StackNavigation } from '../../../../navigation/types';
 import type { IRoom, IUser } from '../../../../types';
-import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 interface RoomCardProps {
   room: IRoom;
@@ -71,7 +72,9 @@ const RoomCard = ({ room, showModal, setRoomSelected }: RoomCardProps) => {
         {room.topics.length > 0 && (
           <View style={styles.chipContainer}>
             {room.topics.map(topic => (
-              <Text style={[globalStyles.textBold, styles.chip]}>{topic}</Text>
+              <Text key={randomUUID()} style={[globalStyles.textBold, styles.chip]}>
+                {topic}
+              </Text>
             ))}
           </View>
         )}
@@ -79,7 +82,6 @@ const RoomCard = ({ room, showModal, setRoomSelected }: RoomCardProps) => {
       {isOwner && <IconButton icon="crown" iconColor={colors.chetwodeBlue900} size={responsiveFontSize(4)} />}
     </TouchableOpacity>
   );
-  Text;
 };
 
 export default RoomCard;

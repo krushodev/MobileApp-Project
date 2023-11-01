@@ -5,8 +5,8 @@ import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   container: {
-    width: responsiveFontSize(10),
-    height: responsiveFontSize(10),
+    width: responsiveFontSize(8),
+    height: responsiveFontSize(8),
     borderRadius: 50,
     backgroundColor: colors.chetwodeBlue600,
     shadowColor: colors.zinc950,
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     elevation: 7
   },
   button: {
-    top: -30,
+    top: responsiveFontSize(-4),
     justifyContent: 'center',
     alignItems: 'center'
   }

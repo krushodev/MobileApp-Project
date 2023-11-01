@@ -35,7 +35,7 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="home" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
+              <Feather name="home" size={responsiveFontSize(3.4)} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
               <Text
                 style={[
                   focused ? globalStyles.textBold : globalStyles.textRegular,
@@ -57,7 +57,7 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="message-circle" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
+              <Feather name="message-circle" size={responsiveFontSize(3.4)} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
               <Text
                 style={[
                   focused ? globalStyles.textBold : globalStyles.textRegular,
@@ -77,7 +77,7 @@ function BottomTabNavigator() {
         name="CreateRoom"
         component={CreateRoom}
         options={{
-          tabBarIcon: () => <Feather name="plus" color="white" size={responsiveFontSize(4)} />,
+          tabBarIcon: () => <Feather name="plus" color="white" size={responsiveFontSize(3.4)} />,
           tabBarButton: props => <CustomTabButton {...props} />,
           tabBarStyle: {
             display: 'none'
@@ -90,7 +90,7 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="user" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
+              <Feather name="user" size={responsiveFontSize(3.4)} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
               <Text
                 style={[
                   focused ? globalStyles.textBold : globalStyles.textRegular,
@@ -112,7 +112,7 @@ function BottomTabNavigator() {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarIconContainer}>
-              <Feather name="settings" size={responsiveFontSize(3.8)} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
+              <Feather name="settings" size={responsiveFontSize(3.4)} color={focused ? colors.chetwodeBlue600 : colors.zinc400} />
               <Text
                 style={[
                   focused ? globalStyles.textBold : globalStyles.textRegular,

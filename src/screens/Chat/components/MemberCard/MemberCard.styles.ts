@@ -20,7 +20,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8
   },
-  text: {
+  memberInfoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  memberInfoText: {
     fontSize: responsiveFontSize(1.8)
   }
 });

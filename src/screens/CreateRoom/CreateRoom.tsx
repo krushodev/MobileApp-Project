@@ -46,8 +46,6 @@ const CreateRoom = () => {
   });
 
   const handleSubmit = (values: { name: string; password: string; private: boolean; topics: string[] }) => {
-    console.log(values.topics);
-
     const newRoom: RoomBody = {
       id: randomUUID(),
       name: values.name,

@@ -12,9 +12,10 @@ import colors from '../../../../constants/colors';
 
 interface MemberCardProps {
   user: IUser;
+  isOwner: boolean;
 }
 
-const MemberCard = ({ user }: MemberCardProps) => {
+const MemberCard = ({ user, isOwner }: MemberCardProps) => {
   const { connectedUsers } = useConnection();
 
   const isActive = connectedUsers.includes(user.id);
@@ -25,7 +26,10 @@ const MemberCard = ({ user }: MemberCardProps) => {
         <View>
           <Avatar.Image source={{ uri: user.image }} size={responsiveFontSize(5)} />
         </View>
-        <Text style={[globalStyles.textRegular, styles.text]}>{user.username}</Text>
+        <View style={styles.memberInfoContainer}>
+          <Text style={[globalStyles.textRegular, styles.memberInfoText]}>{user.username}</Text>
+          {isOwner && <IconButton icon="crown" iconColor={colors.amber600} size={responsiveFontSize(3)} />}
+        </View>
       </View>
       <IconButton icon="circle" iconColor={isActive ? colors.lime600 : colors.red600} size={responsiveFontSize(1.5)} />
     </View>

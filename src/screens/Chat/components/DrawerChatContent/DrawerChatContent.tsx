@@ -79,7 +79,7 @@ const DrawerChatContent = ({ room }: DrawerChatContentProps) => {
       <FlatList
         style={styles.membersList}
         data={room?.members}
-        renderItem={({ item }) => <MemberCard user={item.user} />}
+        renderItem={({ item }) => <MemberCard user={item.user} isOwner={item.user.id === room.owner} />}
         keyExtractor={item => item.user.id}
       />
       <Button text={isOwner ? 'Eliminar room' : 'Abandonar room'} onPress={handlePress} type="primary" />
