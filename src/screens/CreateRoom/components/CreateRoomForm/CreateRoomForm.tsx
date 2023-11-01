@@ -36,7 +36,7 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
 
   return (
     <Formik
-      initialValues={{ name: '', password: '', private: false, topics: [''], passwordVisible: false }}
+      initialValues={{ name: '', password: '', private: false, topics: [], passwordVisible: false }}
       validationSchema={validationSchema}
       onSubmit={(values, { resetForm }) => {
         handleSubmit(values);
@@ -49,7 +49,7 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
         };
 
         const handleChip = (value: string) => {
-          if (values.topics.includes(value)) {
+          if (values.topics.includes(value as never)) {
             const newTopics = values.topics.filter(topic => topic !== value);
 
             setFieldValue('topics', newTopics);
@@ -110,11 +110,13 @@ const CreateRoomForm = ({ handleSubmit }: CreateRoomFormProps) => {
                   <View style={styles.topicsChipContainer}>
                     {topics.map(topic => (
                       <Chip
-                        style={{ backgroundColor: values.topics.includes(topic) ? colors.chetwodeBlue500 : colors.chetwodeBlue200 }}
+                        style={{
+                          backgroundColor: values.topics.includes(topic as never) ? colors.chetwodeBlue500 : colors.chetwodeBlue200
+                        }}
                         textStyle={styles.chipText}
                         onPress={() => handleChip(topic)}
                         key={randomUUID()}
-                        selectedColor={values.topics.includes(topic) ? colors.chetwodeBlue100 : colors.chetwodeBlue500}
+                        selectedColor={values.topics.includes(topic as never) ? colors.chetwodeBlue100 : colors.chetwodeBlue500}
                       >
                         {topic}
                       </Chip>

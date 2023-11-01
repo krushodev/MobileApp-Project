@@ -31,7 +31,12 @@ const CreateRoom = () => {
     onMutate: variables => {
       socket.emit('createRoom', variables);
     },
-    onSuccess: async variables => {
+    onSuccess: async (result, variables) => {
+      if (!result) {
+        setLoading(false);
+        return;
+      }
+
       await queryClient.refetchQueries({ queryKey: ['roomsList'] });
       showToast({ message: 'Nueva room creada', type: 'info' });
       dispatch(addUserRoom({ room: variables?.id, isOwner: true }));
@@ -40,11 +45,13 @@ const CreateRoom = () => {
     }
   });
 
-  const handleSubmit = (values: { name: string; password: string; private: boolean }) => {
+  const handleSubmit = (values: { name: string; password: string; private: boolean; topics: string[] }) => {
+    console.log(values.topics);
+
     const newRoom: RoomBody = {
       id: randomUUID(),
       name: values.name,
-      topics: ['topic1'],
+      topics: values.topics,
       owner: (user as IUser).id,
       members: [{ user: (user as IUser).id }],
       isPrivate: values.private,

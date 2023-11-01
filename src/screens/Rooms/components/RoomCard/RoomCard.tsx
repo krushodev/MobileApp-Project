@@ -3,8 +3,8 @@ import { useNavigation } from '@react-navigation/native';
 import { useQueryClient } from '@tanstack/react-query';
 import socket from '../../../../services/socket';
 
-import { TouchableOpacity } from 'react-native';
-import { Text } from 'react-native-paper';
+import { TouchableOpacity, View } from 'react-native';
+import { IconButton, Text } from 'react-native-paper';
 
 import { addMember } from '../../../../api/routes/roomsRoutes';
 
@@ -13,10 +13,12 @@ import { addUserRoom } from '../../../../store/slices/authSlice';
 
 import { globalStyles } from '../../../../../global.styles';
 import styles from './RoomCard.styles';
+import colors from '../../../../constants/colors';
 
 import type { IRootState } from '../../../../store';
 import type { StackNavigation } from '../../../../navigation/types';
 import type { IRoom, IUser } from '../../../../types';
+import { responsiveFontSize } from 'react-native-responsive-dimensions';
 
 interface RoomCardProps {
   room: IRoom;
@@ -30,12 +32,12 @@ const RoomCard = ({ room, showModal, setRoomSelected }: RoomCardProps) => {
   const dispatch = useDispatch();
   const user = useSelector<IRootState>(state => state.auth.user);
 
+  const isOwner = room.owner === (user as IUser).id;
+
   const handleClick = async () => {
     const userIsInRoom = (user as IUser).rooms.some(userRoom => {
       return userRoom.room === room.id;
     });
-
-    const isOwner = room.owner === (user as IUser).id;
 
     if (!userIsInRoom && !isOwner) {
       if (room.isPrivate) {
@@ -63,8 +65,18 @@ const RoomCard = ({ room, showModal, setRoomSelected }: RoomCardProps) => {
 
   return (
     <TouchableOpacity style={styles.container} onPress={handleClick}>
-      <Text style={[globalStyles.textRegular, styles.roomNameText]}>{room.name}</Text>
-      <Text style={[globalStyles.textRegular, styles.roomInfoText]}>Miembros: {room.members?.length}</Text>
+      <View style={[globalStyles.container, styles.infoContainer]}>
+        <Text style={[globalStyles.textRegular, styles.roomNameText]}>{room.name}</Text>
+        <Text style={[globalStyles.textRegular, styles.roomMembersText]}>Miembros: {room.members?.length}</Text>
+        {room.topics.length > 0 && (
+          <View style={styles.chipContainer}>
+            {room.topics.map(topic => (
+              <Text style={[globalStyles.textBold, styles.chip]}>{topic}</Text>
+            ))}
+          </View>
+        )}
+      </View>
+      {isOwner && <IconButton icon="crown" iconColor={colors.chetwodeBlue900} size={responsiveFontSize(4)} />}
     </TouchableOpacity>
   );
   Text;
