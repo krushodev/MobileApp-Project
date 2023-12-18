@@ -10,6 +10,23 @@ Welcome to the documentation for our chat application built with React Native an
 
 Our chat application offers a range of essential features, including **user authentication** to manage accounts securely and room creation to facilitate customized chat environments. With a **real-time messaging system**, users can engage in dynamic conversations instantly. Additionally, **profile customization** options allow users to personalize their avatars, enhancing their overall chat experience.
 
+<br> <br>
+
+### Screenshots 📷️
+
+<img src="https://gcdnb.pbrd.co/images/Ngn3mrOggo7s.jpg?o=1" alt="Image1" style="max-width:20%;" />
+<img src="https://gcdnb.pbrd.co/images/PsdRfok23lkn.jpg?o=1" alt="Image2" style="max-width:20%;" />
+<img src="https://gcdnb.pbrd.co/images/MQ1T1TfH0Jq3.jpg?o=1" alt="Image3" style="max-width:20%;" />
+<img src="https://gcdnb.pbrd.co/images/kNTxkAhEZosh.jpg?o=1" alt="Image4" style="max-width:20%;" />
+<img src="https://gcdnb.pbrd.co/images/RusdgUuI42Mc.jpg?o=1" alt="Image5" style="max-width:20%;" />
+<img src="https://gcdnb.pbrd.co/images/JOBpxzMsO3T3.jpg?o=1" alt="Image6" style="max-width:20%;" />
+<img src="https://gcdnb.pbrd.co/images/zqitZyZHGtQg.jpg?o=1" alt="Image7" style="max-width:20%;" />
+<img src="https://gcdnb.pbrd.co/images/pEDBJP7mDR8t.jpg?o=1" alt="Image8" style="max-width:20%;" />
+
+<br> <br> <br>
+
+
+
 ## Installation
 
 **Step 1: Install Expo CLI** _(we assume you have pre-installed node.js)._
